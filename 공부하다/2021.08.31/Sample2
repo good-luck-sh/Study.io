@@ -1,0 +1,44 @@
+package example_08_31_var;
+
+public class Sample2 {
+	public static void main(String[] args) {
+	/*
+	 * 상품가격 구매수량 적립포인트를 계산해서 출력하기 
+	 * 상품가격은 35000원이다. 
+	 * 구매수량은 3개다.
+	 * 포인트 적립률은 총구매금액의 3%다. 
+	 * 
+	 *화면에 상품가격, 구매수량, 총구매금액, 적립포인트를 출력하기
+	 *
+	 */
+		//변수 선언하기 
+		int price; //int price = 35000; 변수의 생성 및 초기화하기
+		int priceNumber; //int priceNumber =3;
+		double point; //pointDepositRate으로 변수명을 외우도록 하자 
+		int total;
+		double totalPoint;//depositPoint 총 적립률이라는 뜻
+		// 변수 초기화 하기 
+		price = 35000;
+		priceNumber = 3;
+		//총 구매금액을 계산해서 변수에 저장하기 
+		total = price * priceNumber;
+		point = 0.03;
+		//적립포인트를 계산해서 변수에 저장하기 
+		totalPoint = (double)total*point;
+		
+		//변수에 저장된 값 출력하기 
+		System.out.println("상품의 가격");
+		System.out.println(price);
+		System.out.println("상품의 구매수량");
+		System.out.println(priceNumber);
+		System.out.println("상품의 적립포인트");
+		System.out.println(point);
+		System.out.println("상품의 총 구매금액");
+		System.out.println(total);
+		System.out.println("상품의 적립포인트");
+		System.out.println(totalPoint);
+		
+		
+		
+}
+}
