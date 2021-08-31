@@ -1,0 +1,48 @@
+package example_08_31_var;
+
+public class Sample4 {
+	public static void main(String[] args) {
+		//텍스트를 저장하는 변수 (2가지로 나눠짐)
+		//한 글자를 저장하는 변수 
+		//char는 한 글자를 저장하는 변수의 자료형이다. 
+		//정보시스템용 애플리케이션에서 한 글자로 된 값은 거의 존재하지 않기 때문에, char은 거의 사용되지 않는다.
+		
+		char value1 = 'A';   //글자 'A'가 변수에 저장된다. 
+		char value2 = 65;	 // 아스키코드표에서 65번째 글자가 변수에 저장된다. 
+		char value3='\u0041';// 유니코드 문자표에서 0x0041번째 글자가 변수에 저장된다. 
+		//char value4='AA';//오류, 두 글자 이상을 저장할 수 없다. 
+		//char value5=''; //오류, 빈 문자를 저장할 수 없다. 공백이 아닙니다. 
+		char value6 = ' ';//공백 한 개는 저장할 수 있다.공백도 글자기 때문에 공백 2개를 저장할 수 없다. 
+		
+		System.out.println(value1);
+		System.out.println(value2);
+		System.out.println(value3);
+		
+		//문자열(여러 글자)를 저장하는 변수 
+		//자바는 여러 글자(문자열)를 저장하는 데이터 타입을 제공하지 않는다. 
+		//문자열(여러 글자)를 저장하는 String을 제공된다, 예약어가 아니어서 대문자로 작성, 색이 변하지 않는다.
+		String value7 = "홍길동";
+		String value8="";//빈 문자도 저장할 수 있다. 
+		String value9="A";//한 글자도 저장할 수 있다.
+		String value10="안녕하세요";//여러 글자도 저장할 수 있다.
+		String value11 = "               ";//한 개 이상의 공백도 저장할 수 있다. 
+		String value12 = "안녕하세요, 반갑습니다.";//공백을 포함하는 여러 글자를 저장할 수 있다. 
+		//String value13 = 'A'; //오류,'A'는  char타입의 변수에만 저장할 수 있다. 
+		//char value14 = "A";	//오류,"A"는 String타입의 변수에만 저장할 수 있다.
+		//거의 한글자에다가도 String사용, 여러글자에도 String사용을 하는게 좋음, char의 경우 사용하는 경우가 없다. 
+		System.out.println(value7);
+		System.out.println(value8);
+		System.out.println(value9);
+		System.out.println(value10);
+		System.out.println(value11);
+		System.out.println(value12.replace("안녕", "**"));//안녕과 **을 변경함
+		System.out.println(value12.length());//문자가 몇개인지 확인, 비밀번호 설정시 몇글자인지 체크할때 사용
+		//인터넷 아이디 찾기 실행할 때 replace사용, 비밀번호 입력시 length()사용함
+		System.out.println(value12);
+		
+		
+		
+		
+		
+	}
+}
