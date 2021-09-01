@@ -1,0 +1,73 @@
+package example_09_01_if;
+
+public class Sample3 {
+	public static void main(String[] args) {
+
+		// if ~ else if ~ else if ~ else문
+		// 검사할 조건이 여러 가지인 경우 사용되는 조건문이다.
+
+		// 시험점수에 맞는 학점을 출력하는 프로그램
+		/*
+		 * 4.6 이상 "A+" 4.0 ~ 4.5 "A" 3.6 ~ 3.9 "B+" 3.0 ~ 3.5 "B" 2.6 ~ 2.9 "C+" 2.0 ~
+		 * 2.5 "C" 1.6 ~ 1.9 "D+" 1.0 ~ 1.5 "D" 0.9 이하 "F"
+		 * 
+		 */
+
+		double score = 4.8;
+
+		// if문을 사용해서 구현하기
+		// 범위를 표현할 때 score >= 4.0 && score <= 4.5 이렇게 표현하는걸 잊지말기!
+//	
+//		if (score >= 4.6) { 
+//			System.out.println("A+");
+//			} 
+//		if (score >= 4.0 && score <=4.5) { 
+//			System.out.println("A"); 
+//			}
+//		if (score >= 3.6 && score <= 3.9) {
+//			System.out.println("B+");
+//			} 
+//		if (score >= 3.0 && score <= 3.5) {
+//			System.out.println("B");
+//			} 
+//		if (score >= 2.6 && score <= 2.9){
+// 			System.out.println("C+"); 
+//			}
+//		 if (score >= 2.0 && score <= 2.5) {
+//			System.out.println("C"); 
+//			 } 
+//		 if (score >= 1.6 && score <= 1.9) {
+// 			System.out.println("D+");
+//			 } 
+//		 if (score >= 1.0 && score <= 1.5) {
+//			System.out.println("D"); 
+//			 } 
+//		 if (score <= 0.9) {
+//			 System.out.println("F");
+//			 }
+//단점 : 4.8일경우, if문 1번째에서 true인데 아랫쪽은 false로 확인하지 않아도 되는데도 불구하고 전체적인 검사가 들어가게
+//		 됨
+		  
+		 
+		// if ~ else if ~ else if ~ else를 사용해서 구현하기
+		//1번이 참으로 판정시 다음 else문을 검사하지 않아도 되고, 4.5보다 적기때문에 다음 else문으로 내려오고, 간편하게 조건문 작성한다.
+		if (score >= 4.6) { //1번이 참으로 판정시  else문은 검사하지 않는다(경제적인 동작)
+			System.out.println("A+");
+		} else if (score >= 4.0) {//4.5보다 적기 때문에 다음 else문으로 내려옴
+			System.out.println("A");
+		} else if (score >= 3.6) {
+		System.out.println("B+");
+		} else if (score >= 3.0) {
+			System.out.println("B");
+		} else if (score >= 2.6) {
+			System.out.println("C+");
+		} else if (score >= 2.0) {
+			System.out.println("C");
+		} else if (score >= 1.6) {
+			System.out.println("D+");
+		} else if (score >= 1.0) {
+			System.out.println("D");
+		} else { //굳이 else는 조건을 제시할 필요가 없다. 
+			System.out.println("F");
+		}
+}}
