@@ -1,0 +1,23 @@
+package example_09_01_if;
+
+public class Sample1 {
+	public static void main(String[] args) {
+		//if문
+		/*
+		 * if (조건식) { //자바의 coding Guide임 if적고 한칸씩 띄어서 적음,참인 경우에만 사용
+		 * 		수행문;
+		 * 		수행문;
+		 * 		수행문;
+		 * }
+		 * 블록내의 수행문은 조건식의 연산결과가 true일 때만 실행된다. 
+		 */
+		//점수가 60점 이상이면 "합격입니다. "가 출력되는 프로그램
+		//삼항연산자는 식이 간단할 때만 작성할 수 있음. 
+		//if문은 수행문이 여러개이며, 조건식이 있으면 사용한다. 
+		int score = 70;
+		if (score >= 60) {
+		System.out.println("합격입니다.");
+		}
+		
+	}
+}
