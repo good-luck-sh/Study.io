@@ -1,0 +1,54 @@
+package example_09_01_if;
+
+public class Sample5 {
+	public static void main(String[] args) {
+		// 국어, 영어 , 수학점수를 입력받아서 총점과 평균을 계산해서 출력한다.
+		// 평균이 60점 이상인 경우 "합격입니다. "를 출력하고, 60점 미만은 "불합격입니다"를 출력한다
+		/*명사 : 국어, 영어, 수학점수 , 총점, 평균 
+		 *60점 이상의 경우 -> 합격 (조건문) 60점 미만 ->불합격(조건문)
+		 * 
+		 * 출력예시
+		 *       국어점수 : 100
+		 *       영어점수 : 80
+		 *       수학점수 : 90
+		 *       총점 : 290
+		 *       평균 : 90
+		 *       합격여부 : 합격입니다. 
+		 *       
+		 */
+		//점수입력
+		int korScore =  30;
+		int engScore = 50;
+		int mathScore = 40;
+		
+		//총점 계산 방법
+		//int totalScore = korScore + engScore + mathScore;(둘 중에 하나로 작성하면 됨)
+		int totalScore = 0;
+		totalScore += korScore;
+		totalScore += engScore;
+		totalScore += mathScore;
+		
+		//평균 계산 방법
+		int average = totalScore/3;
+		
+		//합격 여부 판단
+		//sysout을 쓰는것보다, 문자열을 선언하고 if문에서 출력이 가능하도록 설정할 수 있음.(처음보는거니 잘 알아둘 것)
+		String passResult = "";
+		if (average >= 60) {
+			passResult = "합격입니다. ";
+		} else {
+			passResult = "불합격입니다. ";
+		}
+	
+	    //결과 출력 
+		System.out.println("국어점수 :"+korScore);
+		System.out.println("영어점수 :"+engScore);
+		System.out.println("수학점수 :"+mathScore);
+		System.out.println("총   점 :"+totalScore);
+		System.out.println("평   균 :"+average);
+		System.out.println("합격여부 :"+passResult);
+		
+		
+	}
+	
+}
