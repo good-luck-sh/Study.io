@@ -1,0 +1,33 @@
+package example_08_31_operator;
+
+public class Sample7 {
+	public static void main(String[] args) {
+		//비교 연산자 
+		//> >= < <= == !=
+		//비교 연산자의 연산 결과는 언제나 boolean 타입의 값이다. 
+		
+		//1.운행거리 : 35,000km 달린 차량이 있음
+		//2.운행거리 : 25,000km 달린 차량이 있음
+		//3.운행거리 : 30,000km 달린 차량이 있음
+		//3.
+		int distance = 30_000;
+		//운행거리에 따른 무상수리 기준 : 30,000km
+		int freeFixDistance = 30_000;//기준이 포함되냐 안되냐에 따라서 =을 붙이거나 안붙인다. 
+		
+		//유상수리 여부 판정하기 
+		boolean result = distance >= freeFixDistance;//결과값은 항상 boolean값으로 나옴
+		System.out.println("유상수리 여부 :"+result);  //1.true의 값이 도출됨. 유상수리해야함.
+													//2.false의 값이 도출됨.무상수리 해야함.
+													//3.true의 값이 도출됨, 기준이 포함이냐 아니냐가 중요함.
+	
+		System.out.println(1000 == 1000); //1000과 1000이 동일하냐 
+		System.out.println(1000 != 1000); //다르냐
+		System.out.println(2000 == 1000);
+		System.out.println(2000 != 1000);
+		
+	
+	
+	
+	}												
+	
+}
