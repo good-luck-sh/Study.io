@@ -1,0 +1,29 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+public class Sample6 {
+
+	public static void main(String[] args) {
+		//반복을 중단시키기, 다음 번 반복으로 넘어가기 
+		//break, continue - 반복내에서만 사용할 수 있다. (단, break는 switch에서도 사용가능)
+		
+		//숫자를 입력받아서 그 숫자들의 합을 계산한다,---->숫자가 정해지지않음 ,무한반복문을 사용해야함.
+		//0을 입력하면 입력을 중단하고, 합계를 출력한다. 
+		Scanner scan = new Scanner(System.in);//표준출력장치로부터 입력값을 받아오는 장치
+		int sum = 0;
+		
+		while (true) {
+			System.out.print("숫자를 입력하세요(0을 입력하면 종료됩니다.): ");
+			int number = scan.nextInt();
+		
+			if (number == 0) {
+				break;//break를 적지 않으면 sum이 실행되지않음. 무한반복으로 다음 코드로 갈 수 없음
+			} 
+			sum += number;//앞에 적을 경우 == 0이 되어도 글자가 불필요하게 출력됨
+			System.out.println("입력한 숫자는 " + number + "입니다.");
+		}	
+		System.out.println("입력한 총 합계는 " + sum + "입니다.");//종료시 출력되도록 작성함
+		scan.close();
+		
+	}
+}
