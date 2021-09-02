@@ -1,0 +1,27 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Sample8 {
+	
+	public static void main(String[] args) {
+	
+		Scanner scan = new Scanner(System.in);
+		
+		//두 수를 입력받아서 더 큰 수를 출력하는 프로그램
+		System.out.print("첫번째 숫자를 입력하세요 : ");
+		int number = scan.nextInt();
+		
+		System.out.print("두번째 숫자를 입력하세요 : ");
+		int number1 = scan.nextInt();
+		
+		System.out.println(number + "," + number1);
+		
+		if(number > number1) {
+			System.out.println("두 개의 숫자중 높은 숫자는 " + number + "입니다.");
+		} else {
+			System.out.println("두 개의 숫자중 높은 숫자는 " + number1 + "입니다.");
+		}
+
+	}
+}
