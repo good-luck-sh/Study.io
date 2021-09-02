@@ -1,0 +1,21 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Sample11 {
+
+	public static void main(String[] args) {
+		// 숫자 2개를 입력받아서 두수의 평균을 출력하는 프로그램
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("첫번째 숫자를 입력하세요 :");
+		int number = scan.nextInt();
+		
+		System.out.print("두번째 숫자를 입력하세요 :");
+		int number1 = scan.nextInt();
+		
+		
+		int average  = (number + number1)/2;
+		System.out.println("두 수의 평균은 :" + average + "입니다.");
+	}
+}
