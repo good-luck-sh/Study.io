@@ -1,0 +1,35 @@
+package example_09_01_if;
+
+public class Sample7 {
+		public static void main(String[] args) {
+			//국어, 영어, 수학점수가 60점 이상이면 합격이다. 단, 평균이 90점 이상이면 장학금을 지급한다. 
+			int korScore = 60;
+			int engScore = 80;
+			int mathScore = 80;
+			int totalScore = korScore + engScore + mathScore;
+			int average = totalScore/3;
+			
+			// 내포된 if문을 사용하지 않는 경우 
+			if (average >= 60) {
+				System.out.println("합격입니다.");
+			} else {
+				System.out.println("불합격입니다. ");
+			}
+			
+			if (average >= 90) { //그냥 합격이던 불합격이던, 장학금 지급대상임.
+				System.out.println("장학금 지급대상으로 선정되었습니다. ");
+			}
+			// 내포된 if문을 사용한 경우 
+			if (average >= 60) {//합격자에 한해서만 장학금 지급대상이 됨,경제적임
+				System.out.println("합격입니다.");
+				if (average >= 90) {
+					System.out.println("장학금 지급대상으로 선정되었습니다.");
+				} else {
+					System.out.println("불합격입니다.");
+				}
+			}
+		
+		
+		}
+
+}
