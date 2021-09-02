@@ -1,0 +1,31 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Sample13 {
+
+	public static void main(String[] args) {
+		//숫자 2개를 입력받아서 두 수의 중간값을 출력하는 프로그램
+		//중간값은 두 숫자 사이의 숫자들의 갯수가 홀수인 경우와 짝수인 경우
+		// 각각 홀수인 경우는 중간값 하나, 짝수인 경우는 중간값의 양옆에 있는 숫자 2개를 출력한다. 
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("첫번째 숫자를 입력하세요 : ");
+		int number = scan.nextInt();
+		
+		System.out.print("두번째 숫자를 입력하세요 : ");
+		int number1 = scan.nextInt();
+		
+		int middleNumber = (number + number1)/2;
+		
+		System.out.println("입력하신 숫자는 " + number + " 와 " + number1 + "입니다.");
+		
+		if (middleNumber%2 == 0) {
+			System.out.println("중간값의 양옆의 숫자는 " + (middleNumber-1) + " , " + (middleNumber+1) + " 입니다.");
+		} else {
+			System.out.println("두 숫자의 중간 값은 " + middleNumber + " 입니다.");
+		}
+		
+		
+	}
+}
