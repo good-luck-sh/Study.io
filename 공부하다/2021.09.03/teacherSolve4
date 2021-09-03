@@ -1,0 +1,23 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Homework3 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int total = 0;
+		int average = 0;
+		System.out.print("입력할 숫자의 갯수를 먼저 입력하세요 :");
+		int limit = scan.nextInt();
+		for (int i = 1; i <= limit; i++) { // limit 만큼 수행문을 반복한다. 
+			System.out.println("숫자를 입력하세요 : ");
+			int number = scan.nextInt();
+			
+			total += number; 		//total에 입력한 숫자를 더한다. 
+		}
+		average = total/limit;  //합계를 입력한 횟수만큼 나눠서 평균을 계산한다.
+		System.out.println("총합 :" + total + ", 갯수: " + limit + ", 평균: " + average);
+	}
+}
