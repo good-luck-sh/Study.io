@@ -1,0 +1,17 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Homework2 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("첫번째 숫자를 입력하세요 ");
+		int firstNumber = scan.nextInt();
+		System.out.println("두번째 숫자를 입력하세요 ");
+		int secondNumber = scan.nextInt();
+		
+		int average = (firstNumber + secondNumber)/2;
+		System.out.println("[" + firstNumber + " , " + secondNumber + "]의 평균 " + average);
+	}
+}
