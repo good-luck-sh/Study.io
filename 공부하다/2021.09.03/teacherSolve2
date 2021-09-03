@@ -1,0 +1,23 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Homework1 {
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int max = -2_147_483_648; //max에 int타입의 최소값을 대입한다. //integer.MIN_VALUE;로 변경가능
+		
+		for (int i = 1; i <= 10; i++) {
+			System.out.println("숫자를 입력하세요 "); //숫자를 n번 입력받아서 읽어온다. 
+			int number = scan.nextInt();
+			
+			if(number > max) {   	//지금 입력한 숫자가 max보다 크면 max에 입력한 숫자를 저장한다. 
+				max = number;
+			}
+		}
+		System.out.println("가장 큰 수: " + max);
+	}
+	
+}
