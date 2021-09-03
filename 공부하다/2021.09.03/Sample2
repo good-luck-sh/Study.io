@@ -1,0 +1,22 @@
+package example_09_02_array;
+
+public class Sample3 {
+
+	public static void main(String[] args) {
+		// 지정된 값을 포함하고 있는 배열객체 생성하기
+		/* 참조변수는 s를 붙이는 복수 형태로 작성, 그렇게 되면 향상된 for문때 단수로 작성할 수 있음
+		 * 데이터타입[] 참조변수명 = {값1, 값, 값, 값, ...}
+		 */
+		int[] scores = {60, 70, 55, 80, 100, 50, 95};//값이 들어가있음, 크기도 값의 갯수만큼,
+														//정수 여러개 포함하는 배열
+		for (int score : scores) {
+			System.out.println(score);
+		}
+		
+		// 학생이름을 포함하고 있는 배열객체 생성하기 
+		String[] names = {"홍길동", "쩡글이", "햄스터", "강남역", "우물", "사다코"};
+		for(String name : names) {
+			System.out.println(name);
+		}
+	}
+}
