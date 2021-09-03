@@ -1,0 +1,15 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Homework5 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("구구단을 출력할 숫자를 입력하세요 : ");
+		int dan = scan.nextInt();
+		for (int i = 1; i <= 9; i++) {
+			System.out.printf("%d * %d = %d\n",dan, i, (dan*i));//f는 형식화된 출력을 의미함
+		}
+	}
+}
