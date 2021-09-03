@@ -1,0 +1,40 @@
+package example_09_02_for;
+
+import java.util.Scanner;
+
+public class Homework4 {
+	public static void main(String[] args) {
+		//숫자 2개를 입력받아서 두 수의 중간값을 출력하는 프로그램
+		//중간값은 두 숫자 사이의 숫자들의 갯수가 홀수인 경우와 짝수인 경우
+		// 각각 홀수인 경우는 중간값 하나, 짝수인 경우는 중간값의 양옆에 있는 숫자 2개를 출력한다. 
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("첫번째 숫자를 입력하세요 : ");
+		int number = scan.nextInt();
+		
+		System.out.print("두번째 숫자를 입력하세요 : ");
+		int number1 = scan.nextInt();
+		
+		//첫번째 숫자가 더 큰 경우, 두 수의 위치를 바꾼다.
+		if(number > number1) {
+			int temp = number;//서로 두값을 변경함
+			number = number1;
+			number1 = temp;
+		}
+		
+		int numberCount = number1 - number + 1;//Ex ) number = 2 ,number1 = 9 (9-2)+1 == 8 , 숫자들의 총 갯수를 계산한다. 
+		int halfGap = (number1 - number)/2;   //(9-2)/2 == 3.5   //두 숫자간의 갭을 계산한다.
+		
+		if (numberCount%2 == 0) { //숫자들의 총 갯수가 짝수인 경우 중간값이 2개다. 
+			int firstMiddleNumber = number + halfGap;
+			int secondMiddleNumber = number + 1;
+			System.out.println("중간값의 양옆의 숫자는 " + firstMiddleNumber + " , " + secondMiddleNumber + " 입니다.");
+		} else {					///숫자들의 총 갯수가 홀수인 경우 중간값이 1개다.
+			int middleNumber = number + halfGap;
+			System.out.println("두 숫자의 중간 값은 " + middleNumber + " 입니다.");
+		}
+		
+		
+	}
+
+	}
