@@ -1,0 +1,28 @@
+package backjoon;
+
+import java.util.Scanner;
+
+public class Sample3 {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("시간을 입력하세요 :");
+		int a = scan.nextInt();
+		System.out.println("분을 입력하세요 :");
+		int b = scan.nextInt();
+		
+		int a1 = a;// 값을 직접변형하기 위해 변수에 넣음
+		int b1 = b;
+		
+		//만약 b1의 값이 45미만이면
+		if (b1<45) {
+			a1 -= 1;//a1이 1감소함
+			b1 = 60 - ( 45 - b1 ) ;//b1은 알람시간 -45를 빼고 분인 60을 뺌
+			if (a1<0) {//만약 a1이 0이되면 23시로 표시
+				a1 = 23;
+			}
+		} else {//b1의 값이 45이상이면
+			b1= b1-45;//45분뒤에 알람이 울리도록 설정
+		}System.out.println(a1 + " " + b1);
+		
+		}
+	}
