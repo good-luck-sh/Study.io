@@ -1,0 +1,35 @@
+package backjoon;
+
+import java.util.*;
+
+public class Sample {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int b1 = 0;
+		int b2 = 0;
+		int b3 = 0;
+
+		System.out.print("세자리 숫자를 입력하세요:");
+		int a = scan.nextInt();
+		
+		System.out.print("세자리 숫자를 입력하세요:");
+		int b = scan.nextInt();
+	
+		b1 = b%10;
+		System.out.println("b1의 값은:" + b1);
+		b2 = (b-b1)%100;
+		System.out.println("b2의 값은:" +b2);
+		b3 = (b-b2-b1)%1000;
+		System.out.println("b3의 값은:" +b3);
+		
+		System.out.println(b1*a);
+		System.out.println((b2/10)*a);
+		System.out.println((b3/100)*a);
+		System.out.println(b*a);
+		
+		
+		scan.close();
+		
+	}
