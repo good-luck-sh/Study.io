@@ -1,0 +1,71 @@
+package example_09_06_class;
+
+import java.util.Date;
+
+public class BookApp {
+	
+	public static void main(String[] args) {
+		// Book클래스 (설계도)로 객체 생성하기 
+		//1. Book클래스로 생성된 객체의 주소값을 담는 참조변수를 정의한다. 
+		//2. Book클래스로 객체를 생성해서 참조변수에 주소값을 대입한다. 
+		//3. 주소값을 가지고 있는 참조변수를 이용해서 생성된 객체의 필드에 접근한다.. 
+		
+		//Book클래스로 생성된 객체의 주소값을 저장하는 참조변수 정의 , 참조변수만 만들어짐.
+		Book book1; 
+		Book book2; 
+		Book book3;
+		Book book4;
+		
+		// new키워드를 사용해서 Book객체를 생성하고, 각각의 참조변수에 객체의 주소값을 저장하기 
+		book1 = new Book();//괄호적는 이유는 이따가 알게됨.
+		book2 = new Book();
+		book3 = new Book();
+		book4 = new Book();
+		
+		//각각의 참조변수에 저장되어 있는 주소값 확인하기 
+		System.out.println("첫번째 책:" + book1); //class안에 있는 객체의 해시코드, 일련번호가 나옴
+		System.out.println("두번째 책:" + book2); //자바에서는 주소값을 알려주지는 않음. 
+		System.out.println("세번째 책:" + book3); //대신, 설계도의 정확한 위치와 16진수로 이뤄진 객체의 일련번호가 나옴
+		System.out.println("네번째 책:" + book4); // 일련 번호가 동일해서 같은 값으로 나옴 
+		
+		//각각의 참조변수로 객체 사용하기 
+		book1.no = 100;
+		book1.genre = "컴퓨터";
+		book1.title = "자바의 정석";
+		book1.writer = "남궁성";
+		book1.company = "도우출판사";
+		book1.price = 35000;
+		book1.stock = 5;
+		book1.pubDate = new Date();
+		
+		book2.no = 200;
+		book2.genre = "사회복지";
+		book2.title = "지역사회복지론";
+		book2.writer = "전해황";
+		book2.company = "양서원";
+		book2.price = 35000;
+		book2.stock = 4;
+		book2.pubDate = new Date();
+		
+		book3.no = 201;
+		book3.genre= "사회복지";
+		book3.title ="실버산업의 이해";
+		book3.writer = "김상아";
+		book3.company = "기문사";
+		book3.stock = 2;
+		book3.price = 45000;
+		book3.pubDate = new Date();
+		
+		//참조변수로 객체의 필드에 저장된 값을 조회해서 출력해보기 
+		System.out.println(book1.title);
+		System.out.println(book2.title);
+		System.out.println(book3.title);
+		System.out.println(book3.pubDate);
+		System.out.println(book2.pubDate);
+		System.out.println(book1.pubDate);
+
+		
+		
+		
+	}
+}
