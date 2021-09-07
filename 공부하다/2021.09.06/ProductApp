@@ -1,0 +1,66 @@
+package example_09_06_class;
+
+public class ProductApp {
+	public static void main(String[] args) {
+		//상품정보를 여러 개 관리하기 위한 배열 생성하기.
+		Product[] products = new Product[3];//product를 저장할 수 있는 같은 타입의 배열을 만든다. 
+		//new연산자를 이용해서 참조변수 product에 맴버변수 Product의 주소값을 저장하기.
+		Product product1 = new Product();//product class를 사용하기 위해 참조변수를 new연산자를 이용해 만들었다. 
+		
+		product1.number = 1;
+		product1.name = "샴푸";
+		product1.maker = "강아지샴푸";
+		product1.price = 25000;
+		product1.discountPrice = 3000;
+		product1.stock = 22;
+		//배열에 상품정보를 저장하기 
+		products[0] = product1;
+		
+		Product product2 = new Product();
+		product2.number = 3;
+		product2.name = "린스";
+		product2.maker ="강아지린스";
+		product2.price = 30000;
+		product2.discountPrice = 5000;
+		product2.stock = 30;
+		products[1] = product2;
+		
+		Product product3 = new Product();
+		product3.number = 5;
+		product3.name= "컨디셔너";
+		product3.maker = "강아지컨디셔너";
+		product3.price = 25000;
+		product3.discountPrice = 2000;
+		product3.stock = 15;
+		products[2] = product3;
+		
+		//배열에 상품정보 저장하기 -->향상된 -for문으로 
+		for(Product product : products) {
+			//바로 파악이 가능하기 때문에 클래스 이름은 대문자로, 변수의이름은 항상 소문자로 작성한다. 
+			System.out.print("번호:" + product.number + "\t");
+			System.out.print("상품명:" + product.name + "\t");
+			System.out.print("제조사:" + product.maker + "\t");
+			System.out.print("가격:" + product.price + "\t");
+			System.out.print("할인가격:" + product.discountPrice + "\t");
+			System.out.println("재고량:" + product.stock);
+		}
+		System.out.println("배열에 저장된 모든 상춤정보의 재고 현황을 출력");
+		//for (Product product : products)
+		for (int i = 0; i < products.length; i++) {
+			System.out.print("번호 : " + products[i].number+ "\t");
+			System.out.print("상품명 : " + products[i].name+ "\t");
+			System.out.print("가격: " + products[i].price+ "\t");
+			System.out.print("재고량: " + products[i].stock+ "\t");
+			System.out.println("재고가격 " + (products[i].price*products[i].stock));
+		}
+		int totalStock = 0;
+		int totalStockPrice = 0;
+		System.out.println("배열에 저장된 모든 상품정보의 총 상품수량, 총 재고가격을 출력");
+		//for (Product product : products)
+		for(int i = 0; i<products.length; i++) {
+			totalStock += products[i].stock;
+			totalStockPrice += (products[i].price*products[i].stock);
+		}System.out.println("총 상품수량 : " + totalStock);
+		 System.out.println("총 상품재고가격 : "+totalStockPrice);
+	}
+}
