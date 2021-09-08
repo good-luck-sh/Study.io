@@ -1,0 +1,66 @@
+package example_09_07_method;
+
+public class Sample4 {
+	//* 반환타입 , 매개변수 둘 다 있는 경우 
+	//제목(String title)을 전달받아서 제목에 해당하는 영화(Movie) 정보들(들이니까 [])을 반환하는 기능
+	//Movie[] searchMoviesByTitle(String title) {...}
+	//나중에는List<Movie> searchMoviesByTitle(String title) {...}
+	
+	//최소가격, 최대가격을 전달받아서 가격범위에 해당하는 상품정보들을 조회(제공, 반환)하는 기능
+	//Product[] searchProductsByPrice(int minPrice, int maxPrice){}
+	//List<Product>searchProductsByPrice(int minPrice, int maxPrice){}
+	
+	// 아이디(String userId) 를 전달받아서 해당 사용자정보(User)를 반환하는 기능
+	//User getUserById (String Id) {...}
+	//User findUserById (String Id) {...}
+	//정보라는 말이 들어있으면 객체를 생각해야함, 여러가지값들이 항상 들어있기 때문에 
+	//정보를 확인할 때는 find와 get을 이용함 
+	//search는 다양한 자료를 확인한다는 의미로 많이 사용함. 
+	//Book[] searchBooksByTitle(String title){...}//값이 항상 달라짐
+	//Book[] books = sample.searchBooksByTitle("자바");
+	//Book[] books = sample.searchBooksByTitle("스프링");
+	//Book[] books = sample.searchBooksByTitle("정석");
+	//Book[] books = sample.searchBooksByTitle("햄스터일기");
+	
+	//*매개변수만 있는 경우 
+	//아이디(String userId)를 전달받아서 사용자 정보를 삭제하는 기능-->없애고 반환값이 없음
+	//void deleteUserById(String id) {..}
+	//영화정보(int movieNo), 작성자(String writer), 리뷰내용(String text), 평점(int score)을 전달받아서 영화리뷰정보를 저장하는 기능 
+	//void saveReview(int movieNo, String writer, String text, int Score){...}-->메소드에서 메소드를 호출할때 ,매개변수를 호출할때,
+	//void saveReview(Review review){...}//객체내에 객체를 호출함, 순서가 헷깔릴때, 너무 많은 매개변수가 있을 때, 메소드 정의된 곳을 다시 가봐야함
+	//*매개변수의 갯수가 많은 것은 나쁘다. 
+	//*매개변수의 갯수가 많은 경우 해당 값들을 전부 담을 수 있는 객체를 고려하자. 
+	//매개변수가 없는 것은 좋다. 매개변수 두개는 용서할 수 있다. 매개변수 세개부터는 용서할 수 없다. 
+	//class Review{//서로 관계성이 있기 때문에 객체를 만들어서 담아서 정의해주는 것이 좋다. 
+	//class Review에 추가로 //String cinema;추가를 할 경우 담아서 준 곳을 수정할 필요가 없다.
+					//int movieNo;
+					//String writer;
+	 				//String text;
+					//int score;
+	//}
+	//학생번호 (int studentNo), 과정명(String courseName), 점수(int score)를 전달받아서 성적정보를 저장하는 기능
+	//void saveScore(int studentNo, String courseName, int score){...}
+	//아이디(String userId), 이전비밀번호(String prevPassword), 새비밀번호(String password)를 전달받아서 비밀번호를 변경하는 기능 
+	//void changePassword(String userId, String prevPassword, String password){...}
+	//과정들을 생각해보면 잘 만들 수 있음.
+	
+	//*반환타입, 매개변수 모두 없는 경우 
+	//모든 검색기록을 삭제하는 기능 
+	//void removeAllSearchHistory ( ) {...}// 현재, 지금, 모든, 최신 모두 매개변수가 없다. 
+	//모든 회원들의 등급을 적립포인트를 기준으로 등급을 변경하는 기능(batch작업, scheduler job){
+	//분기마다 등급이 달라질때 , 스케쥴에 따라서 --> 특정주기마다 실행되도록 조정할 수 있음. 
+	//void updateUserGrade(){..};
+	
+	//오늘이 생일인 사람들의 프로필 사진에 케이크를 표시하는 기능 
+	//void displayBirthIcon(){..};
+	
+	//*매개변수는 없고, 반환타입만 있는 경우 
+	//개봉예정작 영화정보들(movies)을 반환하는 기능
+	//List<movie> getUnOpendMovies(){..} //UnOpend 매개변수의 역활을 함
+	//모든 사용자정보(User)를 반환하는 기능
+	//List<User> getAllUsers(){..}//AllUsers 매개변수의 역활을 함
+	//최신 뉴스(News)목록을 제공하는 기능
+	//List<News> getNewArrivalNews() {...}
+	//베스트셀러 책정보(Books)들을 제공하는 기능 
+	//List<Book> gerBestsellerBooks(){..}
+	
