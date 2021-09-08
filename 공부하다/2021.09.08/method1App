@@ -1,0 +1,56 @@
+package example_09_07_method;
+
+public class Sample1App {
+
+	public static void main(String[] args) {
+		
+		//Sample1 설계도로 객체 생성하기 
+		Sample1 sample1 = new Sample1();//참조변수sample1에 sample1의 class를 참조하게 만듬
+		//객체안의 필드(속성), 기능은 참조변수를 통해서 표현한다. 
+		
+		//반환값X, 매개변수X 메소드 실행
+		//생성된 객체의 기능 실행하기 
+		sample1.displayCurrentDate();//void이기 때문에 변수에 저장할 수 없고, 출력만 가능한것
+		//return은 있어, Ax
+		
+		//sample1(참조변수)에 있는 기능을 이용하다.이렇게 작성한것이 메소드를 호출하다. (실행하다)
+		//메소드호출은 항상 ();로끝나야함
+		
+		//반환값 O, 매개변수X 메소드 실행
+		//항상 반환값이 있는 존재는 담을 그릇을 생성하고 입력해야한다. 
+		
+		//sample1.getNumber();//용서할 수 없는 형태
+		//System.out.println(sample1.getNumber()+100);//용서할 수 없는 형태
+		int value = sample1.getNumber(); //참조변수에 입력하고 저장이 가능함, 출력이 가능하기 때문에 
+		System.out.println("반환하는 값:" + value);
+		//반환타입 변수 = 참조변수.메소드();
+		
+		//주사위 숫자를 랜덤하게 반환하는 기능 실행하기
+		for(int i = 1; i<=5; i++) {
+		int value1 = sample1.getRandomNumber();
+		System.out.println("주사위의 숫자: " + value1);
+		}
+		//항상 추가적인 참조변수가 있어야한다. 
+		
+		//반환값O, 매개변수O 메소드실행
+		//반환타입 변수 = 참조변수.메소드(입력값, 입력값,..)
+		int totalScore = sample1.getTotalScore(100, 200, 330);
+		//그 값을 받을 참조변수를 선언해서 출력해야한다. 
+		System.out.println("총점 : " + totalScore);
+		totalScore = sample1.getTotalScore(100, 150, 90);
+		//참조변수를 반복해서 재사용하는 것.
+		System.out.println("총점 : " + totalScore);
+		totalScore = sample1.getTotalScore(70, 10, 150);
+		System.out.println("총점 : " + totalScore);
+		totalScore = sample1.getTotalScore(300, 120, 40);
+		System.out.println("총점 : " + totalScore);
+		totalScore = sample1.getTotalScore(110, 100, 30);
+		System.out.println("총점 : " + totalScore);
+		
+		//국어/영어/수학점수를 전달해서 평균점수를 반환하는 기능 실행하기 
+		double average = sample1.getAverage(80, 70, 45);
+		System.out.println("평균점수 : " + average);
+		//반환값이 있는 부분은 동일한 데이터타입을 사용해서 값을 되돌려줘야하는 것을 잊지말기! 
+		
+		}
+	}
