@@ -1,0 +1,46 @@
+package example_09_07_method;
+
+import java.util.Date;
+import java.util.Random;
+
+public class Sample1 {
+
+	// 반환타입X , 매개변수X 메소드 구현하기
+	// 시스템의 현재 날짜/시간을 화면에 표시하는 메소드
+	// Sample1이라는 class에 메소드를 구현한것, 설계도에 작성을 한 것이기 때문에 제품(객체)을 만들어야 실행할 수 있음
+	
+	void displayCurrentDate() {//반환값과 입력값이 필요없는 현재의 날짜를 표시하다.
+		Date now = new Date();//입력받을 필요가 없는 현재의 날짜를 출력함
+		System.out.println(now);//오늘의 날짜를 출력하다. 
+	}
+	
+	//반환타입O, 매개변수 X 메소드 구현하기 
+	//정수값을 반환하는 메소드
+	int getNumber() {
+		return 100;
+	}
+		
+	//1~6까지의 숫자 중 임의의 숫자를 반환하는 메소드
+	int getRandomNumber() {
+		Random random = new Random();//랜덤객체를 실행함.
+		int number = random.nextInt(6) + 1;
+		return number;
+		//무조건 정수값을 하나 되돌려받아야한다. 
+	}
+	
+	//반환타입O, 매개변수O 메소드 구현하기 
+	//국어/영어/수학점수를 전달받아서 총점을 반환하는 메소드
+	int getTotalScore (int kor, int eng, int math) {
+		int totalScore = kor + eng + math;
+				return totalScore;
+	}
+	//반환타입 O, 매개변수O 메소드 구현하기 
+	//국어/영어/수학 점수를 전달받아서 평균(실수값)반환하는 메소드
+	double getAverage (int kor, int eng, int math) {
+		int totalScore = kor + eng + math;
+		double average = totalScore / 3.0;
+		return average;
+		//무조건 실수값을 하나 되돌려받아야한다. 
+	}
+}
+
