@@ -1,0 +1,39 @@
+package example_09_07_method;
+
+public class Sample2 {
+	
+	// 통장의 현재 잔액
+	// 객체의 맴버변수
+	long balance;//일억통장이 있음
+ 	int password ;
+	
+	
+	// 현재 잔액을 반환하는 기능 
+ 	// 객체의 맴버메소드
+	//long = 반환하는기능으로, long getCurrentBalance(){...return }
+	long getcurrentBalance() {// void gercurrentBalance(){System.out.println("현재잔액:" + balance)로 해도됨.
+		//그러나 각객체의 잔액을 전부 합친 총 자산을 출력할 경우 balace와 password를 은닉화시 값을 가져올 수 가 없음
+		return balance;//같은 블록내에서 변수를 사용할 수 있음
+	}
+	
+	//금액을 전달받아서 잔액을 변경하는 기능(금액을 전달받은게 1개임)
+	//void updateBalance(long depositMoney) {...}
+	void updateBalance (long depositMoney) {
+		balance += depositMoney;
+	}
+	//금액을 출금하여 잔액을 변경하는 기능 
+	void downBalance (long creditMoney) {
+		balance -= creditMoney;
+	}
+	
+	//이전 비밀번호와 새 비밀전호를 전달받아서 비밀번호를 변경하는 기능 (이전 비밀번호와 새 비밀번호 2개)
+	//void changePassword (int prevPassword, int password) {....}
+	void changePassword (int prevPassword, int newPassword) {
+		if(password !=prevPassword) {
+			System.out.println("비밀번호가 일치하지 않습니다.");
+		} else {
+			password = newPassword;
+		}
+	}
+	
+}
