@@ -1,0 +1,18 @@
+package example_09_08_constructor;
+
+public class StudentScoreApp {
+
+	public static void main(String[] args) {
+		StudentScore student1= new StudentScore(30, "김종종");
+		StudentScore student2= new StudentScore(40, "김팔뚝", 70, 80, 90);
+		StudentScore student3= new StudentScore(50, "김허벅", 100, 60, 10);
+		StudentScore student4= new StudentScore(60, "김종알", 85, 50, 100);
+		
+		student1.printStudentScoreInBy();
+		student2.printStudentScoreInBy();
+		student3.printStudentScoreInBy();
+		student4.printStudentScoreInBy();
+		
+		
+	}
+}
