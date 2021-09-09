@@ -1,0 +1,48 @@
+package example_09_08_constructor;
+
+public class Sample2App {
+
+	public static void main(String[] args) {
+		Sample2 sample1 = new Sample2();
+		Sample2 sample2 = new Sample2();
+		Sample2 sample3 = new Sample2();
+		Sample2 sample4 = new Sample2();
+		Sample2 sample5 = new Sample2();
+		Sample2 sample6 = new Sample2();
+		sample1.getGuguDanNumber(5);
+		boolean value1 = sample1.isEvenNumber(100);
+		boolean value2 = sample1.isEvenNumber(15);
+		System.out.println("100: " + value1);
+		System.out.println("15: " + value2);
+		
+		
+		int[] numbers = { 10, 7, 654, 5, 12514 };
+		int[] number1 = { 10, 20, 30, 40, 50 };
+		int[] number2 = {6, 7, 8, 9, 10, 11, 112, 13, 14, 15};
+		int value5 = sample2.getTotal(number1);
+		int value6 = sample2.getTotal(number2);
+ 		int value3 = sample2.getTotal(numbers);
+		System.out.println(value5);
+		System.out.println(value6);
+		System.out.println(value3);
+		
+		int value4 = sample3.maxNumber(numbers);
+		int value7 = sample3.maxNumber(number1);
+		int value8 = sample3.maxNumber(number2);
+		System.out.print(value4 + ",");
+		System.out.print(value7 + ",");
+		System.out.println(value8);
+		
+		System.out.println(sample4.isaverageScore(70, 70, 45));
+		
+		int[] numbers3 = {3, 6, 9, 2, 56, 8, 12};
+		boolean value10 = sample1.isincludedNumber(numbers3,9);
+		System.out.println(value10);
+		boolean number = sample5.isEvenNumber(value3);
+		System.out.println(number);
+		
+		sample6.measure(12);
+		
+	}
+	
+}
