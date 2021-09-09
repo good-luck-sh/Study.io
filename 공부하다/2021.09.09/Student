@@ -1,0 +1,76 @@
+package example_09_08_constructor;
+
+public class Student {
+
+	int no;
+	String dept;
+	int grade;
+	String name;
+	String email;
+	String phone;
+	
+	//생성자가 하나도 정의되어 있지 않으면 소스(Student.java)를 컴파일해서 실행파일(Student.class)을 만들 때 
+	
+	//실행파일 (Student.class)에 기본생성자 메소드가 자동으로 추가된다. 
+	/*
+	 * 컴파일러가 자동으로 추가한 기본생성자 메소드 
+	 * public Student() {
+	 * 
+	 * }
+	 * 생성자의 메소드의 역활은 블록안에 있는 필드의 매개변수를 초기화하는 것이다. 
+	 * 생성자메소드도 중복정의할 수 있다. 
+	 * 
+	 */
+	
+	//직접 기본 생성자 메소드를 정의함. 
+	//매개변수가 있는 생성자 메소드를 만든 후 삭제를 하게 되면, 컴파일러에서 자동으로 생성하지 않아서 오류남.
+	//컴파일러에서는 매개변수가 있던, 없던, 여러가지던 상관없이 생성자가 있으면 자동으로 생성하지 않음.
+	//기본생성자를 추가 하고 생성을 하는 것이 좋다. 
+	//무조건 값을 받아야 할 경우에는 기본생성자를 추가하지 않아도 되지만 그래도 기본생성자를 만들고 나서 작성해주는 것이 오류가 날 확률이 적음
+	
+	
+	public Student() {//샘플 만들때 이렇게 작성함
+		System.out.println("기본 생성자 메소드가 실행됨.");
+		//맴버변수 초기화하기 
+		no = 0;
+		dept = "컴퓨터공학과";
+		grade = 1;
+		name = "홍길동";
+		email = "hong@gmail.com";
+		phone = "010-1111-2222";
+	}
+	//신입생인 경우 학과, 이름, 전화번호만 전달받아서 Student객체를 초기화 하는 생성자 메소드를 정의함 
+	public Student(String studDept, String studName , String studPhone) {
+		no = 0;
+		dept = studDept;
+		grade = 1;
+		name = studName;
+		email = "없음";
+		phone =studPhone;
+	}
+	
+	// 생성자도 매개변수이기 때문에 서로 다르게 중복정의를 할 수 있다. 
+	// 생성자도 오버로딩이 가능하다. 매개변수 타입과 갯수가 다르게 정의한다. 
+	// 매개변수가 있는 생성자를 정의함.
+	// 매개변수 전달받은 값을 입력시켜줌 
+	// 재학생 용
+	public Student(int studNo, String studDept, int studGrade, String studName, String studEmail, String studPhone) {
+		no = studNo;//입력받은 값을 no에 대입함.
+		dept = studDept;//입력받은 값을 dept에 대입함
+		grade = studGrade;
+		name = studName;
+		email = studEmail;
+		phone = studPhone;
+	}
+	
+	//학생정보를 화면에 출력하는 멤버메소드 정의하기 
+	void printStudentInfo() { //멤버메소드 반환값이 없는 멤버메소드
+		System.out.println("학 번: " + no);
+		System.out.println("학 과: " + dept);
+		System.out.println("학 년: " + grade);
+		System.out.println("이 름: " + name);
+		System.out.println("이메일: " + email);
+		System.out.println("전화번호: " + phone);
+		System.out.println();
+	}
+}
