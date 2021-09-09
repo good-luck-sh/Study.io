@@ -1,0 +1,59 @@
+package example_09_08_constructor;
+
+public class StudentApp {
+
+	public static void main(String[] args) {
+		
+		//Student 객체 생성하기 
+		//모든 Student객체에 맴버변수 초기화한 값으로 입력이 되어있음. 
+		//		1. new 키워드 다음에 생성자 메소드를 적는다. 
+		//  	2. new 키워드는 생성자 메소드의 이름과 동일한 이름의 실행파일(Student.class)를 
+		//		메모리에 로딩한다. 
+		//		3. 메모리에 로딩된 실행파일(Student.class)을 설계도 삼아서 Student객체를 생성한다. 
+		//		4.Student 객체의 생성이 완료되면, 생성자 메소드를 실행해서 객체 생성 직후에 수행할 작업을 실행시킨다. 
+		//		5.Student 객체의 주소값이 참조변수 Student1에 대입한다. 
+		Student student1 = new Student();//Student클래스에 생성자를 만들지 않고도, 객체 생성자 메소드가 실행됨.
+		//이렇게 작성하기만해도 멤버변수 초기화 한 값이 입력이 되고, 셋팅이 됨.
+		Student student2 = new Student();
+		//Student 객체 생성하기 
+		//		1. new 키워드 다음에 생성자 메소드를 적는다. 
+		//		3. 메모리에 로딩된 실행파일(Student.class)을 설계도 삼아서 Student객체를 생성한다. 
+		//		4.Student 객체의 생성이 완료되면, 생성자 메소드를 실행해서 객체 생성 직후에 수행할 작업을 실행시킨다. 
+		//		5.Student 객체의 주소값이 참조변수 Student2에 대입한다. 
+
+		
+		//생성된 객체의 주소값을 가지고 있는 참조변수로 생성자 메소드를 실행할 수 없다. 
+		//객체 실행되고나서 딱 1번 실행됨.
+		//new뒤에만 작성할 수 있다. 
+		//student1.Sample();
+		//student2.Sample();
+		
+		//생성자를 이용해서 생성된 객체를 멤버변수가 초기화 되었다. 초기화된 멤버변수를 사용하자.
+		System.out.println(student1.name + "," + student2.name);//name에 홍길동이 들어간 사실을 확인할 수 있음
+		System.out.println(student1.dept + "," + student2.dept);//동일한 값이 들어간 사실을 확인할 수 있음
+		System.out.println(student1.grade + "," + student2.grade);//비효율적
+		System.out.println(student1.email + "," + student2.email);
+		System.out.println(student1.phone + "," + student2.phone);
+		
+		//매개 변수가 있는 생성자 메소드 실행시키기 - student 객체의 모든 멤버변수를 초기화 하는 생성자 메소드를 사용함
+		//생성자를 선택하라는 창이 뜸 매개변수 있는 것은 선택하면, ()입력하라는 것이 뜸
+		Student student3 = new Student(100, "컴퓨터 공학과", 3, "김쩡글", "jjungle@gmail.net","2244-6655");
+		
+		//이렇게 작성할 수 있지만, 1. new 사용할때 생성가능하고 2.한번밖에 사용할 수 없음
+		Student student4 = new Student(200,"환경공학과",5,"김또배","education@gmail.com","010-5544-6677");
+		
+
+		//매개변수가 있는 생성자 메소드로 객체를 초기화한 후 Student객체의 학생정보 출력하기
+		student3.printStudentInfo();
+		student4.printStudentInfo();
+		//맴버변수를 초기화하는 목적으로 많이 사용함. 
+		
+		//매개변수가 있는 생성자 메소드 실행시키기 - Student객체의 멤버변수 중 일부만 초기화하는 생성자 메소드를 사용함
+		Student student5 = new Student("국어국문학과", "김뽀지", "010-1234-5678");
+		Student student6 = new Student("영어영문학과", "김대두","010-7895-6124");
+		
+		//매개변수의 일부를 초기화 시킨 생성자 메소드로 객체를 초기화한 후 Student객체의 학생정보 출력하기 
+		student5.printStudentInfo();
+		student6.printStudentInfo();
+	}
+}
