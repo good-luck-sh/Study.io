@@ -1,0 +1,21 @@
+package example_09_10_static;
+
+public class Circle {
+	static final double PI = 3.14;//정적변수, 클래스변수, 상수
+	//double pi;//원주율
+	double r;//반지름, 인스턴스 변수, 멤버변수, 객체의 프로퍼티(property)//성질
+	
+	public Circle() {
+		
+	}
+	Circle(double r ){
+		//Circle(double pi, double r ){//static으로 정했기 때문에 멤버변수로 호출하지 않고 멤버변수 r만 호출
+		this.r =r;
+	}
+	double getArea() {
+		return Circle.PI*r*r;//원주율*반지름 제곱 = 원의넓이
+	}
+	double getRoundLength() {
+		return 2*Circle.PI*r;
+	}
+}
