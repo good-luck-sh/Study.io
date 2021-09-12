@@ -1,0 +1,62 @@
+package example_09_10_coding;
+
+public class SampleApp {
+	public static void main(String[] args) {
+		// 10명의 성적정보를 저장하는 배열객체 생성하기 
+		Score[] scores =  new Score[10];
+		//배열객체에 성적정보를 저장하기 
+		scores[0] = new Score(101,"공주야", 100,100,100);
+		scores[1] = new Score(102,"쩡글공", 30,70,110);
+		scores[2] = new Score(103,"쩡글이", 40,90,20);
+		scores[3] = new Score(104,"김쩡글", 50,80,600);
+		scores[4] = new Score(105,"이얍", 60,60,50);
+		scores[5] = new Score(106,"홀롤이",80,50,80);
+		scores[6] = new Score(107,"김삥삥", 900,70,80);
+		scores[7] = new Score(108,"김떡대", 40,70,60);
+		scores[8] = new Score(109,"안중근", 500,70,30);
+		scores[9] = new Score(110,"임꺽정", 20,70,20);
+		
+		Sample sample = new Sample();
+		//sample에 있는 메소드를 구현하기 위하여 객체 생성
+		
+		//학생 성적 정보 객체를 전달 받아서 화면에 출력하는 기능
+		System.out.println("####학생성적정보 객체를 전달받아서 화면에 출력하는 기능");
+		sample.printScore(scores[0]);
+		sample.printScore(scores[5]);
+		sample.printScore(scores[scores.length-1]);//배열끝자리 출력
+		//모든 배열을 전달해서 모든 학생성적정보를 출력하기
+		
+		System.out.println("###	학생성적정보가 포함된 배열을 전달받아서 화면에 출력하는 기능");
+		sample.printAllScore(scores);
+		
+		//학생성적정보가 포함된 배열을 전달받아서 최고 성적을 받은 성적정보를 출력하는 기능
+		System.out.println("###학생성적정보가 포함된 배열을 전달받아서 최고 성적을 받은 성적정보를 출력하는 기능");
+		sample.pritnTop1(scores);
+		
+		//학생성적정보가 포함된 배열을 전달받아서 평균점수를 반환하는 기능
+		System.out.println("###학생성적정보가 포함된 배열을 전달받아서 평균점수를 반환하는 기능");
+		sample.printAverage(scores);
+		
+		//학생성적정보가 포함된 배열을 전달받아서 평균점수보다 낮은 점수를 받은 성적정보를 출력하는 기능
+		System.out.println("###학생성적정보가 포함된 배열을 전달받아서 평균점수보다 낮은 점수를 받은 성적정보를 출력하는 기능");
+		sample.printLowerScore(scores);
+		
+		//학생성적정보가 포함된 배열을 전달받아서 불합격한 학생들의 성적정보를 출력하는 기능(평균 60점 미만 불합격)
+		System.out.println("###//학생성적정보가 포함된 배열을 전달받아서 불합격한 학생들의 성적정보를 출력하는 기능(평균 60점 미만 불합격)");
+		sample.printUnPassedScores(scores);
+		
+		//학생성적 정보가 포함된 배열을 전달받아서 불합격한 학생들의 성적정보를 출력하는 기능 (평균 60점 미만, 과목과락(과목점수가 40점미만)은 불합격)
+		System.out.println("//학생성적 정보가 포함된 배열을 전달받아서 불합격한 학생들의 성적정보를 출력하는 기능 (평균 60점 미만, 과목과락(과목점수가 40점미만)은 불합격)");
+		sample.printUnPassedScores2(scores);
+		
+		//학생성적정보가 포함된 배열을 전달받아서 평균점수와 가장 가까운 점수를 가진학생의 성적정보를 출력하는 기능
+		System.out.println("//학생성적정보가 포함된 배열을 전달받아서 평균점수와 가장 가까운 점수를 가진학생의 성적정보를 출력하는 기능");
+		sample.printClosestAverageScore(scores);
+		
+		//학생성적정보가 포함된 배열을 전달받아서 평균점수별 학생수를 출력하는 기능(10점이하 0명, 20점이하 0명, 30점이하 1명, 40점이하 2명...)
+		System.out.println("//학생성적정보가 포함된 배열을 전달받아서 평균점수별 학생수를 출력하는 기능(10점이하 0명, 20점이하 0명, 30점이하 1명, 40점이하 2명...)");
+		sample.printCountByAverage(scores);
+		
+		
+	}
+}
