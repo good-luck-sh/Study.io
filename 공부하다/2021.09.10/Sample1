@@ -1,0 +1,32 @@
+package example_09_10_static;
+
+public class Sample {
+	
+	//문법에 대한 내용
+	static int x;//정적변수 , 클래스 변수 
+	int y; 		// 멤버변수, 인스턴스 변수 
+	
+	//정적메소드는 정적변수는 사용가능하다. 
+	static void staticMethod() {//정적 메소드, 클래스 메소드
+		System.out.println(Sample.x); // 정적변수 사용가능
+		//System.out.println(y); 	//멤버변수 사용불가능
+		
+	}
+	
+	void instanceMethod() { //멤버 메소드, 인스턴스 메소드
+		System.out.println(Sample.x); //정적변수 사용가능
+		System.out.println(y);	//멤버변수 사용가능
+
+	}
+	//정적 메소드는 다른 정적 메소드는 실행가능하다. 
+	static void staticMethod2() { 	//정적 메소드, 클래스 메소드
+		Sample.staticMethod(); //다른 정적메소드 사용가능
+		//instanceMethod();	//오류, 멤버 메소드 사용불가
+	}
+	void instanceMethod2() { 	//멤버 메소드, 인스턴스 메소드
+		Sample.staticMethod(); 	//정적 메소드 사용가능
+		instanceMethod();		//다른 멤버 메소드 사용가능
+	}
+	//즉 정적메소드내에서는 정적인 것만 사용이 가능하다. 
+	// 정적메소드에서는 다른 정적 메소드도 사용가능하다 
+}
