@@ -1,0 +1,17 @@
+package example_09_10_static;
+
+public class Sample2 {
+	
+	static int x;
+	int y;
+	
+	void increase() {
+		Sample2.x++;
+		y++;
+	}
+	
+	void printValue() {
+		System.out.println("정적변수X의 값: " + Sample2.x);
+		System.out.println("인스턴스의변수Y의 값 : " + y);
+	}
+}
