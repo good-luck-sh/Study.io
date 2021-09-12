@@ -1,0 +1,121 @@
+package example_09_10_coding;
+
+public class Sample {
+
+	// 학생성적정보 객체를 전달받아 화면에 출력하는 기능 
+	void printScore(Score score) {
+		System.out.print("학생번호는 :" + score.no + ",");
+		System.out.print(" 학생이름은 :" + score.name + ",");
+		System.out.print(" 국어 점수 :" + score.kor + ",");
+		System.out.print(" 수학 점수 :" + score.math + ",");
+		System.out.print(" 영어 점수 :" + score.eng + ",");
+		System.out.print(" 총  점 : " + score.total + ",");
+		System.out.println(" 평  균 :" + score.average);
+	}
+	
+	//학생성적정보가 포함된 배열을 전달받아서 화면에 출력하는 기능
+	void printAllScore(Score[] scores) {
+		for(Score score:scores) {
+			printScore(score);
+		}
+
+	}
+	//학생성적정보가 포함된 배열을 전달받아서 최고 성적을 받은 성적정보르 출력하는 기능
+	void pritnTop1(Score[] scores) {
+		Score topScore = scores[0];
+		for(Score score : scores) {
+			if (score.total > topScore.total) { //total값을비교하는 것이기 때문에 .을 적고 비교값을 입력해줌 아니면 주소값만 비교라서 error가남.
+				topScore = score;//위에서 total을 입력했기 때문에 작성안함.
+			}
+		} System.out.println(topScore.total);
+	}
+	
+	//학생성적정보가 포함된 배열을 전달받아서 편균점수를 반환하는 기능
+	int average = 0;
+		void printAverage(Score[] scores) {
+			int sum = 0;
+			int total =0;
+			for(Score score : scores) {
+				++sum;
+				total += score.average;
+				average = total/sum;//score.length라고 sum대신작성해도됨
+				
+				System.out.println("횟수는" + sum + "합계는 :" + total + "평균은" + average);
+			}System.out.println(average);
+		}
+	
+	//학생성적정보가 포함된 배열을 전달받아서 평균점수보다 낮은 점수를 받은 성적정보를 출력하는 기능
+		void printLowerScore(Score[] scores) {
+			for(Score score : scores) {
+				if(average>score.average) {
+					printScore(score);
+				}
+			}
+		}
+	
+	//학생성적정보가 포함된 배열을 전달받아서 불합격한 학생들의 성적정보를 출력하는 기능(평균 60점 미만 불합격)
+		void printUnPassedScores (Score[] scores) {
+			for(Score score : scores) {
+				if(60>score.average) {
+					printScore(score);
+				}
+			}
+		}
+	
+	//학생성적 정보가 포함된 배열을 전달받아서 불합격한 학생들의 성적정보를 출력하는 기능 (평균 60점 미만, 과목과락(과목점수가 40점미만)은 불합격)
+		void printUnPassedScores2 (Score[] scores) {
+			for(Score score :scores) {
+				if(score.average < 60||isFailedSubject(score)) {//평균과 일반 점수도 40점미만이면 불합격임
+					printScore(score);
+				}
+				}
+			}
+		//조건식이 복잡하면 가독성이 좋지않음 그래서 식을 아래로 가져와서 낙제여부를 반환하는 식을 만들어서 표현할 수 있다. 
+		boolean isFailedSubject(Score score) {//낙제를 했냐하고 물어보는 식
+		boolean isFailed = false;
+		if(score.kor<40||score.eng<40|| score.math<40){
+		isFailed = true;
+		}
+		return isFailed;
+		}
+
+
+	//학생성적정보가 포함된 배열을 전달받아서 평균점수와 가장 가까운 점수를 가진학생의 성적정보를 출력하는 기능
+	void printClosestAverageScore(Score[] scores) {
+		for(Score score : scores) {
+			if(average<score.average || average>score.average) {
+			} else {
+				printScore(score);
+			}
+		}
+	}
+	//학생성적정보가 포함된 배열을 전달받아서 평균점수별 학생수를 출력하는 기능(10점이하 0명, 20점이하 0명, 30점이하 1명, 40점이하 2명...)
+	void printCountByAverage(Score[] scores) {//아직 강의 전, 수정해야함, 출력값이 이상하게 나옴
+		int numberScore = 0;
+		for(Score score: scores) {
+		if(score.average<=10) {
+			printScore(score);
+			numberScore += score.average;
+		} else if(score.average>10&&score.average<=20) {
+			printScore(score);
+			numberScore += score.average;
+		} else if(score.average>20&&score.average<=30) {
+			printScore(score);
+			numberScore += score.average;
+		} else if(score.average>30&&score.average<=40) {
+			printScore(score);
+			numberScore += score.average;
+		
+		} else if(score.average>40&&score.average<=50) {
+			printScore(score);
+			numberScore += score.average;
+		} else if(score.average>50&&score.average<=60) {
+			printScore(score);
+			numberScore += score.average;
+		} else {
+			printScore(score);
+			numberScore += score.average;
+	} System.out.println(numberScore);
+}
+	}
+}
