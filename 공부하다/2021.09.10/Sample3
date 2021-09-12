@@ -1,0 +1,23 @@
+package example_09_10_static;
+
+import java.util.Arrays;
+
+public class Sample3 {
+	public static void main(String[] args) {
+		// static 메소드 사용해보기
+		double randomNumber = Math.random();
+		System.out.println(randomNumber);//0보다 같거나 크거나 1보다 작은 실수
+		
+		long number1 = Math.round(2.5);
+		long number2 = Math.round(2.1);
+		long number3 = Math.round(2.2);
+		long number4 = Math.round(2.7);//반올림하는 수 
+		System.out.println(number1 + "," + number2 + "," + number3 + "," + number4);
+
+		int[]numbers = {33, 8, 9, 5, 1, 0, 7, 2, 8};
+		Arrays.sort(numbers);//오른차순 정렬 import넣어야함
+		System.out.println(Arrays.toString(numbers));//numbers의 배열의 내용을 보여줌
+		//정적메소드의 사용법
+		
+}
+}
