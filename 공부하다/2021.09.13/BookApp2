@@ -1,0 +1,85 @@
+package example_09_13_modifier;
+
+import java.util.Date;
+
+public class BookApp2 {
+
+	public static void main(String[] args) {
+		
+		//Book객체의 주소값을 3개 저장할 수 있는 배열을 생성한다. 
+		Book book1 = new Book();
+		Book book3 = new Book();
+		Book book4 = new Book();
+		Book[] books = new Book[3];
+		
+		//아래의 코드 3회 반복, for문 사용하지 말고, 그냥 3번코딩하세요 
+		//Book객체를 생성하고, setter메소드를 사용해서 멤버변수에 책정보를 저장한다. 
+		//생성한 Book객체의 주소값을 배열의 n번째에 저장한다. 
+		books[0] = book1;
+		book1.setNo(30);
+		book1.setTitle("재료역학");
+		book1.setPublisher("대인사");
+		book1.setPrice(35_000);
+		book1.setDiscountPrice(27_000);
+		book1.setPubDate(new Date());
+		book1.setStock(3);
+		book1.setWirter("이명대");
+		
+		books[1] = book3;
+		book3.setNo(1010);
+		book3.setTitle("현대노인복지론");
+		book3.setPublisher("학이당");
+		book3.setPrice(37_000);
+		book3.setDiscountPrice(27_000);
+		book3.setPubDate(new Date());
+		book3.setStock(12);
+		book3.setWirter("진석범");
+		
+		books[2] = book4;
+		book4.setNo(150);
+		book4.setTitle("프리물리학");
+		book4.setPublisher("북스힐");
+		book4.setPrice(15_000);
+		book4.setDiscountPrice(7_000);
+		book4.setPubDate(new Date());
+		book4.setStock(15);
+		book4.setWirter("북북이");
+		
+		
+		//향상된 for문을 사용해서 배열에 저장된 책정보를 콘솔에 출력한다. 
+		//제목, 저자, 출판사, 가격, 할인가격 정보를 출력한다.
+		System.out.println("배열에 저장된 Book객체 정보 출력하기");
+		for(Book book : books) {
+			System.out.print(book.getNo() + ", ");
+			System.out.print(book.getTitle() + ", ");
+			System.out.print(book.getWirter() + ", ");
+			System.out.print(book.getPublisher() + ", ");
+			System.out.print(book.getPrice() + ", ");
+			System.out.print(book.getDiscountPrice() + ", ");
+			System.out.print(book.getStock() + ", ");
+			System.out.println();
+		}
+		
+		//배열의 0번째칸이 참조하고 있는 Book객체의 책 제목을 변경하기
+		//book1과 book[0]은 같은 값을 참조하고 있기 때문에 서로 참조하여 적용하면됨.
+		book1.setTitle("햄스터");
+		books[0].setTitle("강아지");
+		Book book = books[0];
+		book.setTitle("뿡양양");
+		//배열의 0번째칸이 참조하고 있는 Book객체의 할인가격을 출력하기 
+		book1.setDiscountPrice(35_000);
+		books[0].setDiscountPrice(2_500);
+		//배열의 0번째칸이 참조하고 있는 Book객체의 변경된 값 출력하기 
+		System.out.println("### 배열의 0번째칸이 참조하고 있는 Book객체의 변경된 값 출력하기 ");
+		System.out.println(book1.getTitle());
+		System.out.println(books[0].getTitle());
+		System.out.println(book.getTitle());
+		//서로 같은 값을 바라보고 있다는 사실을 알 수 있다. 
+		
+		//결론, book1, books[0], book은 같은 주소값을 가지고 있다. 같은 객체를 참조하고 있다. 
+		System.out.println(book1);
+		System.out.println(books[0]);
+		System.out.println(book);
+		//같은 해시코드를 가지고 있음을 알 수 있다. 같은 주소값을 가지고 있는 객체는 없다. 참조변수는 동일한 주소값을 가질 수 있다. 
+		}
+}
