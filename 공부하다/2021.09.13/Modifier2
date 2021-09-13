@@ -1,0 +1,22 @@
+package example_09_13_modifier;
+
+public class Sample2 {
+
+	public static void main(String[] args) {
+		Sample1 sample1 = new Sample1();//사용가능 //public Sample(){}      		-완전공개 (같은패키지라 사용이 가능함)
+		Sample1 sample2 = new Sample1(10);//사용가능//protect Sample(int a){}		-패키지 공개 + 자식에게 공개(같은패키지라 사용이 가능함)
+		Sample1 sample3 = new Sample1(10,20);//사용가능//Sample(int a, int b){}	-패키지 공개(같은패키지라 사용이 가능함)
+		//Sample1 sample4 = new Sample1(10,20,30);//사용 불가//private Sample(int a, int b, int c) -완전 비공개
+		
+		sample1.a = 10; //사용가능//public int a - 완전공개
+		sample1.b = 10; //사용가능// protected int b - 패키지 공개 +자식에게 공개
+		sample1.c = 10;//사용가능// int c -패키지공개
+		//sample1.d = 10; //사용불가능//private int d - 완전 비공개
+	
+		sample1.method1(); //사용가능 //public void method1(){..}  	-완전공개
+		sample1.method2();//사용가능	//protected void method2(){...}	-패키지공개 + 자식에게 공개
+		sample1.method3();//사용가능	//void method3(){...}			-패키지공개
+		//sample1.method4();//사용불가능 //private method4(){...}		-완전비공개
+	
+	}
+}
