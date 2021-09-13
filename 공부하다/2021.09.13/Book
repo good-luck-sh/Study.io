@@ -1,0 +1,139 @@
+package example_09_13_modifier;
+
+import java.util.Date;
+
+public class Book {
+	
+	//필드를 정의함 - >멤버변수 - 완전 비공개
+	private int no;
+	private String title;
+	private String wirter;
+	private String publisher;
+	private int price;
+	private int discountPrice;
+	private int stock;
+	private Date pubDate;
+	
+	//생성자 정의함 ->완전공개로 설정함, 생성자는 거의 완전공개로 설정함
+	public Book() {
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getWirter() {
+		return wirter;
+	}
+
+	public void setWirter(String wirter) {
+		this.wirter = wirter;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(int discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public Date getPubDate() {
+		return pubDate;
+	}
+
+	public void setPubDate(Date pubDate) {
+		this.pubDate = pubDate;
+	}
+	
+//	
+//	//Getter 메소드 , public ,반환타입, 이름 Get
+//	public int getNo() {
+//		return no;
+//		//no에 대해서 조회할 수 있게 해주는 get메소드
+//	}
+//	public String getTitle() {
+//		return title;
+//	}
+//	public String getWirter() {
+//		return wirter;
+//	}
+//	public String getPublisher() {
+//		return publisher;
+//	}
+//	public int getPrice() {
+//		return price;
+//	}
+//	public int getDiscountPrice() {
+//		return discountPrice;
+//	}
+//	public int getStock() {
+//		return stock;
+//	}
+//	public Date getPubDate() {
+//		return pubDate;
+//	}
+//	
+//	//Setter 메소드, public , void, 이름 Set,메개변수
+//	//변환은 void로 진행하며, 입력받을 값인 메개변수가 필요하다. 내가 전달받은 값을,주소값을 머물고 있는 this.의 no를 대입하겠다는 의미로 작성.
+//	public void setNo(int no) {
+//		this.no = no;
+//	}
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
+//	public void setWriter(String wirter) {
+//		this.wirter = wirter;
+//	}
+//	public void setPublisher(String publisher) {
+//		this.publisher = publisher;
+//	}
+//	public void setPrice(int price) {
+//		this.price = price;
+//	}
+//	public void setDiscountPrice(int discountPrice) {
+//		this.discountPrice = discountPrice;
+//	}
+//	public void setStock(int stock) {
+//		this.stock = stock;
+//	}
+//	public void setPubDate(Date pubDate) {
+//		this.pubDate = pubDate;
+//	}
+}
