@@ -1,0 +1,56 @@
+package example_09_13_modifier;
+
+import java.util.Date;
+
+public class BookApp {
+
+	public static void main(String[] args) {
+		Book book1 = new Book();
+		//생성자는 완전공개로 되어있기 때문에 사용할 수 있다. 
+		
+		//book1참조변수가 참조하는 객체의 no, title, writer,publisher, price,discountPrice, stock, pubDate변경하기 
+		//예전의 경우 
+		//book1.no = 100; 				//no			멤버변수 완전 비공개 - 접근 불가, 안 보이니까!
+		//book1.title = "자바의 정석";		//title			멤버변수 완전 비공개 - 접근 불가
+		//book1.writer = "남궁성";		//writer		멤버변수 완전 비공개 - 접근 불가
+		//book1.publisher = "도우출판사";	//publisher		멤버변수 완전 비공개 - 접근 불가
+		//book1.price = 30_000;			//price			멤버변수 완전 비공개 - 접근 불가
+		//book1.discountPrice = 27_000;	//discountPrice	멤버변수 완전 비공개 - 접근 불가
+		//book1.stock = 3;				//stock			멤버변수 완전 비공개 - 접근 불가
+		//book1.pubDate = new Date();	//pubDate		멤버변수 완전 비공개 - 접근 불가
+	
+		//book1 참조변수가 참조하는 객체의 Setter메소드를 사용해서 객체의 멤버변수 값 변경하기 
+		book1.setNo(100);
+		book1.setTitle("자바의 정석");
+		book1.setWirter("남궁성");
+		book1.setPublisher("도우출판사");
+		book1.setPrice(35_000);
+		book1.setDiscountPrice(27_000);
+		book1.setStock(3);
+		book1.setPubDate(new Date());//날짜 입력하는 방식 기억하기, 티스토리에 작성할 것
+		
+		//book1 참조변수가 참조하는 객체의 멤버변수에 저장된 값을 조회하기 
+		//이전의 값을 조회할 때 
+		//System.out.pritnln(book1.no);			// 비공개라서 이제 이렇게 값을 조회할 수 없다. 
+		//System.out.pritnln(book1.title);
+		//System.out.pritnln(book1.writer);
+		//System.out.pritnln(book1.publisher);
+		//System.out.pritnln(book1.price);
+		//System.out.pritnln(book1.discountPrice);
+		//System.out.pritnln(book1.stock);
+		//System.out.pritnln(book1.pubDate);
+		
+		System.out.println(book1.getNo());
+		System.out.println(book1.getTitle());
+		System.out.println(book1.getWirter());
+		System.out.println(book1.getPublisher());
+		System.out.println(book1.getPrice());
+		System.out.println(book1.getDiscountPrice());
+		System.out.println(book1.getStock());
+		System.out.println(book1.getPubDate());
+		
+		//Setter method를 이용하여, 값을 설정하고 Getter method로 값을 나타낸다. 
+		//Getter 메소드 --> 신문 제목을 출력시키는것. 
+		//Setter 메소드 --> DB에서 가져와서 값을 담는 것. 
+	}	
+}
