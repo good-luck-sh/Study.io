@@ -1,0 +1,39 @@
+package example_09_13_coding;
+
+public class Student {
+
+	private int no;			//정수
+	private int grade; //1, 2, 3, 정수
+	private String name;//문자열
+	private ScoreDetail score; //ScoreDetail객체의 주소값
+	//주소값을 부품처럼 연결해서 사용하려고 함, 객체와 객체를 연결해서 사용.
+	//클래스를 이렇게 정의한다. 
+	//ScoreDetail객체를 포함한다. 작성할 때 저렇게 사용함 
+	
+	public Student() {}
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public ScoreDetail getScore() {//ScoreDetail score;
+		return score;
+	}
+	public void setScore(ScoreDetail score) {
+		this.score = score;
+	}
+}
