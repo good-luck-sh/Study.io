@@ -1,0 +1,83 @@
+package example_09_13_coding;
+
+public class StudentApp1 {
+	
+	public static void main(String[] args) {
+	
+		Student student1 = new Student(); //시험을 본 학생
+		Student student2 = new Student(); //시험을 본 학생
+		Student student3 = new Student();// 시험을 안 본 학생
+		
+		student1.setNo(10);
+		student1.setName("김쩡글");
+		student1.setGrade(2);
+		ScoreDetail scoreDetail1 = new ScoreDetail();
+		scoreDetail1.setKor(80);
+		scoreDetail1.setEng(70);
+		scoreDetail1.setMath(85);
+		//아직 서로 연결은 안된 상태임 
+		student1.setScore(scoreDetail1);
+		//이렇게 작성해야 연결이 끝난 것
+		
+		
+		student2.setNo(12);
+		student2.setName("김감참");
+		student2.setGrade(2);
+		ScoreDetail scoreDetail2 = new ScoreDetail();
+		scoreDetail2.setKor(60);
+		scoreDetail2.setEng(55);
+		scoreDetail2.setMath(40);
+		
+		student2.setScore(scoreDetail2); //주소값을 연결시켜 줌
+
+
+		
+		student3.setNo(1);
+		student3.setName("김날라");
+		student3.setGrade(1);
+		//김날라는 시험을 보지 않아서 Score가 존재하지 않음 
+		
+		// 이순신의 번호, 학년, 이름, 국어, 영어, 수학, 총점, 평균을 출력하기 
+		System.out.println("### 김쩡글의 정보 및 시험 정보 출력하기");
+		System.out.println("번호:" + student1.getNo());
+		System.out.println("학년:" + student1.getGrade());
+		System.out.println("이름:" + student1.getName());
+		System.out.println(student1.getScore());
+		//성적정보 출력전에 입력함,example_09_13_coding.ScoreDetail@73a28541-->참조하고 있는 주소값의 해시코드를 출력함
+		
+		System.out.println("국어:" + student1.getScore().getKor());
+		//클래스 내의 클래스를 적는 것이기 때문에 Static클래스 처럼 .을 두 번 적어 불러올 수 있다. 
+		System.out.println("영어:" + student1.getScore().getEng());
+		System.out.println("수학:" + student1.getScore().getMath());
+		System.out.println("총점:" + student1.getScore().getTotal());
+		System.out.println("평균:" + student1.getScore().getAverage());
+		
+		System.out.println("### 김감참의 정보 및 시험 정보 출력하기 ");
+		System.out.println("번호 : " + student2.getNo() );
+		System.out.println("학년 : " + student2.getGrade());
+		System.out.println("이름 : " + student2.getName());
+		System.out.println(student2.getScore());
+		//example_09_13_coding.ScoreDetail@6f75e721
+		
+		System.out.println("국어 : " + student2.getScore().getKor());
+		System.out.println("영어 : " + student2.getScore().getEng());
+		System.out.println("수학 : " + student2.getScore().getMath());
+		System.out.println("총점 : " + student2.getScore().getTotal());
+		System.out.println("평균 : " + student2.getScore().getAverage());
+		
+		System.out.println("### 김날라의 정보 및 시험 정보 출력하기 ");
+		System.out.println("번호 :" + student3.getNo());
+		System.out.println("학년 :" + student3.getGrade());
+		System.out.println("이름 :" + student3.getName());
+		System.out.println(student3.getScore());
+		//입력된 값이 없기 떄문에 null값으로 출력이 됨
+		System.out.println("국어 :" + student3.getScore().getKor());
+		System.out.println("영어 :" + student3.getScore().getEng());
+		System.out.println("수학 :" + student3.getScore().getMath());
+		System.out.println("총점 :" + student3.getScore().getTotal());
+		System.out.println("평균 :" + student3.getScore().getAverage());
+
+		
+	}
+	
+}
