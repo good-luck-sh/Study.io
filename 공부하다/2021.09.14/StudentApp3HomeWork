@@ -1,0 +1,143 @@
+package example_09_13_coding;
+
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class StudentApp3 {
+	//학생정보/성적정보를 입력하고, 조회하고, 변경하는 프로그램
+	// 조회, 입력, 수정, 삭제 , 종료하는 프로그램을 만들기 
+	// 배열 100에 Scanner 사용, AtomicInteger생성하기 
+	public static void main(String[]args) {
+		
+	Scanner scan = new Scanner(System.in);
+	Student[] students = new Student[100];
+	AtomicInteger atomic = new AtomicInteger(100);
+	int no = 0;
+	int position = 0;
+	while(true) {
+		System.out.println("------------------");
+		System.out.println("1.조회 2.입력 3.수정 4.삭제 5.종료");
+		System.out.println("------------------");
+		System.out.println("메뉴를 선택하세요 :");
+		int menuNo = scan.nextInt();
+		if(menuNo == 1) {//조회 목록
+			if(position == 0) {
+				System.out.println("조회할 목록이 없습니다.");
+			} else {
+				
+			for(Student student : students) {
+			if(student == null) {
+				System.out.print("조회가 완료되었습니다. ");
+				break;
+			} else {
+				System.out.println("학번\t이름\t학년\t국어점수\t영어점수\t수학점수\t총점\t평균");
+				System.out.print(student.getNo() + "\t");
+				System.out.print(student.getName() + "\t");
+				System.out.print(student.getGrade() + "\t");
+				System.out.print(student.getScore().getKor() + "\t");
+				System.out.print(student.getScore().getEng() + "\t");
+				System.out.print(student.getScore().getMath() + "\t");
+				System.out.print(student.getScore().getTotal() + "\t");
+				System.out.println(student.getScore().getAverage());
+			
+			}
+			}
+			}
+		} else if(menuNo == 2) {//입력목록
+			//학번
+			no = atomic.getAndIncrement();
+			//이름
+			System.out.print("이름:");
+			String name = scan.next();
+			//학년
+			System.out.print("학년:");
+			int grade = scan.nextInt();
+			//국어점수
+			System.out.print("국어점수:");
+			int kor = scan.nextInt();
+			//영어점수
+			System.out.print("영어점수:");
+			int eng = scan.nextInt();
+			//수학점수
+			System.out.print("수학점수:");
+			int math = scan.nextInt();
+			
+			ScoreDetail score = new ScoreDetail(kor, eng, math);
+			Student student = new Student(no,grade,name, score);
+			
+			students[position] = student;
+			position++;
+			
+		} else if(menuNo == 3) {
+			System.out.println("수정을 원하는 학번을 입력하세요 >");
+			 no = scan.nextInt();
+			Student foundStudent = null;
+			for(Student student :students ) {
+				if(student.getNo() == no) {//studentgetno와 no값이 동일하면
+				foundStudent = student;//찾고있는 정보와 동일한 값이면 대입
+				break; //break를 안하면 계속반복되서 null오류가 남
+			} 
+			}
+			if(foundStudent != null) {//만약 foundStudent에 값이 들어가있다면.
+				System.out.println("수정 원하는 과목을 입력하세요 ");
+				String subject = scan.next();
+				
+				System.out.println("원하는 점수를 입력하세요 ");
+				int value = scan.nextInt();
+				
+				ScoreDetail score = foundStudent.getScore();//score에 foundStudent를 연결해줌(뭘찾은건지 연결해주어야함)
+				switch (subject) {
+				case "국어":
+					score.setKor(value);
+					break;
+				case "영어":
+					score.setEng(value);
+					break;
+				case "수학":
+					score.setMath(value);
+					break;
+				}
+	
+			} else {
+				System.out.println("잘 못된 값을 입력하셨습니다. ");
+		
+			}
+			
+		} else if(menuNo == 4) {
+//			Student student = new Student();
+			int foundStudent = -1;
+			System.out.println("삭제를 원하는 번호를 입력하세요 :");
+			no = scan.nextInt();
+			//삭제할 학생정보에 대한 학번을 입력받는다. 
+			for(Student student : students) {
+				if(student != null) {
+				if(student.getNo()==no) {
+					foundStudent=position;//index의 값인 position을 foundStudent에 대입함
+					//입력된 학번에 해당하는 학생정보가 배열의 몇 번째에 저장되어 있는지 조회한다.
+					System.out.println(student.getNo());
+					System.out.println(foundStudent);
+					System.out.println(position);
+					System.out.println("배열의 값을 저장했습니다.");
+					break;//입력하면 멈춤
+				} 
+				} else {
+					//삭제할 학생번호가 저장된 칸에 배열의 맨 마지막 번째 학생정보를 저장하고, 배열의 맨 마지막번째 칸의 값을 null로 변경한다.
+						students[position] =student;
+						position--;
+						System.out.println(students[position]);
+						System.out.println(students[foundStudent]);
+					
+				}
+				
+			}
+			
+			
+			} else if (menuNo == 5) {
+			System.out.println("프로그램이 종료 되었습니다. ");
+			break;
+		}
+	
+	}
+	scan.close();
+	}
+}
