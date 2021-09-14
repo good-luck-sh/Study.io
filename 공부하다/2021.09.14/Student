@@ -1,0 +1,23 @@
+package example_09_14_extends;
+
+public class Student extends Person {//Person클래스를 확장하다. 
+	
+	//Student의 고유한 변수와 기능 정의하기 
+	//상속받은 것외에 추가적으로 필요한 것만 더 정의해준다.
+	private String dept; 
+	private int grade;
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	
+
+}
