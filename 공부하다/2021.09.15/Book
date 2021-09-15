@@ -1,0 +1,92 @@
+package example_09_15_super;
+
+public class Book extends Product {//product를 확장하다. 
+	private String genre;//장르
+	private String title;//이름
+	private String writer;//지은이
+	private String publisher;//퍼블리셔
+	
+	public Book() { //기본생성자는 항상 위에 올라가 있고, super()생성자 호출메소드가 있기 때문에 기본생성자를 작성하지 않으면 에러가 남
+		
+		//원래 생성자 메소드안에는 
+		super();//가 기본적으로 생성이 되어있다. 생략되어 있다. 따로 적지 않으면 모든 생성자메소드에는 상위호출메소드가 들어가있다. 
+		// 모든 하위클래스의 생성자에는 부모의 기본생성자 메소드를 호출하는 super();가 자동으로 추가된다. 
+		//단, super()외의 다른 super(값,값,...)메소드를 추가하면 super()가 자동으로 추가되지 않는다. 
+		//상위클래스에서 기본생성자가 없으면 super(int,int), super(int, int, int)의 값을 입력하고,
+		//하위 클래스에서도 거기에 맞게 정의 되어야한다.(기본생성자를 작성할 수 없다)
+		//만약 하위클래스에서 기본생성자를 사용하고 싶다면, 상위생성자에서 추가를 하던지 사용하지 말던지 해야한다. 
+		
+	}
+
+	public Book(int no, String genre, String title, String writer, String publisher, 
+			int price) {
+				super(no,price,price);
+				this.genre = genre;
+				this.title =  title;
+				this.writer = writer;
+				this.publisher = publisher;
+	}
+	public Book(int no, String genre, String title, String writer, String publisher, 
+	int price, int discountPrice) {
+		super(no,price,discountPrice);//super은 항상 생성자 첫줄에 있어야함. 부모부터 먼저 초기화가 되어야함.
+		//Product객체의 Product (int no, int price, int discountPrice)생성자를 호출한다. 
+		//super()메소드는 언제나 생성자 메소드의 첫번째 수행문이어야한다. 
+		//super()메소드가 첫번째 수행문이어야 하는 이유는 언제나 상위 객체가 먼저 초기화 되어야하기 때문이다. 
+		//이 생성자 메소드도 원래는 super(); 자동으로 추가되지만,
+		//super(no, price, discountPrice);가 추가되었기 때문에 super();는 추가되지 않았다. 
+		
+		this.genre = genre;
+		this.title =  title;
+		this.writer = writer;
+		this.publisher = publisher;
+	}
+	//책도 가격이 존재함
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	@Override
+	public void printInfo() {
+	//public void PrintBookInfo() {
+		super.printInfo();
+		//상위 클래스의 메소드를 재정의한 곳에서 상위클래스에 정의된 똑같은 이름의 메소드를 호출해야할 때 사용된다. 
+		//System.out.println("번호 : " + getNo());		//Product의 공개된(상속받은) getNo()로 번호 조회
+		System.out.println("장르 : " + genre);
+		System.out.println("제목 : " + title);
+		System.out.println("저자 : " + writer);
+		System.out.println("출판사 : " + publisher);
+		//System.out.println("가격 : " + getPrice());		//Product의 공개된(상속받은) getPrice()로 번호 조회
+		//System.out.println("할인가격 : " + getDiscountPrice());	//Product의 공개된(상속받은) getDiscountPrice()로 번호 조회
+		System.out.println();
+	}
+	
+	
+	
+}
