@@ -1,0 +1,30 @@
+package example_09_15_override;
+/**
+ * 문서를 컬로로 인쇄하는 기능이 구현된 클래스다
+ * @author 김승희
+ *
+ */
+public class ColorPrinter extends Printer {//프린트를 확장하는 컬러프린트 흑백메소드는 사용가능함.
+	//2개의 기능을 사용할 수 있음 부모로 물려받은 컬러프린트, 색상을 선택하는 프린트기능 set
+	/**
+	 * 지원되는 색상 수 
+	 */
+	private int colors;
+	
+	/**
+	 * 지정된 색상 수를 설정한다. 
+	 * @param colors
+	 */
+	public void setColors(int colors) {
+		this.colors = colors;
+	}
+	/**
+	 * 지정된 문서를 컬러로 인쇄한다. 
+	 * @param document 출력할 문서 
+	 */
+	public void printColor(String document) {//상속받은 프린트컬러메소드를 사용함
+		System.out.println("["+colors+"색][컬러인쇄]"+document);
+	}
+
+
+}
