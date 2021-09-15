@@ -1,0 +1,55 @@
+package example_09_15_super;
+
+public class Product {
+
+	//속성, 멤버변수, 인스턴스변수, 필드, 프로퍼티 = 전부 동일한 것을 일컬음
+	//상황에 따라서 가르키는 단어가 많음
+	private int no; 
+	private int discountPrice;
+	private int price;
+	//같은 값은 같은 것으로 받으면 되지만, 
+	//다른 값을 받으면 각기 다른 값이 들어가는 생성자를 만들어주어야한다. 
+	public Product() {
+		
+	}
+	public Product(int no, int price) {//할인율이 0원이라 할인가격과 일반가격이 동일할 때 
+		//this.no = no;
+		//this.price = price;
+		//this.dicountPrice = price;
+		//이 클래스로 생성된 객체의 생성자 메소드 중에서 Product(int, int, int) 생성자 메소드를 실행한다. 
+		this(no, price, price);
+		//같은 값은 같은 것으로 받으면 되지만, 
+	}
+	//this는 이 설계도로 생성된 객체의 주소값을 가진다. 
+	// this()는 이 설계도로 생성된 객체의 기본생성자 메소드다.
+	public Product(int no, int price, int discountPrice) {
+		this.no = no;
+		this.price= price;
+		this.discountPrice = discountPrice;
+		//다른 값을 받으면 각기 다른 값이 들어가는 생성자를 만들어주어야한다. 
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public int getDiscountPrice() {
+		return discountPrice;
+	}
+	public void setDiscountPrice(int discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public void printInfo() {
+		System.out.println("상품번호 : " + no);
+		System.out.println("상품가격 : " + price);
+		System.out.println("상품할인가격 : " + discountPrice);
+	}
+
+	}
