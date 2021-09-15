@@ -1,0 +1,21 @@
+package example_09_15_override;
+
+public class Phone {
+
+	private String tel; //전화거는 속성
+	
+	public void setTel(String tel) {//setter메소드
+		this.tel = tel;
+	}
+	public void call(String to) { //전화걸기 기능
+		System.out.println("[ "+ tel +" ]이" +to+"에게 전화를 겁니다." );
+	}
+	
+	public void off() {//display끄는 기능
+		System.out.println("전원버튼을 눌러서 화면을 끕니다.");
+	}
+	
+	public void on() {//display키는 기능
+		System.out.println("전원버튼을 눌러서 화면을 켭니다.");
+	}
+}
