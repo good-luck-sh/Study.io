@@ -1,0 +1,14 @@
+package example_09_15_super;
+
+public class ProductApp {
+
+	public static void main(String[] args) {
+		//할인가격이 있는 Book객체 생성
+		Book book = new Book(100,"컴퓨터","이것이 자바다","신용권","한빛미디어",35_000,32_000);
+		//할인 가격이 없는 Book1객체 생성
+		Book book1 = new Book(100,"컴퓨터","자바의정석","남궁성","도우출판사",30_000);
+		book.printInfo();
+		book1.printInfo();
+	}
+	
+}
