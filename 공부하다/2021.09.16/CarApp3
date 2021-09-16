@@ -1,0 +1,56 @@
+package example_09_16_casting;
+
+public class CarApp4 {
+
+	public static void main(String[] args) {
+		/*
+		 * 클래스 형변환 활용하기 
+		 *  1. 부모타입의 참조변수로 모든 자식타입객체를 참조할 수 있다. 
+			2. 부모타입의 배열로 다양한 자식타입객체를 저장할 수 있다. 
+			즉, 배열에 저장되는 객체의 종류들을 제한 할 수 있다.
+		 *  3.실제로 사용할 기능이 포함되어 있는 클래스 타입의 변수 혹은 배열객체를 생성하면 
+		 *    특별한 형변환없이 기능을 실행할 수 있다.  실행하고 싶은 기능이 어디있느냐에 따라서 배열의 타입을 달리해야함.
+		 * 
+		 */
+		//요구사항 
+		//모든 자동차들의 출발기능, 정지기능, 운전기능을 실행해주세요 ,
+		//모든 자동차들[배열] 요구사항기능을<-어느객체에 구현되어있는지를 확인해야함, car만 바라봐도 됨
+		//모든 SUV자동차들의 출발기능, 정지기능, 운전기능, 오프로드기능을 실행해주세요
+		
+		//car배열에 저장된 자동차들의 출발기능, 정지기능, 운전기능 실행하기 
+		Car[] cars = new Car[5];//그래서 car배열에 담음
+		System.out.println("### 모든 자동차의 출발기능, 정지기능, 운전기능 실행하기");
+		cars[0] =new Car();
+		cars[1] =new SUV();
+		cars[2] =new Palisade();
+		cars[3] =new RacingCar();
+		cars[4] =new Car();
+		//상위 라고 전부다 가능한게 아닌, 그 기능이 담겨있는 곳을 바라봐야한다. 
+		//변수와 매개변수를 만들때 잘 고려해서 제작해야한다. 
+		//Object로 배열을 만들게 되면 아래 출발/정지/ 운전기능이 되지않는다.
+		for(Car car : cars) { 
+			//클래스의 이름, 배열의 이름을 출력하라
+			System.out.println(car.getClass().getName() + "차량의 출발/ 정지/ 운전기능 실행하기");
+			
+			car.start();
+			car.drive();
+			car.stop();
+		}
+		
+		// suvs배열에 저장된 자동차들의 오프로드 기능(SUV에있음) 실행하기
+		//모든 SUV자동차들의 출발기능, 정지기능, 운전기능, 오프로드기능을 실행해주세요 
+		// 실행하고 싶은 기능이 어디있느냐에 따라서 배열의 타입을 달리해야함.
+		SUV[] suvs = new SUV[3];
+		suvs[0]  = new SUV();
+		suvs[1]  = new Palisade();
+		suvs[2]  = new Palisade();
+		for(SUV suv : suvs) {
+			System.out.println(suv.getClass().getName() +"출발/ 정지/ 운전/ 오프로드기능");
+			//getClass는 Object기능이여서 누구든지 사용할 수 있음
+			suv.start();
+			suv.drive();
+			suv.driveOffRoad();
+			suv.stop();
+		}
+	}
+}
