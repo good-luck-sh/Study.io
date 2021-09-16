@@ -1,0 +1,33 @@
+package example_09_16_casting;
+
+public class CarApp3 {
+
+	public static void main(String[] args) {
+		/*
+		 * 클래스 형변환 활용하기 
+		 */
+		//1. 부모타입의 참조변수로 모든 자식타입객체를 참조할 수 있다. 
+		//2. 부모타입의 배열로 다양한 자식타입객체를 저장할 수 있다. 
+		//즉, 배열에 저장되는 객체의 종류들을 제한 할 수 있다.
+		
+		
+		//각종 자동차 객체를 저장할 수 있는 배열 생성하기 
+		Car[] carArray1 = new Car[5];
+		carArray1[0] = new Palisade();
+		carArray1[1] = new SUV();
+		carArray1[2] = new Car();
+		carArray1[3] = new RacingCar();
+		carArray1[4] = new Palisade();
+		//자동차 배열에다가 차량을 전부 담을 수 있음
+		
+		//각종 SUV객체를 저장할 수 있는 배열 생성하기 
+		SUV[] carArray2 = new SUV[5];
+		carArray2[0] = new SUV();
+		carArray2[1] = new Palisade();
+		carArray2[2] = new Palisade();
+		//carArray2[3] = new Car();//오류 SUV클래스의 하위 클래스타입 객체가 아님
+		//carArray2[4] = new RacingCar();//오류 SUV클래스의 하위 클래스타입 객체가 아님
+		//배열에 어떤걸 담을지 조절이 가능함
+		
+	}
+}
