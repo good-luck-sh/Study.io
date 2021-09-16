@@ -1,0 +1,44 @@
+package example_09_16_casting;
+
+import java.util.Scanner;
+
+public class CarApp2 {
+
+	public static void main(String[] args) {
+		/*
+		 * 클래스 형변환 활용하기 
+		 */
+		//1. 부모타입의 참조변수로 모든 자식타입객체를 참조할 수 있다. 
+		//변수하나만 만들어서 모든 객체를 참조하게 만들어버림
+		Scanner scan = new Scanner(System.in);
+		
+		//SUV car1 = null;
+		//RacingCar car2 = null;
+		//Palisade car3 = null;
+		//미래에는 차가 더 나올 수 있기 떄문에 변수를 지정해서 설정하기 보다는 
+		//부모타입의 참조변수를 하나 설정하여 만듦
+		//부모타입의 변수로 모든 하위객체를 참조할 수 있다. 
+		
+		//뭐가 나올지 모르기 때문에 car은 null로 입력함
+		System.out.println("-----------------------");
+		System.out.println("1.SUV 2.레이싱카 3.펠리세이드");
+		System.out.println("-----------------------");
+		System.out.println("구매할 차종을 선택하세요 : ");
+	
+		int carType = scan.nextInt();
+		Car car  = null;
+		//모든 차들을 다 담을 수 있다. 
+		if(carType ==1) {
+			car = new SUV();
+		} else if(carType ==2) {
+			car = new RacingCar();
+		} else if(carType ==3 ) {
+			car = new Palisade();
+		} else {
+			System.out.println("### 지원하지 않는 차종입니다.");
+		}
+		System.out.println("구매한 차의 이름 :" + car.getClass().getName());
+		//부모를 바라보는 참조변수지만 실제로는 각종 차를 바라보기 때문에 구매한 차종이 나옴
+		scan.close();
+	}
+}
