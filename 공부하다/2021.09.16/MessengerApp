@@ -1,0 +1,18 @@
+package example_09_16_polymorphisn;
+
+public class MessangerApp {
+
+	public static void main(String[] args) {
+		System.out.println("### Messenger로 메세지 보내기");
+		Messanger messenger1 = new Messanger();
+		messenger1.sendMessage("010-1111-1111", "010-2222-2222", "이벤트에 당첨되었습니다. ");
+		
+		System.out.println("### KakaoTalk Messenger로 메세지 보내기");
+		KakaoTalk messenger2 = new KakaoTalk( "홍길동" , " 고양이사진");
+		messenger2.sendMessage("홍길동", "이순신", "내일 학교 11시에 보자");
+		
+		System.out.println("### KakaoTalk Messenger로 메세지 보내기");
+		Messanger messenger3 = new KakaoTalk("김유신","강아지사진");
+		messenger3.sendMessage("김유신","이순신","너 지금 어디야?");
+	}
+}
