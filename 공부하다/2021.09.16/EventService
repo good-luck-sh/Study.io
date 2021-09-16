@@ -1,0 +1,38 @@
+package example_09_16_polymorphisn;
+
+import java.util.Date;
+
+/**
+ * 이벤트 등록, 이벤트 알림, 이벤트 당첨자 선정등의 기능이 구현된 클래스다.
+ * @author 김승희
+ *
+ */
+public class EventService {
+	/**
+	 * Messanger을 작성한 의도: Messanger객체 및 Messenger하위 객체들을 참조하는 변수
+	 */
+	//private Messanger messenger = new Messanger();
+	//이메일로 변경해줌 --->회사측에서 이메일밖에 안된다고 해서 
+	//이메일이 실행됨. 이메일로 변경해줬더니 이메일의 재정의 메소드가 실행됨 
+	private Messanger messenger = new EmailMessenger("admin","zxcv1234");
+	/**
+	 * 새로운 이벤트를 등록한다.
+	 * @param title 이벤트 제목
+	 * @param text 이벤트 내용
+	 * @param StartDate 이벤트 시작일
+	 * @param endDate 이벤트 종료일 
+	 */
+	public void addEvent(String title, String text, Date StartDate , Date endDate) {
+		
+	}
+	/**
+	 * 최신 이벤트 소식을 수신허락한 고객들에게 
+	 * @param from 보내는 곳  
+	 * @param to 받는 곳
+	 * @param text 이벤트 내용
+	 */
+	public void noticeEvent(String from, String to, String text) {
+		System.out.println("### 최신 이벤트 소식을 발송합니다. ");
+		messenger.sendMessage(from, to, text);
+	}
+}
