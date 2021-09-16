@@ -1,0 +1,24 @@
+package example_09_16_polymorphisn;
+
+public class EmailMessenger extends Messanger {
+
+	private String email;
+	private String password;
+	
+	public EmailMessenger(String email, String password) {
+		this.email = email;
+		this.password = password;
+	
+	}
+	public void sendMessage (String from, String to, String text) {
+		System.out.println("[" +email+"]["+password+"]로 메일계정에 로그인함");
+		System.out.println("보내는 사람 아이디 : " + from);
+		System.out.println("받는 사람 아이디 : " + to);
+		System.out.println("내   용 : " + text);
+		System.out.println();
+		System.out.println();
+	
+	
+	
+	}
+	}
