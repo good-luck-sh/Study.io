@@ -1,0 +1,45 @@
+package example_09_16_casting;
+
+public class CarApp5 {
+
+	public static void main(String[] args) {
+		/*
+		 * 클래스 형변환 활용하기 
+		 *  1. 부모타입의 참조변수로 모든 자식타입객체를 참조할 수 있다. 
+			2. 부모타입의 배열로 다양한 자식타입객체를 저장할 수 있다. 
+			즉, 배열에 저장되는 객체의 종류들을 제한 할 수 있다.
+		 *  3.실제로 사용할 기능이 포함되어 있는 클래스 타입의 변수 혹은 배열객체를 생성하면 
+		 *    특별한 형변환없이 기능을 실행할 수 있다.  실행하고 싶은 기능이 어디있느냐에 따라서 배열의 타입을 달리해야함.
+		 *  4.생성된 객체가 클래스형변환 되어서 관리하고 있지만, 그 객체를 사용할 때는 그 객체의 모든기능을 사용할 수 있다. 
+		 *    강제형변환을 하면.(instanceof연산자를 사용하면 참조변수가 참조하는 객체가 실제로 어떤 객체인지 조사할 수 있다. )
+		 *    //덧셈 뺼셈과 똑같은 연산자임 
+		 * 		참조변수 instanceof 클래스명
+		 * 		참조변수가 참조하는 객체가 지정된 클래스 타입의 객체이면 true를 반환하고 아니면 false를 반환한다. 
+		 */
+		Car car1 = new Car();
+		Car car2 = new SUV();
+		Car car3 = new Palisade();
+		Car car4 = new RacingCar();
+		
+		System.out.println("### car1이 참조하는 객체는 Car객체인가?" +(car1 instanceof Car));
+		//참조변수가 Car클래스를 참조하는 변수인가?
+		System.out.println("### car1이 참조하는 객체는 SUV객체인가?" +(car1 instanceof SUV));
+		System.out.println("### car1이 참조하는 객체는 RacingCar객체인가?" + (car1 instanceof RacingCar));
+		System.out.println("### car1이 참조하는 객체는 Palisade객체인가?" + (car1 instanceof Palisade));
+		
+		System.out.println("### car2이 참조하는 객체는 Car객체인가?" + (car2 instanceof Car));
+		System.out.println("### car2이 참조하는 객체는 SUV객체인가?" + (car2 instanceof SUV));
+		System.out.println("### car2이 참조하는 객체는 RacingCar객체인가?" + (car2 instanceof RacingCar));
+		System.out.println("### car2이 참조하는 객체는 Palisade객체인가?" + (car2 instanceof Palisade));
+		
+		System.out.println("### car3이 참조하는 객체는 Car객체인가?" + (car3 instanceof Car));
+		System.out.println("### car3이 참조하는 객체는 SUV객체인가?" + (car3 instanceof SUV));
+		System.out.println("### car3이 참조하는 객체는 RacingCar객체인가?" + (car3 instanceof RacingCar));
+		System.out.println("### car3이 참조하는 객체는 Palisade객체인가?" + (car3 instanceof Palisade));
+		
+		System.out.println("### car4이 참조하는 객체는 Car객체인가?" + (car4 instanceof Car));
+		System.out.println("### car4이 참조하는 객체는 SUV객체인가?"  + (car4 instanceof SUV));
+		System.out.println("### car4이 참조하는 객체는 RacingCar객체인가?" + (car4 instanceof RacingCar));
+		System.out.println("### car4이 참조하는 객체는 Palisade객체인가?" + (car4 instanceof Palisade));
+	}
+}
