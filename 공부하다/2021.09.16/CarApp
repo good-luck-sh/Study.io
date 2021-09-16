@@ -1,0 +1,108 @@
+package example_09_16_casting;
+
+public class CarApp {
+
+	public static void main(String[] args) {
+		//클래스 형변환이 발생하지 않음
+		//생성한 객체의 타입과 참조하는 변수의 타입이 동일하다 .
+
+		System.out.println("###Car객체를 Car타입의 참조변수로 참조");
+		Car car1 = new Car();
+		car1.start();
+		car1.drive();
+		car1.speedUp();
+		car1.speedDown();
+		car1.stop();
+		//car1참조변수로 Car객체의 공개된 모든속성과 공개된 모든 기능을 사용할 수 있다. 
+		
+		System.out.println("###SUV객체를 SUV타입의 참조변수로 참조");
+		SUV suv = new SUV();
+		suv.start(); //Car객체의 기능
+		suv.drive(); //Car객체의 기능
+		suv.driveOffRoad(); //SUV객체의 기능
+		suv.speedUp(); //Car객체의 기능
+		suv.speedDown();//Car객체의 기능
+		suv.stop();//Car객체의 기능
+		//suv1 참조변수로 SUV객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다. 
+		//suv1 참조변수로 상위객체인 Car객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다. 
+		
+		System.out.println("###RacingCar객체를 RacingCar타입의 참조변수로 참조");
+		RacingCar racingCar1 = new RacingCar();
+		racingCar1.start();//Car객체의 기능
+		racingCar1.drive();//Car객체의 기능
+		racingCar1.speedUp();//Car객체의 기능
+		racingCar1.race();//RacingCar객체의 기능
+		racingCar1.speedDown();//Car객체의 기능
+		racingCar1.stop();//Car객체의 기능
+		//racingCar1 참조변수로 RacingCar객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다. 
+		//racingCar1 참조변수로 상위객체인 Car객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다.
+		
+		System.out.println("###palisade객체를 palisade타입의 참조변수로 참조");
+		Palisade palisade1 = new Palisade();
+		palisade1.start();//Car객체의 기능
+		palisade1.drive();//Car객체의 기능
+		palisade1.speedUp();//Car객체의 기능
+		palisade1.changeDriveMode();//palisade객체의 기능
+		palisade1.driveOffRoad();//SUV객체의 기능
+		palisade1.speedDown();//Car객체의 기능
+		palisade1.stop();//Car객체의 기능
+		//palisade1 참조변수로 palisade객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다. 
+		//palisade1 참조변수로 SUV객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다. 
+		//palisade1 참조변수로 상위객체인 Car객체의 공개된 모든 속성과 공개된 모든 기능을 사용할 수 있다. 
+				
+		
+		//클래스 형변환이 발생한다. 
+		//생성한 객체의 타입과 참조하는 변수의 타입이 서로 다르다. 
+		//생성한 객체의 타입은 하위클래스타입이고, 참조하는 변수의 타입은 상위클래스 타입이다.
+		
+		System.out.println("###SUV객체를 상위클래스인 Car타입의 참조변수로 참조");
+		Car suv2 = new SUV();
+		suv2.start();
+		suv2.start(); //Car객체의 기능
+		suv2.drive(); //Car객체의 기능
+		//suv2.driveOffRoad(); //SUV객체의 기능, 에러가 남. Car를 참조하는 객체기 때문에 사용할 수 없음
+		((SUV)suv2).driveOffRoad();//이제 사용가능함.실제 생성된 SUV객체를 참조하도록 강제형변환 할 수 있다.
+		suv2.speedUp(); //Car객체의 기능
+		suv2.speedDown();//Car객체의 기능
+		suv2.stop();//Car객체의 기능
+		// Car타입의 car 참조변수로 SUV 객체를 참조하면 SUV객체의 공개된 모든 속성과 기능을 사용할 수 없다.
+		//실제로 생성한 객체는 SUV객체지만, 참조변수가 Car객체를 참조하고 있기 떄문에 
+		//Car객체의 공개된 모든 속성과 기능만 사용할 수 있다.
+		//SUV객체의 공개된 속성과 공개된 기능을 사용하기 위해서는 형변환 연산자를 이용해서 SUV를 강제 형변환하여 사용해주어야한다. 
+		//단,강제형변환을 하더라도 suv2의 참조변수의 참조값이 변하는 것은 아니다.
+		
+		System.out.println("###RacingCar객체를 상위클래스인 Car타입의 참조변수로 참조");
+		Car racingCar2 = new RacingCar();
+		racingCar2.start();//Car객체의 기능
+		racingCar2.drive();//Car객체의 기능
+		racingCar2.speedUp();//Car객체의 기능
+		//racingCar2.race();//RacingCar객체의 기능 ,에러가 남. Car를 참조하는 객체기 때문에 사용할 수 없음
+		((RacingCar)racingCar2).race();//이제 사용가능함. 강제형변환을 이용함
+		racingCar2.speedDown();//Car객체의 기능
+		racingCar2.stop();//Car객체의 기능
+		
+		System.out.println("### Palisade객체를 상위클래스인 Car타입의 참조변수로 참조");
+		Car palisade2 = new Palisade();
+		palisade2.start();//Car객체의 기능
+		palisade2.drive();//Car객체의 기능
+		palisade2.speedUp();//Car객체의 기능
+		//palisade2.changeDriveMode();//palisade객체의 기능,에러가 남. Car를 참조하는 객체기 때문에 사용할 수 없음
+		((Palisade)palisade2).changeDriveMode();//생성된 palisade의 객체를 참조하도록 강제 형변환을 했기 때문에 
+		// palisade의 기능을 사용할 수 있음, 2칸 바깥쪽으로 내보내는 것도 가능함.
+		((SUV)palisade2).driveOffRoad();//생성된 palisade객체가 포함하고 있는 SUV객체를 참조하도록 강제 형변환 할 수 있다.
+		//SUV객체를 바라보도록 강제 형변환을 했기 때문에 palisade기능은 사용할 수 없지만, SUV를 사용할 수있음
+		//palisade2.driveOffRoad();//SUV객체의 기능 오류발생. SUV를 참조하는 객체기 때문에 사용할 수 없음
+		palisade2.speedDown();//Car객체의 기능
+		palisade2.stop();//Car객체의 기능
+		// Car타입의 palisade2 참조변수로 palisade 객체를 참조하면 palisade객체의 공개된 모든 속성과 기능을 사용할 수 없다.
+		//실제로 생성한 객체는 palisade객체지만, 참조변수가 Car객체를 참조하고 있기 떄문에 
+		//Car객체의 공개된 모든 속성과 기능만 사용할 수 있다.
+		//palisade객체와 SUV객체의 공개된 속성과 공개된 기능을 사용하기 위해서는 형변환 연산자를 이용해서 palisade객체 혹은SUV객체를 강제 형변환하여 사용해주어야한다. 
+		//단,강제형변환을 하더라도 palisade2의 참조변수의 참조값이 변하는 것은 아니다.
+		
+		//클래스 형변환이 발생한다. 
+		// 생성한 객체의 타입과 참조하는 변수의 타입이 서로 다르다. 
+		// 생성한 객체의 타입은 하위 클래스 타입이고, 참조하는 변수의 타입은 상위 클래스 타입입니다. 
+		
+	}
+}
