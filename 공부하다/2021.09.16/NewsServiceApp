@@ -1,0 +1,18 @@
+package example_09_16_polymorphisn;
+
+public class NewsServiceApp {
+
+	public static void main(String[] args) {
+		Messanger messenger1 = new Messanger();
+		KakaoTalk messenger2 = new KakaoTalk("홍길동", "고양이사진");
+		EmailMessenger messenger3 = new EmailMessenger("admin","zxcv1234");
+		
+		NewsService service = new NewsService();
+		//NewsService에 아무것도 안넣어 놨기 때문에 null오류가 남
+		service.setMessenger(messenger1);//이렇게 넣어줘야함., 조립의 형식
+		//service.setMessenger(messenger2);
+		//service.setMessenger(messenger3);
+		//newService가 결정하는 것이 아닌, App가 결정하도록 만들어짐 
+		service.broadcastNews("010-1111-1111", "010-2222-2222", "코로나가 종식되었습니다.");
+	}
+}
