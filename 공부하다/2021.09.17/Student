@@ -1,0 +1,28 @@
+package example_09_17_polymorphism;
+
+public class Student extends Person {
+
+	private int grade; 
+	private String dept;
+	
+	public Student() {}
+	public Student (int no, String type, String name, String tel, int grade, String dept) {
+		super(no, type, name, tel);//상속받은 name과 tel
+		this.grade = grade;
+		this.dept = dept;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public String getDept() {
+		return dept;
+	}
+	//Person의 print기능()재정의
+	@Override
+	public void print() {
+		super.print();//부모에게 있는 프린트 
+		System.out.println("학년 :" + grade);
+		System.out.println("소속학과 :" + dept);
+	}
+	
+}
