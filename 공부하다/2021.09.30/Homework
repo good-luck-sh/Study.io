@@ -1,0 +1,150 @@
+//과제로 인하여 정리, 되풀이 공부를 못했다 ..
+//당일 저녁 12시까지, 다음날 6시부터 수업바로전까지 문제풂! 
+// 엇비슷하게 되었지만.. 잉?! 중간값, 마지막값에 오류가 나타남!! 
+// 일요일에 제사지만 일단 문제 풀어보기, 요즘에 실기 공부를 못하고 있어서 큰일이다.!
+package example_09_30_stringApp;
+
+public class ScoreService {
+
+	private Score[] database = new Score[100];
+	private int position = 0;
+	public ScoreService() {
+		database[position++] = new Score("홍길동",100,50,100);
+		database[position++] = new Score("김쭝찌",80,70,20);
+		database[position++] = new Score("김쩡글",70,70,80);
+		database[position++] = new Score("김메롱",50,80,90);
+		database[position++] = new Score("김정남",80,40,60);
+	}//생성자 안에다가 입력을 해야함
+	//같은 name이면 출력하기 위한 방법의 메소드를 제작한다.
+	private Score getPrintName (String score){
+		//클래스 내에서만 진행할 것이기 때문에 접근제한자를 private으로 설정한다. 
+		//이름을 매개변수로 확인하여 Score타입으로 반환할 예정이다.
+		Score foundData = null;
+		// Score의 타입의 참조변수를 null로 설정한다. 
+		for(Score databases : database) {
+			if(databases == null) {
+				break;
+			}
+			//향상된 for문을 통해 배열을 돌린다.
+			if(score != null && databases.getName().equals(score)) {
+				//이름이null이 아니고 data의 이름과 name이 동일하다면
+				foundData = databases;
+				//데이터를 Score참조변수에 입력한다. 
+				break;
+				//종료한다.
+			}
+		}return foundData;
+		//foundData를 보낸다
+	}
+
+
+	// 새 성적정보를 전달받아서 배열에 추가하는 기능(추가구현? 새 성적이 입력될 때마다 성적이 가장 좋은 학생이 0번째 위치하도록 하기)
+	public void addNewScore(Score score) {
+		Score max = null;
+		Score min = null;
+		if(score == null) {
+			System.out.println("잘 못 입력하셨습니다. ");
+			return;
+		}
+		if(database[position]==null) {
+			//database가 position이 null이면
+			database[position] = score;
+			//score객체를 null에 넣는다.
+			position++;
+			//그리고 position의 값을 1증가 시킨다.
+			System.out.println("입력이 완료 되었습니다.");
+		}
+		for(int i = database.length-1; i>=0;i--) {
+			if(database[i] == null) {
+				break;
+			}
+			if(min.getTotal()<database[i].getTotal()) {
+				min = database[i];
+				database[i+1] = database[i];
+				position++;
+			}else if(max>database[i].getTotal()) {
+				database[i-1] = database[i];
+				
+			}
+		}
+	}
+	// 모든 학생의 성적을 출력하는 기능
+	public void printAllScore() {
+		for(Score databases : database) {
+			if(databases == null) {
+				break;
+			}
+			System.out.println("학생 이름 : "+databases.getName());
+			System.out.println("국어점수: "+databases.getKor());
+			System.out.println("수학점수: "+databases.getMath());
+			System.out.println("영어점수: "+databases.getEng());
+			System.out.println("총 점: "+databases.getTotal());
+			System.out.println("평균점수 :"+databases.getAverage());
+		}
+		}
+
+	//학생이름을 전달받아서 해당 학생의 성적정보를 출력하는 기능
+	public void printScoreDetail(String name) {
+		//이미 이름에서 걸렀기 때문에 
+		Score check = this.getPrintName(name);
+		if(check == null) {
+			return;
+		
+		}
+			//check가 빈값이면 빠른 종료를 진행한다.
+			System.out.println("학생 이름 : "+check.getName());
+			System.out.println("국어점수: "+check.getKor());
+			System.out.println("수학점수: "+check.getMath());
+			System.out.println("영어점수: "+check.getEng());
+			System.out.println("총 점: "+check.getTotal());
+			System.out.println("평균점수 :"+check.getAverage());
+		}
+
+	// 변경된 성적정보를 전달받아서 해당 학생의 성적정보를 변경하는 기능(추가구현? 성적이 변경되면 해당 순위도 변경하기)
+	public void updateScore(Score score) {
+		Score preStudent = score;
+		Score newStudent = score;
+		String prename = newStudent.getName();
+		int preKor = newStudent.getKor();
+		int preEng = newStudent.getEng();
+		int preMath = newStudent.getMath();
+		
+		preStudent = this.getPrintName(prename);
+		if(preStudent == null) {
+			return;
+		}
+		if(preStudent.getKor() != preKor) {
+			preStudent.setKor(preKor);
+		}
+		if(preStudent.getEng() != preEng) {
+			preStudent.setEng(preEng);
+		}
+		if(preStudent.getMath() != preMath) {
+			preStudent.setMath(preMath);
+		}
+		System.out.println("변경이 완료되었습니다.");
+		
+		}
+	// 학생이름을 전달받아서 해당 학생의 성적정보를 배열에서 삭제하는 기능(추가구현? 성적정보가 삭제되면 해당 성적 이후의 모든 값들을 이동시키기)
+	public void deleteScore(String name) {
+		int deletPosition = -1;
+		Score score = null;
+		
+		for(int i = 0; i<database.length-1; i++) {
+			if(database[i] == null) {
+				break;
+			}
+			if(name != null && database[i].getName().equals(name)) {	
+				database[i] = database[position-1];
+				database[position-1] = null;
+				position--;
+				System.out.println("삭제가 완료되었습니다.");
+				
+			}
+
+			}
+			
+			
+		
+		}
+		}
