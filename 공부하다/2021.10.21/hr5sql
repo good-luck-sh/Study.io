@@ -1,0 +1,8 @@
+-- 연락처 정보를 저장하는 테이블 생성하기 
+CREATE TABLE TB_SAMPLE_CONTACTS(
+    NO NUMBER(5) PRIMARY KEY,               --순번
+    NAME VARCHAR2(20) NOT NULL,             --이름
+    PHONE_NUMBER VARCHAR2(20) NOT NULL,     --전화번호
+    EMAIL VARCHAR2(250),                    --이메일
+    COMPANY VARCHAR2(100)                   --소속회사 
+);
