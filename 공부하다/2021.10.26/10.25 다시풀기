@@ -1,0 +1,60 @@
+-- EMPLOYEES 테이블에서 이름이 8자인 직원들의 이름을 조회하기
+SELECT FIRST_NAME
+FROM EMPLOYEES
+WHERE LENGTH(FIRST_NAME) = '8';
+-- EMPLOYEES 테이블에서 이름이 8글자 이상인 직원들의 이름과 글자수를 조회하기
+SELECT FIRST_NAME, LENGTH(FIRST_NAME) AS NAME_LENGTH 
+FROM EMPLOYEES
+WHERE LENGTH(FIRST_NAME) >= '8'
+ORDER BY NAME_LENGTH DESC;
+-- EMPLOYEES 테이블에서 직원의 이름을 전부 대문자로 변환했을 때 3번째 글자가 'E'인 모든 직원의 이름을 조회하기
+SELECT FIRST_NAME
+FROM EMPLOYEES
+WHERE SUBSTR(UPPER(FIRST_NAME), 3, 1) = 'E'; 
+--SUBSTR(컬럼명, 3번째부터 1번까지 잘라낼경우 )
+-- EMPLOYEES 테이블에서 2007년도에 입사한 직원들의 직원아이디, 이름, 입사일을 조회하기
+SELECT EMPLOYEE_ID, FIRST_NAME,HIRE_DATE
+FROM EMPLOYEES
+WHERE TO_CHAR(HIRE_DATE,'YYYY') = '2007';
+--TO_CHAR은 원하는 모양대로 자를 수 있다. 
+-- EMPLOYEES 테이블에서 2005년에 입사한 직원 중에서 커미션을 받는 직원의 아이디, 이름, 급여, 커미션을 조회하기
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, COMMISSION_PCT
+FROM EMPLOYEES
+WHERE HIRE_DATE >= '2005/01/01' AND HIRE_DATE > TO_DATE('2005/12/31')+1
+AND COMMISSION_PCT IS NOT NULL;
+-- EMPLOYEES 테이블에서 오늘이 입사일인 직원의 아이디, 이름, 입사일을 조회하기
+SELECT EMPLOYEE_ID, FIRST_NAME, HIRE_DATE
+FROM EMPLOYEES
+WHERE HIRE_DATE = TRUNC(SYSDATE);
+-- EMPLOYEES 테이블에서 10월달에 입사한 모든 사원들의 아이디, 이름, 입사일을 조회하기
+SELECT EMPLOYEE_ID, FIRST_NAME, HIRE_DATE
+FROM EMPLOYEES 
+WHERE TO_CHAR(HIRE_DATE,'MM')= '10';
+
+-- EMPLOYEES 테이블에서 60번 부서에 소속된 사원들의 근무개월수를 오늘을 기준으로 계산해서 조회하기
+-- 직원아이디, 이름, 입사일, 근무개월수가 조회되어야 하고, 근무개월수를 기준으로 오름차순 정렬한다.
+SELECT EMPLOYEE_ID, FIRST_NAME, TRUNC(MONTHS_BETWEEN(SYSDATE,HIRE_DATE)) AS MONTH_DAY
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 60
+ORDER BY MONTH_DAY DESC;
+
+-- 사원의 이름과 급여를 표시하고, 급여에 대해서 #로 표시하기
+-- '#'하나는 급여 1000에 해당한다.
+
+-- 출력예시
+-- 홍길동 4300 ####
+-- 김유신 8700 ########
+-- 강감찬 6500 ######
+SELECT FIRST_NAME, SALARY , LPAD('#', TRUNC(SALARY/1000),'#') --LPAD(좌측붙여서) ('컬럼명',표시할 갯수,바꿀 형태)
+FROM EMPLOYEES;
+-- EMPLOYEES 테이블에서 2006년 상반기에 입사한 직원들의 직원아이디, 이름, 입사일, 연봉을 계산하기
+-- 연봉은 급여*12 + 급여*커미션*12다.
+SELECT EMPLOYEE_ID, FIRST_NAME, HIRE_DATE, SALARY*12 + SALARY*TRUNC(NVL(COMMISSION_PCT,0))*12 AS TOTAL_SALARY
+FROM EMPLOYEES
+WHERE HIRE_DATE >= '2006/01/01' AND HIRE_DATE < TO_DATE('2006/06/30')+1;
+
+-- EMPLOYEES 테이블에서 100번 상사에게 보고하는 직원중에서 커미션을 받은 직원들의 직원아이디, 이름, 급여, 커미션을 조회하기
+
+-- EMPLOYEES 테이블에서 80번부서에 소속된 직원들의 평균급여, 최소급여, 최대급여를 조회하기
+
+-- EMPLOYEES 테이블에서 100번 상사에게 보고하는 직원의 수를 조회하기
