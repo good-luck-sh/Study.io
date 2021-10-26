@@ -1,0 +1,189 @@
+--먼저 JOIN을 진행하기전에 연관있는 TABLE이 어떤건지 생각해야한다. 
+--조인
+--두 개 이상의 테이블의 연관 있는 행들끼리 연결해서 새로운 가상의 테이블을 생성하고,
+--그 가상의 테이블에서 데이터를 조회하는 것이다. 
+
+--조인의 종류 
+-- 등가 조인, 비등가 조인, 셀프조인, 포괄조인
+--등가 조인 : 값이 같은 행끼리 연결 짓는 것을 등가 조인이라고 한다. 
+--테이블 조인하기 
+--SELECT 테이블1.컬럼명, 테이블2.컬럼명, ... 
+--FROM 테이블 1, 테이블 2
+--WHERE 조인조건;
+--조인 조건이 반드시 포함되어야한다. 조인조건이 없으면 불필요한 행들이 연결된 것이다. 
+
+--등가조인 : 값이 같은 것끼리 연결되게 하는 것 
+--조인 조건에서 = 연산자를 사용해서 선행 테이블과 후행테이블의 연관있는 행을 조인시킨다. 
+
+--사원아이디, 사원이름, 소속부서아이디,           소속부서 이름 조회하기 
+--EMPLOYEES,EMPLOYEES,EMPLOYEES/DERPARTMENRS,    DERPARTMENRS : 조인할 테이블 EMPLOYEES와 DEPARTMENTS
+--                                                            : 조인 조건 - DEPARTMENT_ID값이 서로 같은 행끼리 연결해야한다. 
+SELECT EMPLOYEES.EMPLOYEE_ID, EMPLOYEES.FIRST_NAME, EMPLOYEES.DEPARTMENT_ID, DEPARTMENTS.DEPARTMENT_ID, DEPARTMENTS.DEPARTMENT_NAME
+FROM EMPLOYEES, DEPARTMENTS -- 일단 JOIN은 완성 --여기까지 사용하면 카티션 곱
+WHERE EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID --조인 조건  --> 가상의 TABLE만들어짐
+ORDER BY EMPLOYEES.EMPLOYEE_ID ASC;
+
+--사원아이디, 사원이름, 직종아이디, 직종제목, 최소급여, 최대급여, 급여를 조회하기 
+-- E          E           E/J        J      J         J        E                  조인할테이블 : EMPLOYEES,JOBS
+--조인조건 : 사원테이블의 직종아이디와 직종테이블의 직종아이디가 같은 값을 가지는 행끼리 연결
+SELECT A.EMPLOYEE_ID, A.FIRST_NAME, A.JOB_ID, B.JOB_TITLE, B.MIN_SALARY, B.MAX_SALARY, A.SALARY
+FROM EMPLOYEES A, JOBS B --테이블에 별칭을 줄 수 있다. 
+WHERE A.JOB_ID = B.JOB_ID;
+-- 테이블에 별칭을 줄때는 A, B OR E, J로 작성해도 상관없다. 
+
+--부서아이디, 부서명, 부서소재지 아이디, 소재지 도시명을 조회하기
+-- D           D         D/L              L                 조인할 테이블 : DEPARTMENTS, LOCATIONS
+--조인 조건 : 부서테이블의 소재지 아이디와 소재지 테이블의 소재지 아이디가 같은 값을 가지는 행끼리 연결
+SELECT D.DEPARTMENT_ID, D.DEPARTMENT_NAME, L.LOCATION_ID, L.CITY  --가상의 테이블이 완성되었다. 
+FROM DEPARTMENTS D, LOCATIONS L
+WHERE D.LOCATION_ID = L.LOCATION_ID
+ORDER BY D.DEPARTMENT_ID;
+
+--등가조인에서는 테이블 갯수의 -1만큼의 반드시 조인조건이 존재해야한다. <안그러면 카티션 곱이 생겨버린다.> 
+-- 사원아이디, 사원이름, 직종제목, 소속부서명을 조회하기
+--    E          E        J        D                 조인할 테이블 : EMPLOYEES, DEPARTMENTS,JOBS
+-- 직종 제목을 조인하기 위한 조인조건 :직원테이블의 직종아이디와 직종테이블의 직종아이디가 서로 같은 행끼리 연결
+-- 소속 부서명을 조회하기 위한 조인 조건 : 직원테이블의 부서아이디와 부서테이블의 부서 아이디가 서로 같은 행끼리 연결
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, J.JOB_TITLE, D.DEPARTMENT_NAME
+FROM EMPLOYEES E, JOBS J, DEPARTMENTS D
+WHERE E.JOB_ID = J.JOB_ID 
+AND E.DEPARTMENT_ID= D.DEPARTMENT_ID
+ORDER BY E.EMPLOYEE_ID ASC;
+
+--사원 아이디,사원이름,소속부서명, 소속부서소재지 도시명을 조회하기 
+-- E             E    D           L      조인할테이블 :EMPLOYEES, DEPARTMENTS,JOBS
+--소속 부서명을 조회하기 위한 조인조건 : 직원테이블의 소속부서아이디와 부서테이블의 부서아이디가 서로 같은 행끼리 연결
+-- 소재지 도시명을 조회하기 위한 조인 조건 : 부서테이블에서 그 직원이 소속된 부서의 위치 아이디와 소재지의 위치아이디가 서로 같은 행끼리 연결
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, D.DEPARTMENT_NAME, L.CITY
+FROM EMPLOYEES E, DEPARTMENTS D, LOCATIONS L 
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+AND D.LOCATION_ID = L.LOCATION_ID
+ORDER BY E.EMPLOYEE_ID ASC;
+
+--급여를 10000~ 15000을 받는 사원들의 아이디, 이름, 급여, 직종제목, 소속부서명을 조회하기 
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.SALARY, J.JOB_TITLE, D.DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D, JOBS J
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+AND E.JOB_ID = J.JOB_ID
+AND E.SALARY >= 10000 AND E.SALARY <= 15000;
+
+
+--커미션을 받는 직원들의 직원아이디와 이름, 급여, 커미션, 연봉, 소속부서명을 조회하기 
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.COMMISSION_PCT, E.SALARY*12+E.SALARY*E.COMMISSION_PCT*12 AS ANNUAL_SALARY, D.DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID 
+AND E.COMMISSION_PCT IS NOT NULL;
+
+--부서테이블에서 부서관리자가 지정된 부서의 부서아이디, 부서명, 부서관리자 이름을 조회하기 
+SELECT D.DEPARTMENT_ID, D.DEPARTMENT_NAME, E.FIRST_NAME
+FROM DEPARTMENTS D, EMPLOYEES E
+WHERE D.MANAGER_ID IS NOT NULL
+AND D.MANAGER_ID = E.EMPLOYEE_ID;
+--먼저 걸러내기 위하여 D.MANAGER_ID IS NOT NULL로 설정후 작성
+
+-----------------------------------그냥 테이블 조회함
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID
+FROM EMPLOYEES
+ORDER BY DEPARTMENT_ID;
+---------------------------------------------------------------------------------
+-- 비등가 조인 실습을 위한 테이블 생성 
+CREATE TABLE SALARY_GRADE (
+    GRADE CHAR(1) PRIMARY KEY, --한글자
+    MIN_SALARY NUMBER(8,2),
+    MAX_SALARY NUMBER(8,2)
+);
+INSERT INTO SALARY_GRADE VALUES('A',50000,99999);
+INSERT INTO SALARY_GRADE VALUES('B',25000,49999);
+INSERT INTO SALARY_GRADE VALUES('C',12500,24999);
+INSERT INTO SALARY_GRADE VALUES('D',6500,12499);
+INSERT INTO SALARY_GRADE VALUES('E',3000,6499);
+INSERT INTO SALARY_GRADE VALUES('F',1500,2999);
+INSERT INTO SALARY_GRADE VALUES('G',0,1499);
+COMMIT;
+--------------------------------------------------------------------------------
+-- 비등가 조인  : TABLE을 하나 만들어야한다. 
+-- 테이블을 조인할 때 같은 값을 가진 행끼리 조인하는 것이 아니라, 크다/작다 조건을 이용해서 행을 조인시키는 방식이다.
+-- 등급(등급마다 보통 최소값/ 최대값 정해져있고, 해당 범위에 속할 때 그 등급이 부여된다. )을 조회할 때 활용된다.  
+-- 해당 등급을 계산할 때 사용을 한다. 거의 그 구간의 부여되는 등급 계산시에 사용됨
+
+
+-- 직원아이디, 직원이름, 급여, 급여등급을 조회하기 
+-- E          E         E       S            조인할 테이블: EMPLOYEES, SALARY_GRADE
+-- 조인조건 : 직원의 급여가 해당등급의 최소등급이상, 최대 등급이하에 해당하는 행을 연결시킨다. 
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.SALARY,S.GRADE
+FROM EMPLOYEES E, SALARY_GRADE S
+WHERE E.SALARY >= S.MIN_SALARY AND E.SALARY <= MAX_SALARY
+ORDER BY S.GRADE ASC, E.SALARY DESC;
+
+--80번 부서에 소속된 직원중에서 급여등급이 E등급에 속하는 직원의 아이디, 이름, 직종아이디, 급여를 조회하기 
+--E/D         조인할 테이블 : EMPLOYEES, SALATY_GRADE
+--검색조건 : 소속부서 아이디가 80이다. 
+--검색조건 : 급여등급이 E등급이다.
+--조인조건 : 급여가 등급테이블의 최소급여 이상, 최대급여이하이다. 
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.SALARY, E.JOB_ID 
+FROM EMPLOYEES E, SALARY_GRADE S
+WHERE E.DEPARTMENT_ID = 80
+AND E.SALARY >= S.MIN_SALARY AND E.SALARY <= S.MAX_SALARY AND S.GRADE = 'E'--가능하면 별칭 꼭 적기, 성능면에서 좋음
+ORDER BY E.EMPLOYEE_ID;
+
+--급여등급이 D등급에 해당하는 직원의 아이디, 이름, 직종아이디, 소속부서명, 근무지 도시명을 조회하기
+--      S                          E      E      E             D        L 조인할테이블: EMPLOYEES,DEPARTMENTS,LOCATION,SALARY_GRADE
+--검색조건 : 급여등급이 D등급이다.
+--조인조건 : 직원테이블의 급여가 등급테이블의 최소급여이상, 최대급여이하다.
+--조인조건 : 직원테이블의 소속부서 아이디와 부서테이블의 부서아이디가 같다. 
+--조인조건 : 부서테이블의 소재지 아이디와 소재지 테이블의 소재지 아이디가 같다.
+
+
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.JOB_ID, E.SALARY, D.DEPARTMENT_NAME, L.CITY 
+FROM EMPLOYEES E, LOCATIONS L, SALARY_GRADE S, DEPARTMENTS D
+WHERE S.GRADE = 'D' --검색조건
+AND E.SALARY >= S.MIN_SALARY AND E.SALARY <= S.MAX_SALARY --조인 조건
+AND E.DEPARTMENT_ID = D.DEPARTMENT_ID
+AND D.LOCATION_ID = L.LOCATION_ID
+ORDER BY E.EMPLOYEE_ID;
+
+
+--모든 직원의 아이디, 이름, 직종아이디, 직종제목, 급여, 급여등급, 소속부서 아이디, 소속부서명, 부서소재지 도시명을 조회하기
+--           E       E     EJ           J       E     ES        ED                D           L
+-- EMPLOYEES, JOBS, SALARY_GRADE, DEPARTMENTS, LOCATRION
+--조인조건 : 직원테이블의 급여가 등급테이블의 최소급여이상, 최대급여이하다.
+--조인조건 : 직원테이블의 소속부서 아이디와 부서테이블의 부서아이디가 같다. 
+--조인조건 : 부서테이블의 소재지 아이디와 소재지 테이블의 소재지 아이디가 같다.
+--조인조건 : 직원테이블의 직종아이디와 직종테이블의 직종아이디가 같다.
+
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.JOB_ID, J.JOB_TITLE, E.SALARY, S.GRADE, E.DEPARTMENT_ID, D.DEPARTMENT_NAME, L.CITY
+FROM EMPLOYEES E, JOBS J, SALARY_GRADE S, DEPARTMENTS D, LOCATIONS L
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+AND E.JOB_ID = J.JOB_ID
+AND E.SALARY >= S.MIN_SALARY AND E.SALARY<= S.MAX_SALARY
+AND D.LOCATION_ID = L.LOCATION_ID
+ORDER BY S.GRADE ASC;
+--'Oxford'에서 일하고 있는 직원들의 아이디, 이름, 직종아이디, 급여, 급여등급을 조회하기 
+--          L(STATE_PROVINCE)    E       E      E J        E      ES    LOCATRION, DEPARTMENTS(관계속에 숨겨진 테이블),EMPLOYEE,SALARY_GRADE
+--검색조건 : 도시명이 Oxford다 . 
+--조인조건 : 직원테이블의 급여가 등급테이블의 최소급여이상, 최대급여이하다.
+--조인조건 : 직원테이블의 소속부서 아이디와 부서테이블의 부서아이디가 같다. 
+--조인조건 : 부서테이블의 부서아이디와 직원테이블의 소속부서아이디가 같다 
+SELECT E.EMPLOYEE_ID, FIRST_NAME, E.JOB_ID, E.SALARY, S.GRADE
+FROM EMPLOYEES E, LOCATIONS L, DEPARTMENTS D, SALARY_GRADE S , JOBS J
+WHERE L.CITY = 'Oxford'
+AND E.JOB_ID = J.JOB_ID
+AND D.LOCATION_ID = L.LOCATION_ID
+AND E.DEPARTMENT_ID = D.DEPARTMENT_ID --관계속에 숨겨진 테이블을 연결해 줌
+AND E.SALARY >= S.MIN_SALARY AND E.SALARY <= S.MAX_SALARY
+ORDER BY S.GRADE ASC;
+
+SELECT EMPLOYEE_ID, LPAD(' ',level*2, ' ')|| FIRST_NAME,MANAGER_ID AS 상사
+FROM EMPLOYEES
+START WITH employee_id = 100
+CONNECT BY PRIOR EMPLOYEE_ID = MANAGER_ID;
+--계층적인 형태를 가지는 조직도
+
+
+
+
+
+
+
+
+
