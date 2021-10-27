@@ -1,0 +1,162 @@
+--셀프조인
+--하나의 테이블 이용해서 조인을 구성하는 것
+--하나의 테이블 안에 상위테이터, 하위데이터가 있는 경우 상위데이터와 하위데이터를 서로 연관지어서 조회할 때 
+--셀프조인을 사용한다. 
+--하나의 테이블의 역활을 각각 나누어서 조인에 참여시켜야 한다.
+
+--60번 부서에 소속된 직원들의 직원아이디, 이름, 상사의 이름을 조회하기 
+SELECT E1.EMPLOYEE_ID, E1.FIRST_NAME EMP_NAME, E2.FIRST_NAME MGR_NAME
+FROM EMPLOYEES E1, EMPLOYEES E2
+WHERE E1.MANAGER_ID = E2.EMPLOYEE_ID
+AND E1.DEPARTMENT_ID = 60;
+
+--관리자가 지정된 모든 직원들의 직원 아이디, 직원이름, 직원급여, 직원급여등급, 직원의 매니저 아이디, 매니저 이름
+--       EMP                    EMP         EMP    EMP        S1             MGR           MGR
+--매니저 급여 ,매니저 급여등급, 직원과 매니저의 급여차이
+--      MGR      S2             EMG,MGR
+SELECT  EMP.EMPLOYEE_ID AS EMP_ID , --직원의 아이디
+        EMP.FIRST_NAME AS EMP_FIRST_NAME, --직원의 이름
+        EMP.SALARY AS EMP_SALARY,       --직원의 급여
+        S1.GRADE AS EMP_GRADE,          --직원의 급여등급
+        MGR.EMPLOYEE_ID AS MGR_ID,      --관리자의 직원아이디
+        MGR.FIRST_NAME AS MGR_NAME,     --관리자의 이름
+        S2.GRADE AS MGR_GRADE,          --관리자의 급여
+        MGR.SALARY - EMP.SALARY  AS DIFFRENCE       --관리자의 급여등급
+FROM EMPLOYEES EMP, SALARY_GRADE S1, EMPLOYEES MGR, SALARY_GRADE S2 --관리자와 직원의 급여차이 
+WHERE EMP.MANAGER_ID = MGR.EMPLOYEE_ID          --직원의 관리자아이디와 관리자의 직원아이디가 같은값을 가진 행끼리 연결
+AND EMP.MANAGER_ID IS NOT NULL                  --관리자가 있는 직원만 필터링
+AND EMP.SALARY >= S1.MIN_SALARY AND EMP.SALARY <= S1.MAX_SALARY -- 직원급여와 직원등급을 비등가 조인으로 연결
+AND MGR.SALARY >= S2.MIN_SALARY AND MGR.SALARY <= S2.MAX_SALARY;-- 관리자 급여와 급여등급을 비등가 조인으로 연결
+
+
+-------------------------------------------------------------------------------
+--포괄조인 , OUTER조인 
+-- 포괄조인은 한쪽테이블에는 데이터가 있고, 다른쪽 테이블에는 데이터가 없는 경우에 데이터가 있는 쪽 테이블의 내용을 전부 조회하는 방법이다. 
+--  null이없는 행에 (+)을 붙여 null의 데이터가 출력되게 하는 방법이다. 
+
+--포괄조인을 사용하지 않았을 때 
+-- 부서아이디, 부서이름, 부서관리자 아이디, 부서 관리자 이름 조회하기 
+--   D          D         D                 E
+SELECT D.DEPARTMENT_ID, D.DEPARTMENT_NAME, D.MANAGER_ID, E.FIRST_NAME
+FROM DEPARTMENTS D, EMPLOYEES E
+WHERE D.DEPARTMENT_ID = E.DEPARTMENT_ID
+ORDER BY DEPARTMENT_ID ASC;
+
+--포괄조인을 사용했을 때 
+-- 부서아이디, 부서이름, 부서관리자 아이디, 부서 관리자 이름 조회하기 
+--   D          D         D                 E
+SELECT D.DEPARTMENT_ID, D.DEPARTMENT_NAME, D.MANAGER_ID, E.FIRST_NAME
+FROM DEPARTMENTS D, EMPLOYEES E
+WHERE D.DEPARTMENT_ID = E.DEPARTMENT_ID(+)
+ORDER BY DEPARTMENT_ID ASC;
+
+
+--사원아이디, 사원이름, 소속부서명 조회하기 
+-- 소속부서가 지정되지 않은 사원도 조회하기 
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, D.DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+ORDER BY E.EMPLOYEE_ID;   --178번사원이 조회되지 않음, 부서 ID가 NULL
+
+-- 소속부서가 지정되지 않은 사원도 조회하기 -> DEPARTMENT쪽에는 NULL이 없기 때문에 조회가 어려워서 DEPARTMENT쪽에 (+)해준다
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, D.DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID(+)
+ORDER BY E.EMPLOYEE_ID; 
+
+----------------------------------------------------------------------------------
+--그룹함수(다중행 함수 )
+--COUNT(*) , COUNT(컬럼명), SUM(컬럼명), AVG(컬럼명), MIN(컬럼명) ,MAX(컬럼명)
+--다중행함수 혹은 그룹함수는 행의 그룹당 조회결과가 하나 조회되는 함수다. 
+--행의 그룹을 지정하지 않으면 테이블의 모든 행이 하나의 그룹이다.
+
+--행의 그룹을 지정하지 않았기 때문에 테이블의 모든행에 대해서 COUNT(*)함수가 실행된다.
+SELECT COUNT(*)
+FROM EMPLOYEES; -- 테이블의 모든행의 갯수가 지정된다. 모든 행을 대상으로 실행되기 때문이다. 
+
+--GROUP BY절
+--테이블의 행을 지정된 컬럼의 값이 같은 것끼리 그룹으로 묶는다. 
+--엑셀로 비교한다면 필터의 역활을 한다. GROUP BY를 사용하고 다중행함수를 사용하지 않는 경우는 없다.
+--다중행함수와 같이 사용하면 그룹마다 다중행함수를 실행해서 그룹마다 실행결과를 조회할 수 있다.
+--테이블에 저장된 데이터에 대해서 그룹별 합계/평균/최소값/최대값/분산/표준편차 등의 결과를 조회할 수 있다. 
+--GROUP BY절에 사용했던 컬럼이나 표현식은 다중행 함수와 같이 SELECT절에서 사용할 수 있다.
+
+--직원테이블의 직원들을 소속부서별로 구분했을 때 각 부서별 인원수를 조회하기 
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 10;
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 20;
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 30;
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 40;
+------원래는 이렇게 진행을 했었다. 너무 반복적 
+SELECT COUNT(*)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID;
+--뭐가 뭔지 모르기 때문에 SELECT바로 옆으로 GROUP BY절에 사용한 컬럼은 SELECT문옆에 바로 적을 수 있다.
+SELECT DEPARTMENT_ID ,COUNT(*)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+ORDER BY 1;
+
+--입사년도별 직원수를 조회하기 
+SELECT TO_CHAR(HIRE_DATE,'YYYY') YEAR, COUNT(*)
+FROM EMPLOYEES
+GROUP BY TO_CHAR(HIRE_DATE,'YYYY')
+ORDER BY YEAR ASC; --표현식도 입력가능하다. 입사년도별로 조회가 가능하다. 
+
+--소속부서별 평균급여 조회하기 (부서이름, 평균급여)
+SELECT D.DEPARTMENT_NAME , ROUND(AVG(SALARY)) SALARY_AVG
+FROM EMPLOYEES E, DEPARTMENTS D
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+GROUP BY D.DEPARTMENT_NAME
+ORDER BY 1 ASC;
+
+--입사년도별 부서별 입사 사원수 조회하기 
+SELECT TO_CHAR(HIRE_DATE,'YYYY') YEAR,DEPARTMENT_ID, COUNT(*)
+FROM EMPLOYEES
+GROUP BY TO_CHAR(HIRE_DATE,'YYYY'), DEPARTMENT_ID
+ORDER BY 1,2;
+
+--각 영역별(REGIONS)별, 사원수 조회하기 
+SELECT R.REGION_NAME, COUNT(*)
+FROM REGIONS R, COUNTRIES C, LOCATIONS L, DEPARTMENTS D, EMPLOYEES E
+WHERE R.REGION_ID = C.REGION_ID
+AND C.COUNTRY_ID = L.COUNTRY_ID
+AND L.LOCATION_ID = D.LOCATION_ID
+AND D.DEPARTMENT_ID = E.DEPARTMENT_ID
+GROUP BY R.REGION_NAME;
+
+--HAVING 조건식
+-- 그룹함수를 적용할 결과를 필터링할 때 사용한다. WHERE절과 동일한 형태로 사용한다. 
+--WHERE절의 조건식에는 그룹함수를 사용할 수 없다. 
+--HAVING절의 조건식에는 그룹함수를 사용할 수 있다. 
+--HAVING절은 GROUP BY절과 함께 사용해야한다. 단독으로 사용할 수 없다. IF ~ ELSE 관계이다. GROUP BY에 종속되어있다. 
+
+--부서별 사원수를 조회했을 때, 소속된 사원수가 10명 이하인 부서의 아이디와 인원수를 조회하기 
+SELECT DEPARTMENT_ID, COUNT(*)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID -- 부서별 사원수를 조회했을때
+HAVING COUNT(*) <= 10 -- 소속된 사원수가 10명이하인
+ORDER BY 2 ;
+
+-- 입사년도별, 부서별 사원수를 조회했을 때, 2005년도에 10년이상 입사한 부서의 부서아이디와 사원수를 조회하기 
+SELECT TO_CHAR(HIRE_DATE,'YYYY') YEAR , DEPARTMENT_ID, COUNT(*)
+FROM EMPLOYEES
+WHERE HIRE_DATE >= '2005/01/01' AND HIRE_DATE < TO_DATE('2005/12/31')
+GROUP BY TO_CHAR(HIRE_DATE,'YYYY') , DEPARTMENT_ID
+HAVING COUNT(*) >= 10
+ORDER BY 1,2;
+--입사년도별, 부서별 사원수를 조회했을 때, 2005년도에 10년이상 입사한 부서의 부서아이디와 사원수를 조회하기
+SELECT TO_CHAR(HIRE_DATE,'YYYY') YEAR , DEPARTMENT_ID, COUNT(*)
+FROM EMPLOYEES
+GROUP BY TO_CHAR(HIRE_DATE,'YYYY') , DEPARTMENT_ID
+HAVING TO_CHAR(HIRE_DATE,'YYYY') = '2005' AND COUNT(*) >= 10  --HAVING절에 일반 표현식을 사용해도 상관없다. 
+ORDER BY 1,2;
+-- 위와 아래의 실행결과는 동일하다. 
+
