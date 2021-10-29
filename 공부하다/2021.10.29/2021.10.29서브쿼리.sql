@@ -195,13 +195,27 @@ HAVING COUNT(*) =(SELECT MAX(COUNT(*))
 --서브쿼리를 사용하는 SQL문에서 반복적으로 실행되는 SQL에 대해서 WITH절을 사용하면 실행 성능이 향상된다. 
 --WITH절에서 정의한 가상의 테이블의 아래 SELECT문에서 사용할 수 있다. 
 --WITH절은 단독으로 사용할 수 없다. 
+--WITH  별칭1
+--AS (SELECT 문),
+--별칭2
+--AS (SELECT 문)
+--SELECT COL, COL
+--FROM 별칭1나 별칭2를 가져와서 사용하면 된다. 
+--WHERE 조건식
+--WITH절을 사용해서 부서별 사원수를 조회했을 때 사원수가 가장 많은 부서의 아이디와 사원수를 조회하기 
 WITH DEPT_EMP_CNT --가상의 테이블이 아래같이 생김
 AS ( --SQL실행결과를 위의 별칭으로 저장함 가상의 뷰가 자지고 있음
     SELECT DEPARTMENT_ID AS DEPT_ID, COUNT(*) AS CNT
     FROM EMPLOYEES
     WHERE DEPARTMENT_ID IS NOT NULL
     GROUP BY DEPARTMENT_ID
-)
+),  --,를 이용하여 추가로 만들어도 된다.
+    JOB_EMP_CNT 
+    AS(
+    SELECT JOB_ID, COUNT(*) AS CNT
+    FROM EMPLOYEES
+    GROUP BY JOB_ID
+    )--연결이 되어있지 않기 때문에 사용은 할 수 없지만 복수개를 사용해도 된다. 
 SELECT DEPT_ID, CNT --WITH절을 이용하여 아이디와 DEPT_ID와 CNT를 별칭을 작성함
 FROM DEPT_EMP_CNT--WITH절에 설정한 가상의 테이블을 가져옴
 WHERE CNT = (SELECT MAX(CNT)
