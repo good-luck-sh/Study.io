@@ -84,16 +84,23 @@ WHERE E.SALARY >= S.MIN_SALARY AND E.SALARY <= S.MAX_SALARY
 GROUP BY S.GRADE
 ORDER BY 1;
 -- 가장 적은 직원이 입사한 해와 그 해에 입사한 직원수를 조회하기
-SELECT TO_CHAR(HIRE_DATE,'YYYY') , MIN(COUNT(*))
+SELECT MIN(TO_CHAR(HIRE_DATE,'YYYY')) , COUNT(*)
 FROM EMPLOYEES
-GROUP BY 
-HAVING COUNT(*) = 
+GROUP BY (TO_CHAR(HIRE_DATE,'YYYY'))
+HAVING COUNT(*)>
     (SELECT TO_CHAR(HIRE_DATE,'YYYY'), COUNT(*)
     FROM EMPLOYEES
     GROUP BY TO_CHAR(HIRE_DATE,'YYYY'));
 
 
 -- 소속 부서의 평균급여보다 많은 급여를 받는 직원의 아이디와 직원이름, 급여, 그 부서의 평균 급여를 조회하기
+SELECT EMPLOYEE_ID, FIRST_NAME, AVG(SALARY)
+FROM EMPLOYEES 
+GROUP BY EMPLOYEE_ID, FIRST_NAME
+HAVING AVG(SALARY)>(SELECT DEPARTMENT_ID, AVG(SALARY)
+                          FROM EMPLOYEES
+                          WHERE DEPARTMENT_ID IS NOT NULL
+                        GROUP BY DEPARTMENT_ID);
 
 -- 직종별 평균급여를 계산했을 때 평균급여가 가장 적은 직종과 평균급여를 조회하기
 
