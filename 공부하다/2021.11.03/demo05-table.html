@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{width: 100%; border-collapse: collapse; margin-top: 10px;}
+        /* margin : 테이블의 바깥부분과 경계를 의미하는 margin */
+        /* 화면비율에 100%로 가로로 맞춤, 표의 경계를 허물다 */
+    
+        /* 제목부에 해당하는 tr에만 적용된다.  */
+        td,th{border: 1px solid #ddd; padding:8px; text-align:left;}
+        /* 테두리가 1px이고, 선 실선, 밝은 회색, padding -> 내부로 떨어지게 만들다.  */
+    </style>
+</head>
+<body>
+    <h1>HTML 태그 연습하기 </h1>
+    <h2>표의 병합</h2>
+
+    <h3>가로 방향 병합</h3>
+    <!-- 
+        th, td의 colspan 속성은 가로방향으로 차지하는 칸의 수를 지정하는 속성이다. 
+        <th colspan="2"></th>
+        <td colspan="3"></td>
+        tr은 행을 표현하기 때문에 사용할 수 없다. 
+        th와 td에서만 사용할 수 있다. 
+        tr에 th와 td외의 태그는 사용할 수 없다. 
+     -->
+    <table>
+        <tr>
+            <td colspan="2">1</td>
+            <!-- 첫번째 칸이 가로방향으로 2칸을 차지하겠다는 의미 
+            그러면 칸이 밀려나기 때문에 크기를 줄여주어야한다. -->
+            <td>1</td>
+            <td>1</td>
+  
+        </tr>
+        <tr>
+            <td colspan="3">1</td>
+            <!-- colgroup상에서 칸의 크기를 조절한다.  -->
+            <td>1</td>
+          
+        </tr>
+        <tr>
+            <td colspan="2">1</td>
+            <td colspan="2">1</td>
+        
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </table>
+    <h3>세로 방향 병합</h3>
+    <!-- 
+        th, td의 rowspan속성은 세로방향으로 차지하는 칸의 수를 지정하는 속성이다. 
+        <th rowspan="2"></th>
+        <td rowspan="2"><td>
+     -->
+    <table>
+        <tr>
+            <td rowspan="6">1</td>
+            <!-- 한칸씩 뒤로 밀린다. 그렇기 때문에 모든 행에서 한칸씩 사라져야 크기가 맞다. -->
+            <td rowspan="3">1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td rowspan="3">4</td>
+            <td>4</td>
+            <td>4</td>
+          
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>6</td>
+        </tr>
+    </table>
+    <h3>가로/세로 방향 병합</h3>
+    <table>
+        <tr>
+            <td>1</td>
+            <td colspan="3">1</td>
+        </tr>
+        <tr>
+            <td rowspan="2">2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td rowspan="2">4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+           
+        </tr>
+    </table> 
+</body>
+</html>

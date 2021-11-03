@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HTML 태그 연습하기</h1>
+    <h2>목록을 담는 태그</h2>
+    <!-- ALT + SHIFT + 아래화살표 : 복사하기 -->
+    <!-- CTRL + SHIFT + K : 지우기 -->
+    <h3>순서있는 목록</h3>
+    <!-- 
+        순서있는 목록을 담는 태그
+        <ol>,<li>
+        <ol>태그는 <li>태그를 자식태그로 포함한다. 
+        <li>컨텐츠</li> --list_item
+        순서있는 목록은 데이터가 그렇게 많지 않다. 
+     -->
+     <ol>
+     <!-- <%
+        MovieDao movieDao = new MovieDao();
+        List<Movie> mocieList = movieDao.boxofficeList();
+            for(Movie movie : movies) {
+            <li><%=movie.getTitle()</li>
+     %>
+     <%
+            }
+     %> -->
+
+         <li>이터널스</li>
+         <li>듄</li>
+         <li>베놈</li>
+         <li>세버그</li>
+         <li>고장난 론</li>
+         <!-- 들여쓰기는 나중에 전부 조절이 가능하기 때문에 걱정하지 않아도 된다. 
+            프로젝트를 하면, 그때 당시에 인기 있었던 순서를 작성해놓는다. 
+        -->
+     </ol>
+    
+    <h3>순서업는 목록</h3>
+    <!-- 
+        순서 없는 목록을 담는 태그 
+        <ul>
+        <ul>태그는 <li>태그를 자식태그로 포함한다. 
+     -->
+     <ul>
+         <li>아메리카노</li>
+         <li>카푸치노</li>
+         <li>라떼</li>
+         <li>음료수</li>
+         <li>케이크</li>
+     </ul>
+     <!-- 이부분들은 순서가 아닌 쭉 나열된 부분이다.  
+    숫자나  . 이 나타나지 않게 만들어 낼 수 있다. 
+    순서가 중요한 부분들은 ol태그로    
+    순서가 필요없는 부분들은 li태그로 만든다. 
+    -->
+    <h3>정의 목록</h3>
+    <!-- 
+        정의 목록은 항목명과 항목값이 있는 목록이다. 
+        <dl>,<dt>,<dd>
+        <dl>태그는 <dt><dd>태그를 자식태그로 포함한다. 
+     -->
+     <!-- <%
+        int movieId = ....;
+        Movie movie = movieService.getMovieDetail(movieId); 
+     %> -->
+     <dl>
+         <!-- <dt>제목</dt><dd><movie.get.getIitle() %>></dd>
+        이렇게 데이터를 가져올 수 있다. 
+        -->
+        
+         <dt>장르</dt><dd>액션/어드벤처/드라마</dd>
+         <dt>평점</dt><dd>7.9</dd>
+         <dt>국가</dt><dd>미국</dd>
+         <dt>등급</dt><dd>12세 이상 관람가</dd>
+         <dt>러닝타임</dt><dd>155분</dd>
+     </dl>
+     <h3>내포된 목록</h3>
+     <ol>
+         <li>자바문법
+             <ol type="A">
+                 <li>변수</li>
+                 <li>연산자</li>
+                 <li>제어문</li>
+                 <li>반복문</li>
+             </ol>
+         </li>
+         <li>객체지향
+             <ol type="I">
+                 <!-- type속성은 순번을 숫자, 영문자, 로마숫자로 지정할 때 사용한다. -->
+                 <!-- ctrl+ space를 누르면 나오기 때문에 골라서 사용하면 된다.  -->
+                 <li>클래스와 객체</li>
+                 <li>필드와 메소드</li>
+                 <li>생성자</li>
+                 <li>상속과 형변환</li>
+                 <li>추상화</li>
+                 <li>인터페이스와 다형성</li>
+             </ol>
+         </li>
+     </ol>
+     <ul>
+         <!-- 내포된 항목은 ul안에 ol ol안에 ul이 내포되도 상관없다.  -->
+         <li>라면류 
+             <ul style="list-style-type: circle;">
+                 <li>신라면</li>
+                 <li>진라면</li>
+                 <li>불닭볶음면</li>
+             </ul>
+         </li>
+
+              <li> 음료수
+               <ul style="list-style-type: disc;">
+              <li>아메리카노</li>
+               <li>카푸치노</li>
+              <li>콜라</li>
+              <li>사이다</li>
+              <li>과일쥬스</li>
+            </ul>
+        </li>
+                <li> 김밥
+                    <ul style="list-style-type: square;">
+                 <li>삼각김밥</li>
+                  <li>야채김밥</li>
+                  <li>참치김밥</li>
+            </ul>
+
+</body>
+</html>

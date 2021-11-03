@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{width: 100%; border-collapse: collapse; margin-top: 10px;}
+        /* margin : 테이블의 바깥부분과 경계를 의미하는 margin */
+        /* 화면비율에 100%로 가로로 맞춤, 표의 경계를 허물다 */
+        thead tr{background-color: black; color: white; font-weight: bold;}
+        /* 제목부에 해당하는 tr에만 적용된다.  */
+        td,th{border: 1px solid #ddd; padding:8px; text-align:left;}
+        /* 테두리가 1px이고, 선 실선, 밝은 회색, padding -> 내부로 떨어지게 만들다.  */
+    </style>
+</head>
+<body>
+    <h1>HTML 태그연습하기</h1>
+    <h2>표를 담은 태그</h2>
+    <!-- 
+        표를 담는 태그 
+        <table>, <thead>, <tbody>,<tfoot>,<tr>,<th>,<td>,<caption>,<colgroup>,<col>
+
+        <table>은 표를 담는 태그다. 
+        <thead>는 표의 헤더부를 담는 태그다.
+        <tbody>는 표의 데이터부를 담는 태그다.
+            테이블을 구분해놓는 것은 나중에 꾸밀때도 편하기 때문에 구분지어서 작성한다. 
+        <tfoot>는 표의 푸터부를 담는 태그다. 
+        <tr>은 표의 행을 생성하는 태그다. 
+        <th>는 각 항목의 제목을 담는 태그다. 
+        <td>는 각 항목의 데이터를 담는 태그다
+        <colgroup>, <col>은 테이블에 포함된 각 컬럼의 너비를 지정하는 태그다. 
+        <caption>는 표에 대한 설명을 담는 태그다. 
+
+        table > (thead? > tr+ > th+)?, (tbody? > tr+ > (th|td)+), (tfoot? > tr+ > (th|tr)+)?
+        표기법에 딱 맞는 표기법은 아닌 전달하기 위한 표기법이다. 
+
+        table               (caption?, colgroup?, thead?, tbody?, tfoot?, tr+) -- ?은 적지 않아도 됨,사용하면 1번만 적어야함. tr 은 적어야함 
+        caption             (텍스트)
+        colgroup            (col+)  -- col을 여러번 적을 수 있음
+        thead               (tr+)   --tr을 여러번 적어야함
+        tbody               (tr+)   --tr을 여러번 적어야함
+        tfoot               (tr+)   --tr을 여러번 적어야함
+        tr                  (th|td)+ --tr내에는 th or td를 엄청 여러번 적을 수 있다. 
+     -->
+
+     <table>
+         <caption>연락처 입니다. </caption>
+         <tr>
+             <!-- 3행 3열 , 항목의 이름, table heading, 항목의 제목-->
+             <th>번호</th>
+             <th>이름</th>
+             <th>연락처</th>
+         </tr>
+         <tr>
+             <!-- 항목의 값 -->
+            <td>1</td>
+            <td>홍길동</td>
+            <td>010-4545-6565</td>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>홍길동</td>
+            <td>010-4545-6565</td>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>홍길동</td>
+            <td>010-4545-6565</td>
+         </tr>
+    
+     </table>
+     <table>
+         <thead>
+             <!-- 테이블의 제목 부분 : 이모양이 정석이다.  -->
+             <!-- thead를 구분짓고 싶을 때 thead를 작성한다.  -->
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>연락처</th>
+            </tr>
+         </thead>
+         <tbody>
+             <!-- 테이블의 바디부분 -->
+            <tr>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>010-4545-6565</td>
+             </tr>
+             <tr>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>010-4545-6565</td>
+             </tr>
+         </tbody>
+     </table>
+     <table>
+         <!-- 
+             각 컬럼의 폭을 지정한다. 
+             width = "*" 은 값이 지정된 컬럼의 폭을 제외한 나머지 너비를 전부 차지한다. 
+             각 컬럼의 한칸, 한칸의 너비를 지정해줌 
+          -->
+         <colgroup>
+            <col width="5%"/>
+            <col width="*" />
+            <!--나머지의 칸은 너가 다먹어라는 뜻, *이 2개 있어서는 안된다.  -->
+            <col width="10%" />
+            <col width="10%" />
+            <col width="6%" />
+            <col width="10%" />
+         <thead>
+             <!-- 표의 헤더부분, tr이 2번들어가도 상관없다.  -->
+             <tr>
+                 <th>순번</th>
+                 <th>상품명</th>
+                 <th>가격</th>
+                 <th>할인가격</th>
+                 <th>구매수량</th>
+                 <th>구매금액</th>
+             </tr>
+         </thead>
+        <tbody>
+            <!-- tobody(tr>td*6)*3  -->
+            <tr>
+                <td>100</td>
+                <td>아이폰 13 프로맥스</td>
+                <td>1,600,000 원</td>
+                <td>1,500,000 원</td>
+                <td>2 대</td>
+                <td>3,000,000 원</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>갤럭시 Z 플립3 256GB 알뜰폰</td>
+                <!-- 길이만큼은 늘어나지만 길이를 조정하고 싶음 -->
+                <td>1,600,000 원</td>
+                <td>1,500,000 원</td>
+                <td>2 대</td>
+                <td>3,000,000 원</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>아이폰 13 프로맥스</td>
+                <td>1,600,000 원</td>
+                <td>1,500,000 원</td>
+                <td>2 대</td>
+                <td>3,000,000 원</td>
+            </tr>
+        </tbody>
+     </table>
+</body>
+</html>
