@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .news {margin-top: 10px; padding: 10px; background-color: #eee;color: black; font-weight: bold;}
+        .hot {background-color: red;color: white;}
+        /* .을 찍으면 class라는 뜻 class의 속성의 값이 hot이나 news로 표시되있는 부분을 찾아가서 
+             모습이 달라지게 지정한다.  적절한 스타일을 퍼블리셔가 작성한다. 
+             미리스타일을 정의하고 스타일을 가져다가 붙이는 것이다. 
+        */
+    </style>
+</head>
+<body>
+    <h1>div 엘리먼트</h1>
+    <!-- 
+        <div>
+            - 블록 엘리먼트 
+            - 다른 엘리먼트를 포함하는 컨테이너 엘리먼트 
+            - id, class, style 속성이 주로 사용된다. 
+            id는 고유한 값, class 같은 류라면 같은 스타일을 같는다는 뜻이다. 
+            - <div>을 사용해서 여러 엘리먼트들을 하나의 그룹으로 설정하면,
+             해당 그룹에 스타일 적용, 엘리먼트 조작 등의 작업을 수행할 수 있게 한다.
+             해당 통째로 보이거나 안보이게 만들 수 있다.  
+     -->
+     <h2>div로 엘리먼트들을 하나로 묶기</h2>
+     <div style="margin-top: 10px; padding: 10px; background-color: black;color: white; font-weight: bold;">
+         <!-- 각각 다르게 적용하고 싶다.  -->
+         <h3>오늘의 뉴스</h3>
+         <p>카카오는 앞으로 이해관계자들과 상생을 통해 내수 시장 활성화에 기여하면서, 동시에 글로벌 시장에서 사업 경쟁력을 강화하는 데 힘을 쓸 예정이다. </p>
+         <p>목·머리 10회 밀치고 몸에 올라타 폭행·주먹으로 다시..故황예진씨 공판</p>
+     </div>
+     <div style="margin-top: 10px; padding: 10px; background-color: lightgreen;color: black; font-weight: bold;">
+         <h3>오늘의 뉴스</h3>
+         <p>카카오는 앞으로 이해관계자들과 상생을 통해 내수 시장 활성화에 기여하면서, 동시에 글로벌 시장에서 사업 경쟁력을 강화하는 데 힘을 쓸 예정이다. </p>
+         <p>목·머리 10회 밀치고 몸에 올라타 폭행·주먹으로 다시..故황예진씨 공판</p>
+     </div>
+     <h2>div로 스타일 분리 및 통일시키기</h2>
+     <div class="news hot">
+         <!-- display : none을 적용하면 보이지 않게 만들 수 있다.  -->
+         <h3>속보</h3>
+         <p>카카오는 앞으로 이해관계자들과 상생을 통해 내수 시장 활성화에 기여하면서, 동시에 글로벌 시장에서 사업 경쟁력을 강화하는 데 힘을 쓸 예정이다. </p>
+         <p>목·머리 10회 밀치고 몸에 올라타 폭행·주먹으로 다시..故황예진씨 공판</p>
+     </div>
+     <div class="news">
+        <!-- 각각 다르게 적용하고 싶다.  -->
+        <h3>뉴스</h3>
+        <p>카카오는 앞으로 이해관계자들과 상생을 통해 내수 시장 활성화에 기여하면서, 동시에 글로벌 시장에서 사업 경쟁력을 강화하는 데 힘을 쓸 예정이다. </p>
+        <p>목·머리 10회 밀치고 몸에 올라타 폭행·주먹으로 다시..故황예진씨 공판</p>
+    </div>
+    <div class="news">
+        <h3>스포츠</h3>
+        <p>카카오는 앞으로 이해관계자들과 상생을 통해 내수 시장 활성화에 기여하면서, 동시에 글로벌 시장에서 사업 경쟁력을 강화하는 데 힘을 쓸 예정이다. </p>
+        <p>목·머리 10회 밀치고 몸에 올라타 폭행·주먹으로 다시..故황예진씨 공판</p>
+    </div>
+    <div class="news">
+        <!-- display : none을 적용하면 보이지 않게 만들 수 있다.  -->
+        <h3>연예</h3>
+        <p>카카오는 앞으로 이해관계자들과 상생을 통해 내수 시장 활성화에 기여하면서, 동시에 글로벌 시장에서 사업 경쟁력을 강화하는 데 힘을 쓸 예정이다. </p>
+        <p>목·머리 10회 밀치고 몸에 올라타 폭행·주먹으로 다시..故황예진씨 공판</p>
+    </div>
+</body>
+</html>

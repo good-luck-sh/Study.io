@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        small{font-weight: normal; font-size: 20px;}
+        strong{color:red;font-size: 20px}
+        em{font-style: normal; font-weight: bold; color: navy;font-size: 20px}
+    </style>
+</head>
+<body>
+    <h1>HTML 태그 연습</h1>
+    <h2>텍스트 포맷팅하기 </h2>
+    <!-- 
+        텍스트 컨텐츠의 일부분 혹은 전부를 포맷팅할 때 사용하는 태그
+        텍스트 컨텐츠의 일부분을 다르게 보이게 할 때 하는 태그 
+        <strong>  :  중요한 텍스트를 담는다.
+                : 상품의 이름, 영화의 제목, 책의 제목, 기사의 중요한 키워드 
+                단순 글자를 크게 하는 것이 아닌 중요한 텍스트에 붙이는 것이다. 
+                중요한 내용은 강조태그를 이요하여 강조할 수 있다. <b>태그 대신 사용한다. 
+        <em>    :   강조할 때 사용하는 텍스트 
+                :상품의 실제 판매가격, 기울이는 것이 아닌, 중요한 부분을 기울이는 것이다. 
+     중요한 text는 묶어놔야 나중에 style을 특별하게 적용할 수 있기 때문이다. 그 부분을 style을 다르게 줄 수 있는 것이다. 
+        <small>  : 작게 표시할 텍스트
+        <del>   :   삭제된 텍스트 
+        <mark>  :   하이라이트 시킬 텍스트 
+     -->
+     <h3>[단독] 품귀 현상 빚는 요소수,<small> 정부는 재고량조차 모른다</h3>
+        <!-- 같은 제목인데도 불구하고 상대적으로 작게 표현되는 것 -->
+     <p>
+        4일 국토교통부에 따르면 이 같은 내용을 골자로 한 <strong>'생애최초 주택 특별공급 운용지침'</strong> 개정안과 <strong>'신혼부부 주택 특별공급 운용지침'</strong> 개정안이 현재 행정예고 중이다.
+     </p>
+     <p>
+        4일 국토교통부에 따르면 이 같은 내용을 골자로 한 <em>'생애최초 주택 특별공급 운용지침</em> 개정안과 <em>'신혼부부 주택 특별공급 운용지침'</em> 개정안이 현재 행정예고 중이다.
+     </p>
+     <p>
+        4일 국토교통부에 따르면 이 같은 내용을 골자로 한 <mark>'생애최초 주택 특별공급 운용지침'</mark> 개정안과 <mark>'신혼부부 주택 특별공급 운용지침'</mark> 개정안이 현재 행정예고 중이다.
+     </p>
+
+     <h3>책 소개</h3>
+     <dl>
+         <dt>장르</dt><dd>TI/컴퓨터</dd>
+         <dt>정상가격</dt><dd><del>35,000 원</del></dd>
+         <dt>판매가격</dt><dd><strong>32,000 원</strong></dd>
+       <!-- 화면에 표현되는 텍스트들을 강조하고 싶을때 표현하는 text 태그들이다. 
+        완전히 분리된 형태로 표현이 대다수이다. 함께 사용하면서 강조하는 경우는 드물다. -->
+     </dl>
+</body>
+</ht>

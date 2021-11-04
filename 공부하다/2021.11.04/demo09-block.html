@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{background-color: lightgray; margin-top: 10px; border: 1px solid #ddd; padding:10px;}
+    </style>
+</head>
+<body>
+    <h1>블록 엘리먼트 (블록 태그)</h1>
+    <!-- 
+    p엘리먼트 ,p태그 혼용해서 사용할 예정이다. 
+    태그란 text로 적은 것을 의미한다. 
+    엘리먼트는 태그를 표현하는 객체다. 
+    엘리먼트는 브라우져가 HTML문서를 해석해서 HTML Document Object Model 객체를 생성할 때, 
+    HTML문서에 포함된 모든 태그마다 하나씩 생성되는 객체다.     
+    엘리먼트를 사용할 때 태그의 관점에서 설명한다고 보면된다. 
+
+    블록 엘리먼트 
+        - 엘리먼트의 표시방법에서 차이가 있다. 
+        - 항상 새로운 줄의 처음에서 시작한다. 
+        - 항상 사용가능한 전체 너비를 차지한다. 
+        - 블록 엘리먼트의 왼쪽이나 오른쪽에는 다른 엘리먼트가 위치할 수 없다. 
+        - 엘리먼트의 너비 (width)를 지정할 수 있다. 
+        - 엘리먼트내의 컨텐츠(자식엘리먼트, 텍스트)를 정렬할 수 있다. 
+        너비를 가지는 놈들
+        대표적 :h1, h2, h3, h4, h5, h6  : 제목을 담는 태그
+                p   :   본문의 내용을 담는 태그 
+                nav, header, main, footer, aside, article, section  : 문서의 헤더, 메인, 푸터, 섹션, 사이드 영역을 표시하는 태그
+                <div에서 파생된 태그>
+                ul, ol, li, dl, dt, dd  : 목록을 담는 태그
+                table   : 표를 담는 태그 
+                form    : 폼 입력요소를 담는 태그
+
+                div     : 특별한 태그 , 블록엘리먼트의 컨테이너 태그 
+                컨테이너는 수출할 때 사용하면서, 온갖것이 들어간다. 다른 태그를 담는 태그 p태그 안에 a태그를 넣은 것처럼 , 
+                p안에 a를 작성이 아닌 div에 담아야한다. 
+                형태가 없이 그룹핑만하는 태그 
+
+                canvas, video   : 2차원 도형, 비디오를 표현하는 태그 
+                canvas : 도형을 그릴 수 있다. 도형이 움직일 수 있게 구현함, 2차원게임에서 할 수 있다. 
+                video : 비디오  
+                hr : 수평선을 표현하는 태그
+    반대 : 인라인 엘리먼트 -> 블록엘리먼트 
+            블록엘리먼트 -> 인라인엘리먼트 로 변경이 가능하다. 
+            display : inline
+
+        인라인 엘리먼트 : 필요한 컨텐프만큼의 너비를 갖기 때문에, 
+        인라인 엘리먼트 margin과 padding을 이용하여 거리 조정은 할 수 있지만, 너비를 갖는것은 불가능하다. 
+    -->
+    <p style="width: 200px;">블록엘리먼트</p>
+    <p style="width: 400px;">블록엘리먼트</p>
+    <p style="width: 600px;">블록엘리먼트</p>
+    <p style="width: 25%;">블록엘리먼트</p>
+    <p style="width: 55%;">블록엘리먼트</p>
+    <p style="width: 50%;">블록엘리먼트</p>
+    <p style="width: 75%;">블록엘리먼트</p>
+    <!-- %는 가변적인 크기이다. px은 가로너비를 지정한 것이다. 
+    자기가 차지하는 영역이 이것밖에 없어도, 남에게는 절대 주지 못하는 독불장군 느낌의 아이 -->
+    <p style="text-align: left;">블록엘리먼트</p>
+    <p style="text-align: center;">블록엘리먼트</p>
+    <p style="text-align: right;">블록엘리먼트</p>
+    <!-- 
+        text-align : 텍스트를 정렬하는 속성
+        블록엘리머트 : 너비를 가진다.
+        다른 태그들을 가질 수 있는데, 그 태그들도 정렬이 된다. 
+     -->
+</body>
+</html>

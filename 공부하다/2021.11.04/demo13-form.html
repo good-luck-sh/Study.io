@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>폼과 폼요소</h1>
+    <!-- 개발자들이 제일 많이 사용하는 태그 입력폼, 인스타에 올리는것, 검색하는 것-->
+    <h2>form 태그와 input, select, textared 살펴보기</h2>
+    <!-- 
+        <form>
+            -폼요소들을 포함하는 태그이다. 
+            -폼요소
+                <input type="text" />       : 일반 텍스트를 입력하는 필드
+                <input type="password" />   : 비밀번호를 입력하는 필드
+                <input type="number" />     : 숫자만 입력되는 필드
+                <input type="date" />       : 년-월-일을 입력하는 달력이 표시되는 필드 
+                <input type="time" />       : 시:분:초를 입력하는 필드
+                <input type="checkbox" />   : 복수개의 선택이 가능한 체크박스를 생성
+                <input type="radio" />      : 한 개만 선택이 가능한 라디오버튼을 생성
+                <input type="file" />       : 첨부파일을 첨부하는 필드
+                <input type="reset" />      : 입력요소의 값을 리셋시키는 버튼을 생성
+                <input type="submit" />     : 입력요소에 입력된 값을 서버로 전송하는 버튼을 생성
+                <input type="hidden" />     : 화면에 표시되지 않은 폼요소를 생성 
+                속성에 따라서 타입이 달라진다., 나열된 것 외에도 많은 타입이 많다.많이 사용하지는 않는다. 
+
+                <select>                    : 셀렉트박스를 생성
+                <textarea>                  : 여러라인의 텍스트를 입력할 수 있는 입력필드
+            -기타 폼요소 
+              <label>               : 입력필드에 대한 라벨을 표시한다. 
+                  입력필드앞에 작성해놓은 글 ,생일, 나이
+              <button>              : 버튼을 생성한다. 
+        
+        <form> 태그의 주요 속성 
+            속성은 전부 소문자이다. 
+            -method
+                서버로 요청을 보내는 방식을 지정하는 속성이다. 
+                <form method="GET">     :   디폴트 값, 데이터를 조회하는 요청(검색)
+                <form method="POST">    :   데이터를 서버에 포스팅하는 요청(회원가입, 글쓰기, 첨부파일 업로드 등) 
+            -action
+                폼입력값을 받아서 처리하는 서버측 애플리케이션의 URL을 지정하는 속성이다. 
+                <form method="GET" action="search.jsp">
+                <form method="POST" action="login.jsp">
+                <form method="POST" action="register.jsp">
+            -enctype
+                폼입력값을 서버로 전달하기 위해서 변환하는 방식을 지정하는 속성
+                첨부파일을 업로드하는 필드가 포함되어 있는 경우에만 설정하고, 그 외는 설정없이 기본값을 사용한다. 
+                <form method="POST" action="login.jsp" enctype="application/x-www-form-urlencoded"> 디폴트 값
+                <form method="POST" action="login.jsp" enctype="multipart/form-date"> 첨부파일 업로드 필드가 있을 때 설정되는 값
+            -name
+                폼의 이름을 지정한다. 
+                <form name="loginform" method="POST" action="login.jsp">
+               폼태그와 폼입력요소에만 name을 지정할 수 있다. 다른 태그들은 가질 수 없다.  
+        <input> 태그의 주요 속성
+            -type
+                입력요소의 종류를 지정한다. 
+            <input type="text" />
+            -value
+             입력요소의 값을 지정한다. 
+             <input type="text" value="이것이 자바다" />
+             * 단, type="file" 인 경우 value를 절대로 지정할 수 없다. 
+             * 반드시 사용자의 행동이 개입이 되어야한다. 
+             * file에는 개발자의 개입이 이뤄질 수 없다. 사용자의 행동이 개입될 수 없다. 
+             * 보안문제가 발생할 수 있기 때문이다. 
+
+       체크박스와 라디오 버튼의 주요 속성
+            -checked="checked"
+                체크박스와 라디오버튼의 체크여부를 지정한다. 
+                <input type="radio" name="gender" value="여" checked="checked"> 여성
+                <input type="radio" name="gender" value="여" checked> 여성
+                * 라디오 버튼의 경우 name 속성의 값이 같은 라디오 버튼 중에서 하나만 체크된다. 
+                * name을 꼭 작성해야한다. 
+       <select> 태그
+           - 선택가능한 여러 옵션을 생성한다. 
+           <select>
+               <option value="값">라벨</option>
+           </select>
+           선택한 값이 서버로 전달되게 된다. 
+           -주요 속성
+            selected="selected"
+                <select> 태그의 옵션중에서 미리 선택할 옵션을 지정한다.
+                <select name="location">
+                    <option value="" disabled="disabled" >선택하세요</option> --선택하세요를 선택할 수 없다. 
+                    이 롭션은 선택할 수 없다. 
+                    <option value="서울">서울지점</option>
+                    <option value="경기" selected="selected">경기지점</option>  --경기지점이 미리 선택되어 있다. 
+                    <option value="인천">인천지점</option>                      --selected는 1개만 선택이 가능하다. 
+                </select> 선택하세요에 selected="selected"가 설정되면 처음에 선택하세요가 뜨지만 선택하세요를 클릭할 수없다.
+                
+       <textarea> 태그 
+           - 여러 라인의 텍스트를 입력할 수 있다. 
+           - 반드시 <textarea></textarea>와 같이 여는 태그와 닫는 태그 쌍으로 적어야 한다. 
+           쌍으로 적지않으면 textarea의 모든 아래의 값이 들어있다. 반드시 적어야한다.   
+           띄어서 쓸 경우 공백이 들어있다. 공백을 입력한 것으로 보기 때문이다. 
+           - 반드시 여는 태그와 닫는 태그의 사이에 공백없이 붙여서 적어야 한다.
+           - 반드시 <textarea>에 값을 표시할 때는 value 속성을 사용하는 대신 여는 태그와 닫는 태그 사이에 적는다.
+               잘못된 표현 : <textarea name="memo" value="안녕하세요"></textarea> 
+               올바른 표현 : <textarea name="memo">안녕하세요</textarea> --사용자에게 보여줄 값은 이렇게 작성해야한다. 
+           - 주요 속성
+                -rows : 대부분 rows만 설정한다.
+                    한 번에 표시할 세로방향 행의 갯수를 지정한다. 
+                -cols : 잘 사용하지 않는다. 화면에 100%로 크기를 맞추기 떄문에 많이 사용하지 않는다.
+                    한 번에 표시할 가로방향 컬럼의 갯수를 지정한다. 
+        
+       폼 입력요소의 공통속성
+            - name
+             입력요소의 이름을 지정한다. 
+             입력요소에 입력한 값이나 선택한 값은 name속성에서 지정한 이름으로 서버에 전달된다. 
+             <input type="text" name="userid" />
+             <input type="file" name="photo" />
+             <select name="location"></select>
+             <textarea name="memo"></textarea>
+             name이 없으면 서버에 값이 갈 수 없다. 서버자체에 값이 가지 않는다. 
+             모든 입력요소에는 이름이 있어야한다. 
+            -disabled="disabled"
+                입력요소를 비활성화시킨다. 
+                입력요소의 값이 서버로 제출되지 않는다. 
+                <input type="text" name="username" disabled="disabled" />
+                <input type="text" name="username" disabled />
+            -readonly="readonly"
+                입력요소를 읽기전용을 설정한다. 값을 수정할 수 없다. 
+                <input type="text" name="username" readonly="readonly" />
+                <input type="text" name="username" readonly />
+     -->
+     <h3>입력폼 정의하기</h3>
+     <!-- 
+        form의 이름은 registerfrom이다.
+        폼요소에서 입력한 값은 login.jsp로 제출된다. 
+        데이터를 서버에 포스팅하는 요청이다. 
+      -->
+     <form name="registerform" method="post" action="register.jsp">
+         <div>
+             <label>이름</label>
+             <input type="text" name="username" value="홍길동" readonly="readonly">
+         </div>
+         <div>
+            <label>주민번호</label>
+            <input type="text" name="jumin" value="111111-1111111" readonly="disabled">
+        </div>
+         <div>
+             <label>아이디</label>
+             <input type="text" name="userid" maxlength="12"/>
+             <!-- 12글자 이상 입력할 수 없다. 타입에 따라 속성값이 조금씩 다르다. -->
+         </div>
+         <div>
+             <label>비밀번호</label>
+             <input type="password" name="userpwd" maxlength="12"/>
+             <!-- password는 블라인드가 있어서 입력값이 안보인다.-->
+         </div>
+         <div>
+             <label>생일</label>
+             <input type="date" name="birth" />
+         </div>
+         <div>
+             <label>나이</label>
+             <input type="number" name="age" min="10" max="150" value="20"/>
+             <!-- number인 경우 min과 max값을 설정할 수 있다. step을 이용하여 값을 증가시킬 수 있다.  -->
+         </div>
+         <div>
+             <label>성별</label>
+             <input type="radio" name="gender" value="남" checked="checked" />남자
+             <input type="radio" name="gender" value="여" />여자
+             <!-- name을 동일하게 설정해야 둘중에 하나만 선택하게 만들 수 있다. 여러개있어도 마찬가지다. -->
+         </div>
+         <div>
+             <label>보유기술</label>
+             <input type="checkbox" name="skill" value="java" />자바
+             <input type="checkbox" name="skill" value="db" />데이터베이스
+             <input type="checkbox" name="skill" value="python" />파이썬
+             <input type="checkbox" name="skill" value="ai" />인공지능
+             <input type="checkbox" name="skill" value="deep" />딥러닝
+             <input type="checkbox" name="skill" value="data" />데이터분석
+             <!-- radio 와 checkbox는 입력된 것에서 결정하는 것이기 때문에 값이 설정되어있어야한다. 미리 정해져있다.  -->
+         </div>
+         <div>
+             <label>재직 기간</label>
+             <select name="workingYear">
+                 <option value="0">없음</option>
+                 <option value="1">1년 이상</option>
+                 <option value="3">3년 이상</option>
+                 <option value="5">5년 이상</option>
+                 <option value="7">7년 이상</option>
+                 <option value="10">10년 이상</option>
+                 <!-- 값을 선택할 경우 값이 보내진다. -->
+             </select>
+         </div>
+         <div>
+             <label>근무지역</label>
+             <select name="location">
+                 <optgroup label="서울 경기">
+                     <option value="서울">서울</option>
+                     <option value="인천">인천</option>
+                     <option value="수원">수원</option>
+                     <option value="성남">성남</option>
+                 </optgroup>
+                 <optgroup label="강원도">
+                     <option value="춘천">춘천</option>
+                     <option value="원주">원주</option>
+                     <option value="인제">인제</option>
+                 </optgroup>
+             </select>
+         </div>
+         <div>
+             <label>이력서</label>
+             <input type="file" name="resume" />
+         </div>
+         <div>
+             <label>자기소개</label>
+             <textarea name="profile" rows="5"></textarea>
+             <!-- textarea는 닫는 태그와 여는 태그를 작성해주어야한다. 
+            name과 value는 거의 가지고 있고, radio와 checked는 다른 속성을 가지고 있다.  -->
+         </div>
+         <div>
+             <input type="reset" value="수정하기 전 상태로 되돌리기" />
+             <!-- 이 페이지의 처음의 페이지로 가져온다. -->
+             <input type="submit" value="모든 폼 요소의 값을 서버로 제출한다." />
+             <!-- form 바깥에 존재하게 되면 아무일도 일어나지 않게 된다. 정상적인 제출이 가능하다.form안에서 사용해야한다. -->
+         </div>
+     </form>
+</body>
+</html>
