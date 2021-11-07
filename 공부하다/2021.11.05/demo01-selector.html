@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /**
+        태그 선택자로 스타일 적용하기  
+        태그명 안에다가 css정의 해주면된다. 
+
+         **/
+         h3  {color:red}
+         p  {background-color: yellow;}
+         /**
+         아이디 선택자로 스타일 적용하기 
+         **/
+         #first-message{color: blue; font-weight: bolder;}
+         /**
+         클래스 선택자로 스타일 적용하기 
+         클래스의 top이라는 값을 찾는다. 
+         **/
+        .top{font-weight: bolder; color: blue;}
+        /**
+        한번에 여러가지 선택자로 스타일 적용하기 
+        1.태그와 태그 선택
+        **/
+        h1,h3 {border:2px solid red;}
+        #first-message, .top{border: 2px solid red;} 
+        /**
+        p, #first-message {} : 태그와 아이디 선택하기 
+        p, .top {} : 태그와 클래스 선택하기
+        #first-message, .top{} : 아이디가 first와 클래스가 class인 선택하기 
+        무한정 조합이 가능하다.
+        **/        
+    </style>
+</head>
+<body>
+    <h1>기본 선택자 연습</h1>
+
+    <div>
+        <h3>태그 선택자</h3>
+        <p>첫번째 내용</p>
+        <p>두번째 내용</p>
+        <p>세번째 내용</p>
+    </div>
+
+    <div>
+        <h3>아이디 선택자</h3>
+        <p id="first-message">아이디 선택자 첫번째 내용</p>
+        <p id="second-message">아이디 선택자두번째 내용</p>
+        <p id="third-message">아이디 선택자 세번째 내용</p>
+    </div>
+    <div>
+        <h3>클래스 선택자</h3>
+        <h4>이 달의 베스트 셀러</h4>
+        <!-- 1등을 강조하고 싶다. 스타일을 동일하게 하고 싶다. 그럴때 사용하는 것이 class이다. -->
+        <ol>
+            <li class="top">트렌드 코리아 2022</li>
+            <li>거꾸로 읽는 세계사</li>
+            <li>주식투자 절대 원칙</li>
+        </ol>
+
+        <h4>이 달의 영화</h4>
+        <ol>
+            <li class="top">이터널스</li>
+            <li>듄</li>
+            <li>최선의 삶</li>
+        </ol>
+        <h4>이 달의 콘서트</h4>
+        <ol>
+            <li class="top">2021년 거미 전국투어 콘서트</li>
+            <li>노들섬 2주년 기획공연</li>
+            <li>2021년 적재 전국투어</li>
+        </ol>
+    </div>
+    <script>
+        console.log("### 태그 선택자");
+        // h3엘리먼트 선택하기 
+        var a = document.querySelector("h3");
+        // css의 선택자를 이용해서 조절할 수 있다. 
+        console.log(a);
+        //자바의 System.out.println과 대응 된다.
+
+        // p엘리먼트 선택하기 
+        var b = document.querySelectorAll("p");
+        console.log(b);
+        //All을 적으면 전체 항목을 다가져온다. 
+        //변수선언해서 다담으면 된다. 
+
+        console.log("### #아이디 선택자");
+        //프로그램으로 찾는 것이 가능하다. 
+        var c = document.querySelector("#first-message");
+        console.log(c);
+        //아이디를 찾을 때는 selector으로 사용하고, 1개만 찾아져야하니까 
+        //class를 찾을 때는 selectorAll으로 사용한다. 모두 찾아지도록
+
+        console.log("## .클래스 선택자");
+        var d = document.querySelectorAll(".top");
+        console.log(d);
+        //class가 top인 것을 조작할 수 있다. 
+        //세미클론은 붙여도 되고 안붙여도 된다. 실행엔진이 세미클론을 알아서 붙여준다. 
+        //자바보다는 너그럽다.
+
+        console.log("### 한 번에 여러개의 선택자")
+        var e = document.querySelectorAll("#first-message,.top");
+        console.log(e);
+    </script>
+</body>
+</html>

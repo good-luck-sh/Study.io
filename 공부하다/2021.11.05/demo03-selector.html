@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>''
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./demo01-selector.css">
+    <script src="app.js">   </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {border: 2px dotted gray; margin: 10px; padding: 10px;}
+        /**
+            필터 선택자 
+        **/
+        li:first-child{color: blue; font-weight: bold;}
+        /**li중에서 첫번째것이 찾아진다. 중간에 칸을 띄우면 자손을 찾는 것으로 인식이 되기 떄문에 
+        아무것도 찾아 지지않음, li중에서 장남을 찾는 것임
+        li엘리먼트 중에서 부모 엘리먼트의 첫번째 자식 엘리먼트인 것 선택
+        **/
+        .box:first-child{background-color: yellow;}
+        /**div중에서 1번을 찾는 것이 아닌, 부모를 기준으로 1번째자식을 찾는 것이기 때문에 첫째는 h3이기 때문에 
+        찾아지지 않는다. class box의 첫번째 그러나 .box는 2쨰이다.
+        선택된 엘리먼트가 없다. class="box"엘리먼트 중에서 부모엘리먼트의 첫번째 자식 엘리먼트인 것 선택
+        **/
+        p:first-of-type{background-color: tomato;}
+        /* 박스 중에서 첫번째를 찾는다. class="box"엘리먼트 중에서 첫번째 엘리먼트를 선택한다.
+        꼭 장남이 아니어도 된다. p로 바꾸고 p엘리먼트 중에서 (부모엘리먼트의 첫번째 자식이 아니어도)
+        첫번째 엘리먼트가 선택된다.*/
+
+        li:last-child{color: #ddd;}
+        /* 맨 마지막 막내가 흐려진다. li엘리먼트 중에서 부모엘리먼트의 마지막 자식 엘리먼트인 것을 선택*/
+
+        li:nth-child(2) {color: green;}
+        /**중간위치의 자식엘리먼트를 찾는다. li엘리먼트 중에서 부모엘리먼트의 2번째 자식 엘리먼트인 것을 선택**/
+        li:nth-child(2n+1) {border: 1px solid red;}
+         /*홀수의 자식들이 찾아진다. 2n은 짝수 n에 0~부터 대입되어 찾아진다.
+         li엘리먼트 중에서 부모엘리먼트의 홀수번째 자식 엘리먼트인 것을 선택, n은 0부터 시작하는 정수 
+         저 공식에 해당되는 것을 찾는 것이다. 
+         */
+         table{width:100%; border-collapse: collapse;}
+         td,th{border: 1px solid #ddd; padding: 8px;}
+         thead {background-color: black; color: white; text-align: left;}
+         tbody tr:nth-child(2n) {background-color: #ddd;}
+         tbody td:last-child {color: red;}
+    </style>
+</head>
+<body>
+    <h1>필터링 하기</h1>
+    <div>
+        <h3>필터 선택자 사용하기</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제품명</th>
+                    <th>가격</th>
+                    <th>할인가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>갤럭시 Z 플립3 256GB (알뜰폰)</td>
+                    <td>1,500,000 원</td>
+                    <td>1,360,000 원</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="box">
+            <h4>이 달의 베스트설러</h4>
+            <p>이번달에 판매량이 가장 많은 책들입니다.</p>
+            <p>2021년 10월 1일 ~ 2021년 10월 31일 집계결과 입니다.</p>
+                <ol>
+                    <li>자바의 정석</li>
+                    <li>이것이 자바다</li>
+                    <li>스프링 인 액션</li>
+                    <li>이펙티브 자바</li>
+                    <li>클린 코드</li>
+                </ol>
+            
+        </div>
+        <div class="box">
+            <h4>이달의 영화</h4>
+            <p>이번달에 예매량이 가장 많은 영화들입니다.</p>
+            <p>2021년 10월 1일 ~ 2021년 10월 31일 집계결과 입니다.</p>
+                <ol>
+                    <li>이터널스</li>
+                    <li>듄</li>
+                    <li>고장난 론</li>
+                    <li>베놈 2</li>
+                    <li>아담스 패밀리2</li>
+                    <li>아네트</li>
+                    <li>세버그</li>
+                    <li>바다 탐험대 옥토넛</li>
+                    <li>퍼스트 카우</li>
+                    <li>강릉</li>
+                </ol>
+          
+        </div>
+    </div>
+</body>
+</html>

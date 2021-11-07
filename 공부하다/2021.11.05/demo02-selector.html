@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /**
+            태그 선택자
+            박스를 만들고 위에꺼 아래꺼에 따로 따로 값을 설정하고 싶다. 
+        **/
+        div {border: 2px dotted gray; margin: 10px; padding: 10px;}
+         /**
+            자손선택자 :  공백
+            선택자와 선택자 사이에 빈공백이 있으면, 첫번째선택자를 고르고 두번째 선택자를 고르기 때문에 
+            첫번째 선택자 안에 두번째 선택자를 선택한 것이다. 
+            박스안에 있는 모든 p를 선택함 
+            가장 많이 사용한다.
+        **/
+        #box-1   p {color: red;}/** id="box-1"인 엘리먼트의 모든 자손 엘리먼트 중에서 p엘리먼트를 선택한다.  **/
+        .box p {border: 3px solid green;} /** class="box"인 엘리먼트의 모든 자손엘리먼트 중에서 p엘리먼트를 선택한다. "**/
+         /**
+            자식  선택자 : >
+            사이에 > 꺽쇠가 포함된다. 
+            클래스 box바로아래의 p를 선택한다. 
+            클래스 box보다 작은 p라고 생각하자. > 크기 방향을 이용해서 바로자식을 지정할 수 있다. 
+         **/
+         .box > p {background-color: black; color: white; font-weight: bolder;} 
+         /**class="box"인 엘리먼트의 바로 하위에 위치한 엘리먼트 중에서 p엘리먼트를 선택한다. **/
+        /**
+            동생 선택자 : +
+            동생들 선택자 : ~
+            동생 : 바로 밑에 있는 동생 p 를 찾는 것 : +
+            + 는 최대로 1개밖에 선택되거나 안됨, 아예선택되던지 선택이 1개밖에 안됨
+            동생들 : h3의 아래들 p,p,div,div 중에서 p를 선택한다. :~
+            사용빈도가 그렇게 많지 않다.
+        **/
+        h3 + p {font-size : 25px;}/**h3의 바로다음 엘리먼트인 p엘리먼트 선택하기**/ 
+        h3 ~ p {padding: 20px;}/**h3엘리먼트의 동생들 (<p>,<p>,<div id="box-1">,<div-id="box-2">)중에서 p 엘리먼트 선택하기**/
+        h3 + div {background-color: pink;} /** h3의 바로 다음 엘리먼트인 div엘리먼트를 선택한다.선택되는 엘리먼트가 없음**/
+        h3 ~ div {background-color: yellow;} /**h3엘리먼트의 동생들 (<p>,<p>,<div id="box-1">,<div-id="box-2">)중에서 div엘리먼트 선택하기**/
+    </style>
+</head>
+<body>
+    <h1>자손, 자식, 형제 선택자 연습</h1>
+    <div class="box">
+        <h3>자손/자식/형제 선택자</h3>
+        <p>자손 선택자는 선택자와 선택자 사이에 공백이 포함된다.</p>
+        <p>자식 선택자는 선택자와 선택자 사이에 >이 포함된다.</p>
+        <!-- p만 선택하고 싶을 때 그게 바로 자식 선택자이다. -->
+        <!-- p는 class가 box의 손자이다. 후손 선택자, 자기 자식, 자기 증손자이다.  -->
+        <div id="box-1">
+            <p>첫번째 div의 내용</p>
+            <p>첫번째 div의 내용</p>
+            <p>첫번째 div의 내용</p>
+        </div>
+        <div id="box-2">
+            <p>두번째 div의 내용</p>
+            <p>두번째 div의 내용</p>
+            <p>두번째 div의 내용</p>
+        </div>
+    </div>
+    <script>
+        console.log("### 자손 선택자 사용하기");
+        var a = document.querySelectorAll(".box p");
+        console.log(a); // p가 8개 선택됨
+
+        console.log("### 자식 선택자 사용하기");
+        var b = document.querySelectorAll(".box > p");
+        console.log(b);// p가 2개 선택됨
+    </script>
+</body>
+</html>
