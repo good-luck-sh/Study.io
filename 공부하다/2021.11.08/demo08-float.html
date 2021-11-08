@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            width: 100px; height: 150px;
+            margin: 1px auto;
+        }
+        #wrapper {
+            border:5px solid lightgreen;
+            padding: 10px;
+            /**테두리를 피해서 div가 생기기 때문에 overflow를 이용해서 테두리를 감쌀 수 있다. 내범위를 넘쳐나다.
+            스크롤이 생긴다. 부모쪽 너비와 폭이 가변적으로 생성될 수 있다. float을 overflow로 설정해주어야 가변적으로 
+            변화시킬 수 있다. 신상품 : 높이가 정해져 있음, 높이를 정할 수 있다. 지금의 경우는 
+            3줄, 4줄이 되기 때문에 auto로 두고 가변적으로 생성했다.
+            **/
+            overflow: auto;
+            /* 그리드와 비슷하다. html의 tr, td와 동일하여, 테이블을 병합하는 것도 가능하다. */
+        }
+        #wrapper div {
+            float: left;
+            /** float을 사용하면 가로방향으로 배치가 가능하다.**/
+            width:180px;
+            height: 300px;
+            padding: 10px;
+            margin: 20px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>float 연습</h1>
+    <div id="wrapper">
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+        <div>
+            <img src="../html/images/KakaoTalk_20211104_224430618.jpg" />
+            <h4>쩡글이</h4>
+            <p>우리집 강아지 쩡글이를 소개합니다.</p>
+        </div>
+
+    </div>    
+</body>
+</html>

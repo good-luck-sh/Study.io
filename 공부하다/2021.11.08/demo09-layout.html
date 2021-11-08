@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            box-sizing: border-box; /**width로 설정된 너비가 context + padding + border까지 포함된다.**/
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #wrapper {
+            width: 1000px;
+            margin: 10px auto; /**div가 화면의 가운데 위치하게 한다. 수평에서의 센터에 위치하게 한다. **/
+            overflow: auto;
+            border: 2px solid #ddd;
+            /* 외각을 설정한다. */
+        }
+
+        #header {
+            width: 956px;
+            /* width가 1000에서  22를 빠져서 44로 계산해서 width를 설정한것, 외각에서 머리부분까지만 위치를 바꿈*/
+            height: 100px;
+            border: 2px solid black;
+        }
+        #center {
+            width: 956px;
+            border: 2px solid navy;
+            overflow: auto;
+        }
+        #left {
+            float: left;
+            width: 150px;
+            height: 400px;
+            border: 2px solid tomato;
+        }
+
+        #right {
+            float: right;
+            width: 150px;
+            height: 300px;
+            /* 위친는 잘 지정하지 않는다. 
+            float는 left와 right만 사용한다.  */
+            border: 2px solid tomato;
+        }
+        #content {
+            float: left;
+            width: 572px;
+            height: 350px;
+            border: 2px solid tomato;
+        }
+
+        #footer {
+            width: 956px;
+            height: 100px;
+            border: 2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        웹 페이지의 모든 엘리먼트를 감싸는 div를 정의한다.
+        + 화면의 중앙에 컨텐츠를 표시할 수 있다. 
+        모든 컨텐츠를 감싸는 컨텐츠가 존재해야한다.
+        container로 만들기도 한다.
+     -->
+    <div id="wrapper">
+        <!-- 
+            웹 페이지의 헤더영역을 표시하는 div를 정의한다. 
+            + 회사로그, 네비게이션 메뉴바, 로그인/ 로그아웃 링크
+         -->
+        <div id="header">Header</div>
+        <!-- 
+            웹 페이지의 실질적인 내용을 표시하는 div를 정의한다.
+            + 좌측메뉴, 우측메뉴 혹은 배너, 컨텐츠 영역으로 구성된다. 
+            + 컨텐츠 영역에는 이 페이지가 제공하는 가장 중요한 내용들이 포함되어 있다. 
+            + 컨텐츠 영역의 내용은 네비게이션 바의 메뉴 혹은 좌/우측의 메뉴에 따라서 다르게 표시될 수 있다.
+            + 웹 페이지에서 가장 큰 영역을 차지한다. 
+            + 컨텐츠 영역은 표시하려는 내용에 따라서 더 작은 영역으로 다시 나누어 질 수 있다.
+            + Left나 Right영역에는 네비게이션바의 서브메뉴가 위치할 수 도 있고, 배너 광고, 퀵메뉴들이 위치할 수 있다.
+         -->
+        <div id="center">
+            <div id="left">Left</div>
+            <div id="right">Right</div>
+            <div id="content">Content</div>
+        </div>
+        <!-- 
+            웹 페이지의 푸터 영역을 표시되는 div를 정의한다. 
+            + 회사소개 등의 정보가 표시된다. 
+         -->
+        <div id="footer">Footer</div>
+        <!-- div로 틀로 잡고, 그다음에 컨텐츠 -->
+    </div>
+</body>
+</html>

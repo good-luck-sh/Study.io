@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            border: 2px dotted lightgray;
+            margin: 20px;
+            padding: 20px;
+        
+        }
+        .wrapper div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>포지션 속성 알아보기</h1>
+    <div class="wrapper">
+        <h3>static 속성</h3>
+        <!-- 따로 설정하지 않으면 static속성을 갖고 있다. block은 아래로 쭉, inline은 오른쪽으로 쭉 -->
+        <p>position 속성울 지정하지 않으면 기본값이 static이다.</p>
+        <p>블록엘리먼트는 아래쪽으로 순서대로 배치되고, 인라인엘리먼트는 오른쪼긍로 순서대로 배치된다. </p>
+        <p>엘리먼트의 위치를 지정할 수 없다.</p>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wrapper">
+        <h3>relative 속성</h3>
+        <p>position속성을 relative로 지정하면 static일 때 위치를 기준으로 엘리먼트의 위치를 top, bottom, left, right속성으로 지정할 수 있다.</p>
+        <div style="position: relative; top: 30px; left: 30px;"></div>
+        <!-- 원래의 위치에서 이동시킬 수 있다.  -->
+        <div style="position: relative; left: 300px;"></div>
+        <div style="position: relative; right: 100px;"></div>
+    </div>
+    <div class="wrapper">
+        <h3>absolute 속성</h3>
+        <p>position 속성을 absolute로 지정하면 화면의 최상단 좌측을 기준으로(0,0 위치) top,bottom,left,right속성으로 위치를 지정할 수 있다.</p>
+        <!-- 절대좌표를 설정한다. -->
+        <div style="position: absolute; top: 100px; left: 100px; border: 2px solid blue;"></div>
+        <div style="position: absolute; top: 400px; left: 100px; border: 2px solid blue;"></div>
+        <div style="position: absolute; top: 1300px; left: 300px; border: 2px solid blue;"></div>
+        <!-- 절대 좌표로써 내가 원하는 위치에 놓을 수 있는 속성이다. -->
+    </div>
+    <div class="wrapper" style="position: relative; height: 600px;">
+        <h3>absolute 속성</h3>
+        <p>상위엘리먼트의 position속성이 relative, absolute, fixed로 설정되어 있으면, absolute로 위치를 지정할 때 기준점이 상위엘리먼트의
+        최상단 좌측이 기준이 된다.          
+        </p>
+        <!-- 현재 div class="wrapper"의 최상단의 기준이 된다.-->
+        <div style="position: absolute; top: 100px; margin: 20px; left:  100px; border: 2px solid blue;"></div>
+        <div style="position: absolute; top: 100px; margin: 20px;  left: 300px; border: 2px solid blue;"></div>
+        <div style="position: absolute; top: 100px; margin: 20px; left: 500px; border: 2px solid blue;"></div>
+
+    </div>
+    <div class="wrapper" style="position: fixed; top: 100px; right: 200px; width: 150px;">
+        <h3>fixed 속성</h3>
+        <p>position속성을 fixed로 지정하면 화면이 스크롤되더라도 항상 지정된 위치에 표시된다.</p>
+        <div style="position:absolute; top: 30px; left: 50px; width: 50px; height: 50px; background-color: tomato;"></div>
+        <div style="position:absolute; top: 160px; left: 50px; width: 50px; height: 50px; background-color: tomato;"></div>
+        <div style="position:absolute; top: 290px; left: 50px; width: 50px; height: 50px; background-color: tomato;"></div>
+    </div>
+</body>
+</html>
