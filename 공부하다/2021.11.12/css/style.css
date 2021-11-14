@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+div {
+	margin: 10px 0;
+	padding: 5px 10px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border: 1px solid black;
+}
+
+thead th {
+	background-color: #0072B5;
+	color: white;
+	font-weight: bolder;
+}
+
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.form-group {
+	margin-bottom: 5px;
+}
+.form-group label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.form-group input[type='text'],
+	.form-group input[type='password'],
+	.form-group input[type='number'],
+	.form-group input[type='date'] {
+		height: 32px;
+		width: 100%;
+		padding-left: 8px 
+}
+.form-group select {
+	height: 37px;
+	width: 100%;
+	padding-left: 8px
+}
+
+.form-group textarea {
+	width: 100%;
+	padding: 8px;
+}
+.well {
+	background-color: #eee;
+	border: 1px solid #ddd;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: black;	
+}
+a:hover {
+	font-weight: bold;
+	color: blue;
+	text-decoration: underline;
+}
+.btn {
+	border: 1px solid #eee;
+	padding: 7px 20px;
+	font-weight: bold;
+}
+
+.btn.sm {
+	font-size: 12px;	
+	padding: 5px;
+}
+
+.btn.default {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+}
+
+.btn.primary {
+	background-color: DodgerBlue;
+	color: white;
+}
+
+.btn.danger {
+	background-color: red;
+	color: white;
+}
+
+.btn.warning {
+	background-color: Orange;
+	color: white;
+}
+
+.btn:hover {
+	text-decoration: none;
+}
+
+
+.pagination a {
+	font-size: 16px;
+	border: 1px solid black;
+	padding: 5px 8px;
+	margin: 3px;
+}
+.pagination a.active {
+	font-weight: bolder;
+	color: red;
+	border-color: red;
+}
+.pagination a.disabled {
+	color: lightgray;
+	border-color: lightgray;
+	
+}
+.pagination a.disabled:hover {
+	color: lightgray;
+	border-color: lightgray;
+	text-decoration: none;
+}
+
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.nav li {
+  float: left;
+}
+
+ul.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.nav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+ul.nav .active {
+  background-color: #04AA6D;
+}
+
+#wrapper {
+	width: 1000px;
+	margin: 10px auto;
+}
