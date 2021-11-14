@@ -1,1 +1,19 @@
 
+테이블 명세
+tb_web_board
+	board_no		게시글 번호	: 시퀀스로 입력하는 값
+	board_title		게시글 제목	: 사용자로부터 입력받는 값
+	board_writer		게시글 작성자	: 사용자로부터 입력받는 값
+	board_view_count	게시글 조회수	: 기본값은 0, 상세보기할 때마다 1씩 증가되는 값
+	board_like_count	게시글 추천수	: 기본값은 0, 상세페이지에서 추천하기 요청할 때 1씩 증가되는 값
+	board_content		게시글 내용	: 사용자로부터 입력받는 값
+	board_deleted		게시글 삭제여부	: 기본값은 'N', 게시글 삭제하기는 게시글을 삭제하지 않고 board_deleted의 값을  'Y'로 변경하는 것임
+	board_created_date	게시글 등록일	: 기본값은 sysdate
+
+tb_web_board_reply
+	reply_no		댓글 번호	: 시퀀스로 입력하는 값
+	reply_writer		댓글 작성자	: 사용자로부터 입력받는 값
+	reply_content		댓글 내용	: 사용자로부터 입력받는 값
+	reply_created_date	댓글 등록일	: 기본값은 sysdate
+	board_no		게시글번호	: 이 댓글에 대한 게시글 번호다. 댓글 등록시 같이 등록되어야 한다.
+
