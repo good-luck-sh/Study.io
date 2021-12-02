@@ -1,0 +1,44 @@
+// 페이지번호 조회하기, 요청파라미터에 page가 없으면 1을 대입
+int pageNo = NumberUtils.toInt(request.getParameter("page"), 1);
+// 검색옵션 조회하기, 요청파라미터에 option이 없으면 ""을 대입
+String option = StringUtils.defaultString(request.getParameter("option"), "");
+// 검색어 조회하기, 요청파라미터에 keyword가 없으면 ""을 대입
+String keyword = StringUtils.defaultString(request.getParameter("keyword"), "");
+
++ 처음으로 list.jsp의 실행을 서버에 요청할 때
+http://localhost/board/list.jsp
+	pageNo = 1, option = "", keyword = ""
+	모든 게시글 중에서 첫 페이지를 응답으로 제공
+
++ 리스트 페이지에서 페이지번호를 클릭해서 list.jsp의 실행을 서버에 요청할 때
+http://localhost/board/list.jsp?page=3&option=title&keyword=
+	pageNo = 3, option = "title", keyword = ""
+	모든 게시글 중에서 3번째 페이지를 응답으로 제공
+
++ 리스트 페이지에서 검색어를 입력하고 검색버튼을 클릭해서 list.jsp의 실행을 서버에 요청할 때
+http://localhost/board/list.jsp?page=1&option=title&keyword=삭제하기
+	pageNo = 1, option = "title", keyword = "삭제하기"
+	제목에 "삭제하기"가 포함된 게시글 중에서 첫 페이지를 응답으로 제공
+
++ 리스트 페이지에서 검색어가 이미 입력되어 있는 상태에서 페이지번호를 클릭해서 list.jsp의 실행을 서버에 요청할 때
+http://localhost/board/list.jsp?page=3&option=title&keyword=삭제하기
+	pageNo = 3, option = "title", keyword = "삭제하기"
+	제목에 "삭제하기"가 포함된 게시글 중에서 3번째 페이지를 응답으로 제공
+
+Criteria criteria = new Criteria();
+if (!option.isEmpty() && !keyword.isEmpty)) {
+	criteria.setOption(option);
+	criteria.setKeyword(keyword);
+}
+int totalRows = BoardDao.getInstance().getTotalRows(criteria);
+Pagination pagination = new Pagination(pageNo, totalRows);
+
+criteria.setBeginIndex(pagination.getBeginIndex());
+criteria.setEndIndex(pagination.getEndIndex());
+
+List<Board> boardList = board.searchBoards(critetria);
+
+
+
+
+

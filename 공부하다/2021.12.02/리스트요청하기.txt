@@ -1,0 +1,23 @@
+- 처음으로 페이지를 요청할 때
+http://localhost/board/list.jsp
+	page = null
+	option = null
+	keyword = null
+
+	1페이지를 요청한다.
+
+- 리스트 페이지에서 페이지번호를 클릭해서 특정 페이지를 요청할 때
+http://localhost/board/list.jsp?page=2&option=title&keyword=
+	page = 2
+	option = "title"
+	keyword = ""
+
+	2페이지를 요청한다.
+
+- 리스트 페이지에서 검색어를 입력하고 검색버튼을 클릭해서 페이지를 요청할 때
+http://localhost/board/list.jsp?page=1&option=writer&keyword=김유신
+	page = 1
+	option = "writer"
+	keyword = "김유신"
+
+	저자명 김유신으로 검색한 결과에 대한 1페이지를 요청한다.
