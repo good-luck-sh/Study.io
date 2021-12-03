@@ -1,0 +1,41 @@
+// product/form.jsp에서 product/register.jsp로 제출되는 폼 입력값의 형식 
+name=iphone
+&maker=apple
+&price=1000000
+&discountPrice=800000
+&color=red&size=100&amount=10
+&color=black&size=200&amount=15
+&color=white&size=300&amount=20
+&color=gold&size=400&amount=12
+
+// product/register.jsp에서 입력폼의 정보 저장하기
+String name = request.getParameter("name");
+String maker = request.getParameter("maker");
+int price = NumberUtils.toInt(request.getParameter("price"));
+int discountPrice = NumberUtils.toInt(request.getParameter("discountPrice"));
+
+String[] colorArray = request.getParameterValues("color");	["red", "black", "white", "gold"]
+String[] sizeArray = request.getParameterValues("size");	["100", "200",   "300",   "400"]
+String[] amountArray = request.getParameterValues("amount");	["10",  "15",    "20",    "12"]
+
+int productNo = productDao.getSequence();	// 시퀀스로부터 상품번호 발행
+// 상품정보 저장
+Product product = new Product();
+product.setNo(productNo);
+product.setName(name);
+product.setMaker(maker);
+product.setPrice(price);
+product.setDiscountPrice(discountPrice);
+productDao.insertProduct(product);		// 상품정보 저장
+// 색상,사이즈별 상품아이템정보 저장
+for (int index = 0; index < colorArray.length; index++) {
+	ProductItem item = new ProductItem();
+	item.setColor(colorArray[index]);
+	item.setSize(sizeArray[index]);
+	item.setAmount(NumberUtils.toInt(amountArray[index]));
+	item.setProductNo(productNo);		// 상품정보의 상품번호와 같은 상품번호를 가진 아이템으로 저장하기 위해서.
+
+	productDao.insertProductItem(item);
+} 
+
+
