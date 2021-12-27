@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="productServiceImpl" class="com.sample.service.ProductServiceImpl"></bean>
+	<bean id="userServiceImpl" class="com.sample.service.UserServiceImpl"></bean>
+	
+	<bean id="setterController" class="com.sample.setter.SampleSetterController">
+	<!-- 
+		스프링 컨테이너가 setter Injection작업 수행시 참조된다. 
+	 -->
+	<property name="productService" ref="productServiceImpl"></property>
+	<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+</beans>
