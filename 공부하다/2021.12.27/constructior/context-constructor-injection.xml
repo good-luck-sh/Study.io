@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="productServiceImpl" class="com.sample.service.ProductServiceImpl"></bean>
+	<bean id="userServiceImpl" class="com.sample.service.UserServiceImpl"></bean>
+	<!-- 
+		<bean id="sampleController" class="com.sample.controller.SampleConstructorController">
+		</bean>	
+			+ <constructor-arg /> 태그가 하나도 없는 경우 기본생성자를 이용한 경우다.
+			+ 반드시 해당 클래스에 기본 생성자 메소드가 존재해야 한다.
+			+ 기본생성자가 존재하지 않으면 error가 난다.
+	 -->
+	<bean id="sampleController" class="com.sample.controller.SampleConstructorController">
+	<!-- 
+		
+	 -->
+		<constructor-arg name="productService" ref="productServiceImpl"></constructor-arg>
+		<constructor-arg name="userService" ref="userServiceImpl"></constructor-arg>
+	</bean>
+	<!-- 
+		생성자를 주입할 때 사용하는 태그이다. name으로는 생성자에 작성했던 매개변수의 이름을 작성한다. 
+	 -->
+
+</beans>
