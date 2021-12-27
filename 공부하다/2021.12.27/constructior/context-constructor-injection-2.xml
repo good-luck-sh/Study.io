@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- NameSpaces에서 c를 선택한다. -->
+	<bean id="productServiceImpl" class="com.sample.service.ProductServiceImpl"></bean>
+	<bean id="userServiceImpl" class="com.sample.service.UserServiceImpl"></bean>
+	<!-- 
+		<constructor-arg name-"생성자의 매개변수이름" ref="스프링 컨테이너에 보관중인 객체의 아이디"/>
+		대신 
+		c:생성자의 매개변수 이름-ref="스프링컨테이너에 보관중인 객체의 아이디"로 설정해도 생성자 의존성 주입이 이뤄진다.
+	 -->
+	<bean id="sampleController" class="com.sample.controller.SampleConstructorController"
+		c:productService-ref="productServiceImpl"
+		c:userService-ref="userServiceImpl"></bean>
+</beans>

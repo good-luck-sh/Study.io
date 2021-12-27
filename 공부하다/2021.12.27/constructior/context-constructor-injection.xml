@@ -14,7 +14,8 @@
 	 -->
 	<bean id="sampleController" class="com.sample.controller.SampleConstructorController">
 	<!-- 
-		
+			<constructor-arg />태그는 생성자 주입을 담당하는 태그다.
+			<constructor-arg />의 갯수와 매개변수 갯수가 동일한 생성자 메소드가 반드시 클래스에 존재해야한다.타입도 일치해야한다.
 	 -->
 		<constructor-arg name="productService" ref="productServiceImpl"></constructor-arg>
 		<constructor-arg name="userService" ref="userServiceImpl"></constructor-arg>
