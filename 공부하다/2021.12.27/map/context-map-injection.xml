@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="smsService" class="com.sample.service.SmsMessageServiceImpl"></bean>
+	<bean id="emailService" class="com.sample.service.EmailMessageServiceImpl"></bean>
+
+	<bean id="sampleController" class="com.sample.controller.SampleMapController">
+	<!-- 
+		private Map<String, MessageService> messageServices;에 대한 의존성 주입이다.
+		MessageService 인터페이스를 구현한 객체를 key, values의 쌍으로 구성해서 저장된 Map객체를 주입해야한다. 
+		<map>
+			<entry key="key" value-ref="MessageService구현객체의 빈 아이디"></entry>
+			<entry key="key" value-ref="MessageService구현객체의 빈 아이디"></entry>
+			<entry key="key" value-ref="MessageService구현객체의 빈 아이디"></entry>
+			<entry key="key" value-ref="MessageService구현객체의 빈 아이디"></entry>
+			<entry key="key" value-ref="MessageService구현객체의 빈 아이디"></entry>
+		</map>
+	 -->
+		<property name="messageService">
+			<map>
+				<entry key="sms" value-ref="smsService"></entry>
+				<entry key="email" value-ref="emailService"></entry><!-- 키와 value의 한쌍을 entry라고 부른다. -->
+			</map>
+		</property>
+	</bean>
+</beans>
