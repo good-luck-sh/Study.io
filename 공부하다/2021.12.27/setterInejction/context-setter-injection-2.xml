@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="productServiceImpl" class="com.sample.service.ProductServiceImpl"></bean>
+	<bean id="userServiceImpl" class="com.sample.service.UserServiceImpl"></bean>
+	
+	<!-- 
+		<property name="setter메소드이름" ref="스프링 컨테이너에 보관중인 객체의 아이디" />
+		대신 Namespaces에서 p를 클릭하고, xmlns:p="http://www.springframework.org/schema/p가 추가된 후 
+		p:setter메소드이름-ref="스프링 컨테이너에 보관중인 객체의 아이디"로 설정해도 setter의존성 주입이 이뤄진다.
+		setter메소드에 한해서 작성할 수 있다.
+		setter메소드만 존재 : 기본자료형만 온다.
+		setter메소드 -ref : 객체가 온다.
+	 -->
+	<bean id="setterController" class="com.sample.controller.SampleSetterController"
+	p:productService-ref="productServiceImpl"
+	p:userService-ref="userServiceImpl"></bean>
+	<!-- property대신해서 p태그를 사용해서 정의할 수 있다. 
+		우리는 객체가 필요하기 때문에 ref로 작성해준다.
+	 -->
+
+</beans>
