@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="sms" class="com.sample.service.SmsMessageServiceImpl"></bean>
+	<bean id="email" class="com.sample.service.EmailMessageServiceImpl"></bean>
+	
+	<bean id="sampleController" class="com.sample.controller.SampleCollectionController">
+	<!-- 
+		컨트롤러의 멤버변수가 아래와 같이
+		private Set<MessageService> messageServices;
+		messageServices객체가 여러 개 저장된 Set구현객체를 주입받도록 정의되어 있기 때문에 
+		<set> : set에 정의된, 배열이면 array, 리스트면 list로 변경해주면 된다.
+			<ref bean="빈의 아이디" />
+			<ref bean="빈의 아이디" /> : 참조해라 bean의 아이디에 해당하는 것
+			<ref bean="빈의 아이디" />
+		</set>
+		과 같은 형태로 정의해서 빈의 아이디에 해당되는 객체가 3개 저장되어 있는 Set구현객체를 생성해야 한다.
+	 -->
+		<property name="messageServices">
+		<!-- ref="sms를 넣을 수 없다. colletion이기 때문" -->
+			<set>
+				<ref bean="sms"/>
+				<ref bean="email"/>
+			</set>
+		</property>
+	</bean>
+</beans>
