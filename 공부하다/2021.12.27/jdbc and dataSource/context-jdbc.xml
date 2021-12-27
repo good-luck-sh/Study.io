@@ -13,7 +13,7 @@
 	* jdbc 드라이버 클래스명, 데이터베이스 접속 URL, 사용자명, 비밀번호를 제공해야한다.
 	
  -->
- 	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
+ 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
  		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
  		<property name="url" 			 value="jdbc:oracle:thin:@LAPTOP-MP9I3VRU:1521:xe"></property>
  		<property name="username"		 value="hr"></property>
