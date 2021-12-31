@@ -1,0 +1,44 @@
+import java.util.*;
+
+class Solution {
+    public String solution(int[] numbers, String hand) {
+        List<String> hands = new ArrayList<String>();
+        int check = 0;
+        int rightHand = 0;
+        int leftHand = 0;
+        for(int n = 0; n<numbers.length; n++) {
+            if(numbers[n]==1||numbers[n]==4||numbers[n]==7){
+                hands.add("L");
+                leftHand++;
+            }else if(numbers[n]==3||numbers[n]==6||numbers[n]==9){
+                hands.add("R");
+                rightHand++;
+            } else if(numbers[n]==2||numbers[n]==5||numbers[n]==8||numbers[n]==0) {
+                if(leftHand == rightHand) {
+                    if(hand.equals("right")){
+                        hands.add("R");
+                        rightHand++;
+                    } else {
+                        hands.add("L");
+                        leftHand++;
+                    }
+                } else {
+                    int number = numbers[n];
+                    int number1  = number - numbers[n-1]; 
+                    if(number) {
+                       hands.add("L");
+                        leftHand++;
+                    } else {
+                        hands.add("R");
+                        rightHand++;
+                    }
+                }
+            }
+        }
+        String answer = "";
+       for(String h : hands) {
+           answer += h;
+       }
+       return answer;
+    }
+}
