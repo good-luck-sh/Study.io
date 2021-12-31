@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 먼저 객체를 등록해서 사용하는 방법으로 진행해야한다. -->
+<!-- 
+	데이터 베이스와 연결된 Connection 를 제공하는 객체를 스프링의 빈으로 등록시킨다.
+	케넥션 풀 객체라고 부른다.Connection Pool 객체
+	모든 Connection Pool객체는 javax.sql.DataSource인터페이스를 구현한 객체다. 
+	모든 Connection Pool에서 connection을 가져오는 방법은 getConnection으로 사용방법이 동일하다.
+	
+	commons-dbcp 라이브러리가 제공하는 BasicDataSource는 가장 일반적으로 많이 사용되는 DataSource구현체다.
+	* jdbc 드라이버 클래스명, 데이터베이스 접속 URL, 사용자명, 비밀번호를 제공해야한다.
+	
+ -->
+ 	<bean id="basicDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+ 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+ 		<property name="url" 			 value="jdbc:oracle:thin:@LAPTOP-MP9I3VRU:1521:xe"></property>
+ 		<property name="username"		 value="hr"></property>
+ 		<property name="password" 		 value="zxcv1234"></property>
+ 	</bean>
+ 	<!-- 이전 getConntection에게 알려줬던 값을 property로 전달해준다. -->
+ <!-- 
+ 	SQL 실행작업을 처리해주는 객체를 스프링의 빈으로 등록시킨다.
+ 	
+ 	spring-jdbc 라이브러리는 JdbcTemplate 클래스를 제공한다. 
+ 	JdbcTemplate 클래스는 INSERT, UPDATE, DELETE, SELECT 쿼리문을 간단하게 실행할 수 있는 메소드를 제공한다.  
+  	패키지명이 길기 때문에 자동완성하지 않으면 작성하기 어렵다.
+  	* 커넥션을 제공하는 ConnectionPool객체를 제공받아야한다(의존성 주입받아야 한다.)
+  -->
+  <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+  	<property name="dataSource" ref="basicDataSource"></property>
+  </bean>
+  <!-- 
+  	업무로직 구현에 필요한 데이터베이스 작업이 구현된 EmployeeDaoImpl을 스프링의 빈으로 등록시킨다.
+  	* SQL 실행작업을 지원하는 JdbcTemplate객체를 제공받아야(의존성 주입) 한다.
+   -->
+   <bean id="employeeDao" class="com.sample.dao.EmployeeDaoImpl">
+   		<property name="template" ref="jdbcTemplate"></property>
+   </bean>
+   <bean id="jobDao" class="com.sample.dao.JobDaoImpl">
+   		<property name="template" ref="jdbcTemplate"></property>
+   </bean>
+  <!-- 
+   	업무로직이 구현된 EmployeeServiceImpl를 스프링의 빈으로 등록시킨다. 
+   	* 업무로직 구현에 필요한 데이터베이스 엑세스 작업을 지원하는 EmployeeDaoImpl 객체를 제공받아야(의존성 주입받아야) 한다.
+-->
+	<bean id="employeeServiceImpl" class="com.sample.service.EmployeeServiceImpl">
+		<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+	<bean id="jobServiceImpl" class="com.sample.service.JobServiceImpl">
+		<property name="jobDao" ref="jobDao"></property>
+	</bean>
+
+	
+</beans>
