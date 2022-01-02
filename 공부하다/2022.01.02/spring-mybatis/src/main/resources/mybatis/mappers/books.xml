@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sample.dao.BookDao">
+	<!-- 
+		mapper파일
+	 -->
+	 <!-- 
+	 	void insertBook(Book book); 메소드와 mapping되는 SQL구문 정의
+	  -->
+	 <insert id="insertBook" parameterType="com.sample.vo.Book">
+	 	insert into sample_spring_books
+	 	(book_no, book_title, book_author, book_publisher, book_price, book_discount_price, book_pub_date, book_stock)
+	 	values
+	 	(books_seq.nextval,#{title},#{author},#{publisher},#{price},#{discountPrice},#{pubDate},#{stock})
+	 </insert>
+	 <!-- 
+	 	void updateBook(Book book);메소드와 매핑되는 SQL구문 정의
+	  -->
+	 <update id="updateBook" parameterType="com.sample.vo.Book">
+	 	update sample_spring_books
+	 	set 
+	 		book_title = #{title},
+	 		book_author = #{author},
+	 		book_publisher = #{publisher},
+	 		book_price = #{price},
+	 		book_discount_price = #{discountPrice},
+	 		book_stock = #{stock},
+	 		book_updated_date = sysdate
+	 	where
+	 		book_no = #{no}
+	 </update>
+	 <!-- 
+	 	List<Book> getAllBooks();메소드와 매핑되는 SQL구문정의
+	  -->
+	 <select id="getAllBooks" resultType="com.sample.vo.Book">
+	   		select 
+		   		book_no as no,
+		   		book_title as title,
+		   		book_author as author,
+		   		book_publisher as publisher,
+		   		book_price as price,
+		   		book_discount_price as discountPrice,
+		   		book_pub_date as pubDate,
+		   		book_stock as stock,
+		   		book_updated_date as updatedDate,
+		   		book_created_date as createdDate
+	   		from 
+	   			sample_spring_books
+	   		order by
+	   			book_no desc
+	 </select>
+	 <!-- 
+	 	List<Book> searchBooksByTitle(String title);메소드와 매핑하는 SQL 구문정의
+	  -->
+	 <select id="searchBooksByTitle" parameterType="string" resultType="com.sample.vo.Book">
+	 	select 
+		   		book_no as no,
+		   		book_title as title,
+		   		book_author as author,
+		   		book_publisher as publisher,
+		   		book_price as price,
+		   		book_discount_price as discountPrice,
+		   		book_pub_date as pubDate,
+		   		book_stock as stock,
+		   		book_updated_date as updatedDate,
+		   		book_created_date as createdDate
+	   		from 
+	   			sample_spring_books
+	   		where 
+	   			book_title like '%' || #{value} || '%'
+	   		order by 
+	   			book_no desc
+	 </select>
+	 <!-- 
+	 	List<Book> searchBooksByPrice(@Param("minPrice") int minPrice,@Param("maxPrice") int maxPrice);
+	 	위와 같은 메소드에 매핑되는 SQL구문 정의 
+	 	
+	 	+ 매퍼 인터페이스의 메소드의 매개변수가 2개 이상일 때 @Param()어노테이션을 이용해서 SQL에 전달하는 파라미터값의 이름을 지정할 수 있다. 
+	 	+ @Param을 사용해서 파라미터 이름을 지정했을 때 SQL 구문을 정의하는 태그에서 parameterType 속성을 작성할 필요가 없다.
+	  -->
+	 <select id="searchBooksByPrice"  resultType="com.sample.vo.Book">
+	 select 
+		   		book_no as no,
+		   		book_title as title,
+		   		book_author as author,
+		   		book_publisher as publisher,
+		   		book_price as price,
+		   		book_discount_price as discountPrice,
+		   		book_pub_date as pubDate,
+		   		book_stock as stock,
+		   		book_updated_date as updatedDate,
+		   		book_created_date as createdDate
+	   		from 
+	   			sample_spring_books
+	   		where 
+	   			book_price >= #{minPrice} and book_price &lt;= #{maxPrice}
+	   		order by 
+	   			book_price asc
+	 </select>
+	 <select id="getBookByNo" parameterType="int" resultType="com.sample.vo.Book">
+	  select 
+		   		book_no as no,
+		   		book_title as title,
+		   		book_author as author,
+		   		book_publisher as publisher,
+		   		book_price as price,
+		   		book_discount_price as discountPrice,
+		   		book_pub_date as pubDate,
+		   		book_stock as stock,
+		   		book_updated_date as updatedDate,
+		   		book_created_date as createdDate
+	   		from 
+	   			sample_spring_books
+	   		where 
+	   			book_no = #{value}
+	 </select>
+	 <delete id="deleteBook" parameterType="int">
+	 	delete 
+	 	from 
+	 		sample_spring_books
+	 	where
+	 		book_no = #{value}
+	 </delete>
+</mapper>
