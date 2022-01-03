@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sample.dao.JobDao">
+	<select id="getAllJobs" resultType="com.sample.vo.Job">
+		select
+		job_id as id,
+		job_title as title, 
+		min_salary as minSalary, 
+		max_salary as maxSalary
+		from jobs
+	</select>
+	<insert id="insertJob" parameterType="com.sample.vo.Job">
+		insert into jobs 
+		(job_id, job_title, min_salary, max_salary)
+		values
+		(#{id},#{title},#{minSalary},#{maxSalary})
+	</insert>
+	<update id="updateJob" parameterType="com.sample.vo.Job">
+		update jobs
+		set
+		job_title = #{title}, 
+		min_salary = #{minSalary}, 
+		max_salary = #{maxSalary}
+		where job_id = #{id}
+	</update>
+	<select id="getJobByMinSalary" resultType="com.sample.vo.Job">
+		select distinct
+		job_id as id,
+		job_title as title, 
+		min_salary as minSalary
+		from jobs
+        order by min_salary; 
+	</select>
+	<select id="getJobByMaxSalary" resultType="com.sample.vo.Job">
+		select distinct
+		job_id as id,
+		job_title as title, 
+		max_salary as maxSalary
+		from jobs
+        order by max_salary; 
+	</select>
+</mapper>

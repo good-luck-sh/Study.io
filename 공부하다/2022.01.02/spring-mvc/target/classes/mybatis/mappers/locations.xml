@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sample.dao.LocationDao">
+	<select id="getAllLocations" resultType="com.sample.vo.Location">
+		select
+		location_id as id,
+		city as city ,
+		street_Address as streetAddress
+		from locations
+	</select>
+</mapper>
