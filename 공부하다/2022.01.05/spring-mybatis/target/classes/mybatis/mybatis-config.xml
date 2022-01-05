@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- 
+		mybatis 환경설정 파일
+	 -->
+	 <settings>
+	 	<!-- 
+	 		NULL값이 허용된 컬럼에 NULL값을 저장할 때 JDBC 타입을 명시해야한다.
+	 		아래와 같이 설정하면 해당 컬럼의 타입에 상관없이 NULL 값을 저장할 수 있다. 
+	 		default의 값은 other이다.
+	 		Jdbc에 값을 저장할 때 타입이 무엇인지 확인한다. null값이 들어가면 오류가 나온다. 
+	 		원래 설정파일을 정의하지 않으면 모든 #{ jdbcType="NULL"}.처럼 지정해줘야한다. 
+	 	 -->
+	 	<setting name="jdbcTypeForNull" value="NULL"/>
+	 	<!-- 
+	 		mybatis가 실행하는 SQL구문 정보 및 실행되는 쿼리문, 파라미터 값, 조회결과를 로그로 출력할 때 사용하는 구현체를 지정한다.
+	 		log4j2이다.
+	 	 -->
+	 	<setting name="logImpl" value="LOG4J2"/>
+	 </settings>
+</configuration>
