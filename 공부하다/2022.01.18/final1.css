@@ -1,0 +1,87 @@
+h2{
+    margin-left: 10%;
+    width: 90%;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+.box{
+    width: 70%;
+    margin-left: 10%;
+    box-sizing: border-box;
+}
+.text-title{
+    width: 80%;
+    height: 30px;
+}
+.text-title>h3{
+    text-align: left;
+    height: 2px;
+    
+}
+.reset-button{
+    text-align: right;
+    float: right;
+    width: 80px;
+    height: 30px;
+    border: 1px solid rgb(197, 196, 196);
+    background-color: white;
+    text-align: right;
+    border-radius:7px;
+    font-size: medium;
+    font-weight: 550;
+    color: rgb(12, 9, 22);
+}
+.check-people{
+    float: left;
+    width: 60%;
+    height: 40px;
+    border-top: 1px solid rgb(197, 196, 196);
+    background-color: rgb(239, 240, 241);
+    box-sizing: border-box;
+}
+.all-check-people{
+    display: flex;
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+.txt{
+    float: left;
+    text-align: center;
+    font-size: small;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+.down,.up{
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+.now{
+    width: 40px;
+    height: 30px;
+}
+.down,.now,.up{
+    float: left;
+    border: 1px solid rgb(197, 196, 196);
+    background-color: white;
+    margin-top: 5px;
+
+}
+li{
+    text-decoration: none;
+}
+.movie-container{
+    float: right;
+    width: 20%;
+    margin: auto;
+    height: 500px;
+    border: 1px solid black;
+    margin-right: 10%;
+    box-sizing: border-box;
+}
+.screen-seat{
+    margin-left: 10%;
+    width: 60%;
+}
