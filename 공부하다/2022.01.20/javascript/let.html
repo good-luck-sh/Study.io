@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>let 변수 선언자</h1>
+</body>
+<script type="text/javascript">
+	/*
+		let 변수 선언자로 선언한 변수는 변수 끌어올리기가 적용되지 않는다. 
+		let 변수 선언자로 선언한 변수는 그 변수가 선언된 블록내에서만 사용할 수 있다.
+		그래서 요즘에는 let으로 선언한다고 이야기를 한다. 
+		이제는 let으로 선언하고 사용하기로 한다.
+	*/
+	function fn(){
+		let a = 10;
+		let a = 10; 	
+		//변수가 이미 선언되어있다고 오류가 나타난다.
+		//함수내에서 같은 이름의 변수를 중복선언할 수 없다.
+		//let으로 적게 쓰는 것이 오류가 날 확률이 줄어든다. 
+		if(a == 10) {
+			let b = a*2;
+			console.log("b의 값", b);
+		}
+		console.log("a의 값", a);
+		console.log("b의 값", b); // 오류 발생: 변수 b를 찾을 수 없습니다.
+	}
+	fn();
+</script>
+</html>

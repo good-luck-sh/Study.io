@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>var 변수 선언자</h1>
+</body>
+<script type="text/javascript">
+/*
+ * var 변수 선언자로 함수내에서 선언한 변수는 함수의 첫부분으로 끌어올려진다.(변수 호이스팅)
+   var 변수 선언자로 함수내에서 선언한 변수의 유효 범위는 그 변수가 선언된 블록이 아니라, 함수가 그 변수의 유효범위다. 
+ */
+	function fn1(){
+		var a = 10;
+		var a = 10;
+		//같은 변수를 선언해도 오류가 나지 않고, 후발자의 선언이 유지된다. 
+		//함수내에서 같은 이름의 변수를 중복 선언해도 오류가 발생하지 않는다.
+		if(a == 10) {
+			//var 변수 선언자로 선언한 변수는 블록 밖에서도 사용할 수 있다.
+			var b = a*2;
+			console.log("b의 값", b)
+		}
+		//if문 바깥에 설정됨
+		console.log("a의 값", a);
+		//if문 블록안에서 선언한 변수 b의 값을 출력할 수 있다.
+		console.log("b의 값", b)
+	}
+	fn1();
+	/*
+	function fn1(){
+		var a, b; //변수 호이스팅 때문에 함수의 첫부분에서 모든 변수가 미리 선언된다.
+		a = b;
+		if(a == 10) {
+			//var 변수 선언자로 선언한 변수는 블록 밖에서도 사용할 수 있다.
+			b = a*2;
+			console.log("b의 값", b)
+		}
+		//if문 바깥에 설정됨
+		console.log("a의 값", a);
+		//if문 블록안에서 선언한 변수 b의 값을 출력할 수 있다.
+		console.log("b의 값", b)
+	}
+	fn1();
+	*/
+</script>
+</html>
