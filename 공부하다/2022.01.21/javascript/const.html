@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>const 변수 선언자</h1>
+	<script type="text/javascript">
+		//const 변수 선언자
+		//한번 할당된 값을 변경할 수 없는 상수를 선언할 때 사용한다. 
+		//값을 바꿀 수 없기 때문에 반드시, 상수를 선언할 때 값을 할당해야 한다.(초기화 해야한다. )
+		//let과 마찬가지로 블록레벨 변수 범위를 가진다.
+		//프로그램이 실행되는 동안 같은 값을 계속 유지해야하는 값은 상수를 사용하자.
+		
+		//상수는 변경할 수 없다는 의미로 이름을 대문자로 지정한다. 
+		const PI = 3.14;
+		console.log("상수값", PI);
+		
+		//변수 선언
+		let pi = 3.14;
+		console.log("변수값", pi);
+		
+		//상수에 새로운 값을 할당할 수 없다.
+		//PI = 3.141592;	//오류 발생, 상수는 값을 변경할 수 없다.
+		//pi = 3.141592;	//변수는 값을 변경할 수 있다.
+		
+		//초기화되지 않는 상수는 정의할 수 없다.
+		const COMMISSION_PCT;//오류발생, 상수는 선언할 떄 값을 반드시 할당해야 한다. 
+		COMMISSION_PCT = 0.3;
+		
+		//상수에 객체를 저장하기
+		const USERINFO = {no:100,name:"홍길동",point:15000};
+		//상수에 배열을 저장하기 
+		const USER_GRADE = ["손님","브론즈","실버","골드"];
+		
+		console.log(USERINFO);
+		console.log(USER_GRADE);
+		
+		//객체와 배열을 저장하고 있는 상수에 새로운 객체를 할당할 수 없다. 
+		//객체의 프로퍼티의 값을 변경하는 것은 가능하다.
+		//엄밀히 말하면 객체나 배열은 상수 값으로써의 크게 의미가 없다.
+		//상수의 기본자료형타입만 실제로 크게 의미가 있는것이다.
+		USERINFO.point = 20000;
+		console.log(USERINFO);
+		
+		//배열이 제공하는 메소드를 사용해서 배열에 새로운 요소를 추가/ 삭제하는 것은 가능하다.
+		USER_GRADE.push("다이아몬드");
+		console.log(USER_GRADE);
+		
+	</script>
+</body>
+</html>
