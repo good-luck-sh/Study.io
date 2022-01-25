@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>객체 구조분해할당</h1>
+<script type="text/javascript">
+	//객체 구조분해할당
+	//let {프로퍼티명1, 프로퍼티2} = {프로퍼티명1:값1, 프로퍼티명2:값2}
+	//좌항에서 지정된 프로퍼티명과 일치하는 프로퍼티의 값이 할당된 변수가 생성된다. 
+	//let쪽에 있는 부분이 변수명이면서 프로퍼티명이다. 
+	//좌항의 프로퍼티명은 객체의 프로퍼티명과 동일한 이름의 변수명을 지정한 것이다. 
+	
+	var obj = {no:100, name:"홍길동", email:"hong"};
+	var {no, name, email} = obj;
+	console.log("no", no);
+	console.log("name", name);
+	console.log("email", email);
+	console.log("------------------------------------------");
+	
+	//parameter에서 객체 구조분해할당 하기
+	function fn1(score){
+		var total = score.kor + score.eng + score.math;
+		console.log("총점",total);
+	}
+	function fn2({kor, eng, math}){
+		var total = kor + eng + math;
+		console.log("총점",total);
+	}
+	var score1 = {kor:100, eng:90, math:80};
+	var score2 = {kor:80, eng:90, math:70};
+	fn1(score1);
+	fn1(score2);
+	console.log("------------------------------------------");
+	
+	//객체 구조 분해할당에서 default parameter사용하기 
+	function fn3({salary, comm = 0.1}){
+		var totalSalary = salary + salary*comm;
+		console.log("총급여", totalSalary);
+	}
+	fn3({salary:300, comm:0.2});
+	fn3({salary:300});
+	//comm 프로퍼티가 없는 객체가 함수의 매개변수로 전달된다. 매개변수에서 객체 구조 분해할당을 할 때 
+	//전달받은 객체에 일치하는 프로퍼티명이 없으면, 지정된 기본값이 변수에 할당된다. 
+	fn({salary:300, comm:0});
+	console.log("-------------------------------------------");
+	
+	//다름 이름의 변수에 객체 구조분해할당하기 
+	var score = {n:"홍길동", k:100, e:80, m:90};
+	
+	//객체의 프로퍼티명과 동일한 이름의 변수에 구조분해할당하기
+	var {n, k, e, m} = score;
+	
+	//객체의 프로퍼티명과 다른이름의 변수에 구조분해할당하기 
+	var {n:name, k:kor, e:eng, m:math} = score;
+	console.log(name, kor, eng, math);
+	/*
+	$.getJSON('detail', {no:100}, function(response){
+			//객체 구조 분해할당
+			response = {success:true, message:null, items:[{}]}
+		
+		var{success, message, items} = response;
+		if(success) {
+			$.each(items, function(index, student){
+				//컨텐츠 생성
+			})
+		}
+	})
+	*/
+	
+</script>
+</body>
+</html>
