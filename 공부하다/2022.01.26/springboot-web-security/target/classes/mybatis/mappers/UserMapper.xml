@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.UserMapper">
+
+	<insert id="insert" parameterType="com.example.vo.User">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select sample_users_seq.nextval from dual
+		</selectKey>
+		insert into tb_sample_security_users
+		(user_no, user_name, user_password, user_nickname, user_email)
+		values
+		(#{no}, #{name}, #{password}, #{nickname}, #{email})
+	</insert>
+	
+	<select id="getUserByUsername" parameterType="string" resultType="com.example.vo.User">
+		select 
+			user_no as no,
+			user_name as name,
+			user_password password,
+			user_nickname nickname,
+			user_email email,
+			user_disabled disabled,
+			user_updated_date updatedDate,
+			user_created_date createdDate
+		from 
+			tb_sample_security_users
+		where
+			user_name = #{value}
+	</select>
+	
+	<select id="getUserByEmail" parameterType="string" resultType="com.example.vo.User">
+		select 
+			user_no as no,
+			user_name as name,
+			user_password password,
+			user_nickname nickname,
+			user_email email,
+			user_disabled disabled,
+			user_updated_date updatedDate,
+			user_created_date createdDate
+		from 
+			tb_sample_security_users
+		where
+			user_email = #{value}
+	</select>
+	
+	<update id="update" parameterType="com.example.vo.User">
+		update
+			tb_sample_security_users
+		set
+			user_password = #{password},
+			user_disabled = #{disabled},
+			user_updated_date = sysdate
+		where
+			user_no = #{no}
+	
+	</update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
