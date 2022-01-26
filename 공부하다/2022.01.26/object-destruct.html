@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>객체 구조 분해할당</h1>
+	
+<script type="text/javascript">
+	//중첩된 객체의 구조 분해할당
+	var person = {
+			name:"홍길동",
+			adress:{
+				zipcode:'01234',
+				addr1: '서울시 종로구',
+				addr2: '율곡로10길 105',
+			},
+			family:[{father:"홍아빠"},{mother:"홍엄마"}]
+	}
+	//{name} = person은 person객체의 name 프라퍼티의 값을 name에 할당한다. 
+	//{address:{attr1:addr}} ->person객체의 address프로퍼티의 addr1프로퍼티의 값을 addr에 할당한다. 
+	var {name, address:{addr1: addr}} = person;
+	//address의 addr1에 addr1을 가져와서 addr이라는 이름을 지을 예정이다.
+	console.log(name);
+	console.log(addr);
+	//구조분해할당을 이용하지 않고, 객체의 프로퍼티값을 사용하기 
+	//console.log(person.name);
+	//console.log(person.address.addr1);
+	//구조 분해 할당을 이용하면 복잡하게 구성된 객체의 프로퍼티의 값을 쉽게 변수에 할당하고, 사용할 수 있다. 
+	//구조 분해 할당으로 변수에 저장된 객체의 프로퍼티값을 사용한다. 
+	
+	var {name:이름, famail:[{father:아빠},{mather:엄마}]} = person;
+	console.log(이름);
+	console.log(아빠);
+	console.log(엄마);
+	
+	//구조분해할당없이 객체의 값을 표현하는 경우 
+	console.log(person.name);
+	console.log(person.family[0].father);
+	console.log(person.family[1].mother);
+	
+	//for문에서 객체의 구조 분해할당
+	var books = [
+		{title:"이것이 자바다.", info:{author:"신용권", publisher:"한빛미디어", price:35000}},
+		{title:"자바의 정석.", info:{author:"남궁성", publisher:"도우출판사", price:32000}}
+	];
+	for(var {title:t, info:{price:p}} of books){	//books에 있는 값을 이용해서 info내의 price의 값만 뽑아서 사용한다. 
+		//title 변수에 넣고 사용한다. 
+		console.log(t, p)
+	}
+	
+	//매개변수에서 객체의 구조분해할당
+	var order = {
+			no:1000,
+			product:{
+				no:10, name:"아이폰13",price:15000000
+			}, 
+			amount:2
+	};
+	fn(order);
+	function fn({product:{price}, amount}){ //product의 price를 꺼내서 amount값과 곱하는 것이다. 
+		var orderPrice = price*amount;
+		console.log(orderPrice);
+	}
+</script>
+</body>
+</html>
